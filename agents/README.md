@@ -22,6 +22,7 @@ Use Coherence Governor when you want an agent to:
 
 It is designed for coding, repo work, audits, research, UI QA, documentation, and git operations where a confident-but-unverified answer is not good enough.
 
+if forked -> push request:
 Add new agents below this section using the same pattern: title, path, short explanation, optional image, and practical use cases.
 
 ## Layout
