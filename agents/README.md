@@ -8,6 +8,9 @@ Reusable agent operating contracts live here. Each agent sits in its own folder 
 
 Path: `agents/coherence-governor/AGENTS.md`
 
+<img width="1080" height="720" alt="coherence_governor_auditimage" src="https://github.com/user-attachments/assets/30f6e04d-00e3-42be-829e-0327e4e99dca" />
+
+
 Coherence Governor is a high-control execution contract for agents that need to stay grounded under pressure. It turns a regular agent workflow into a coherence-first loop: lock the active instructions, inspect real evidence, clarify intent, execute narrowly, verify the result, and report only what is true.
 
 Use Coherence Governor when you want an agent to:
