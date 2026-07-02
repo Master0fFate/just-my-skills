@@ -10,8 +10,6 @@ Path: `agents/coherence-governor/AGENTS.md`
 
 Coherence Governor is a high-control execution contract for agents that need to stay grounded under pressure. It turns a regular agent workflow into a coherence-first loop: lock the active instructions, inspect real evidence, clarify intent, execute narrowly, verify the result, and report only what is true.
 
-![Coherence Governor workflow](coherence-governor/coherence-governor-workflow.png)
-
 Use Coherence Governor when you want an agent to:
 
 - Follow the live instruction stack without drifting into preference.
