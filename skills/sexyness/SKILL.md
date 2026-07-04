@@ -1,7 +1,7 @@
 ---
 name: sexyness
 description: >-
-  Orchestrate a premium polish pass across code, design, animation, smoothness, performance, copy, architecture, and opt-in accessibility. Use when the user asks for sexyness, sexyfication, sexification, make it sexy, make it premium, remove AI slop, make code/design/UI/UX feel elite, smooth, beautiful, high-quality, delightful, optimized, or competition-grade. Loads nested sexyness sub-skills from subskills/*/SKILL.md as needed and applies QA gates before declaring work done. Accessibility is only selected when explicitly requested or when the active task is specifically an accessibility audit/fix.
+  Orchestrate a premium polish pass across code, design, image-generation concepting, animation, smoothness, performance, copy, architecture, and opt-in accessibility. Use when the user asks for sexyness, sexyfication, sexification, make it sexy, make it premium, remove AI slop, use imagegen to re-imagine a design, make code/design/UI/UX feel elite, smooth, beautiful, high-quality, delightful, optimized, or competition-grade. Loads nested sexyness sub-skills from subskills/*/SKILL.md as needed and applies QA gates before declaring work done. Accessibility is only selected when explicitly requested or when the active task is specifically an accessibility audit/fix.
 ---
 
 # Sexyness
@@ -14,6 +14,7 @@ Read only the nested sub-skills needed for the task, then follow them as local p
 
 - `subskills/code-sexyness/SKILL.md`: code quality, formatting, naming, types, complexity, algorithms, maintainability, tests.
 - `subskills/design-sexyness/SKILL.md`: visual design, composition, hierarchy, spacing, color, typography, design-system fit.
+- `subskills/imagegen-sexyness/SKILL.md`: image-generation-assisted visual exploration, concept references, UI re-imagining, and project-bound bitmap assets before implementation.
 - `subskills/animate-sexyness/SKILL.md`: full-motion website or UI overhaul, transitions, micro-interactions, state changes, timing, easing, motion intent.
 - `subskills/smoothness-sexyness/SKILL.md`: perceived fluidity, input feel, UX continuity, latency masking, interaction flow.
 - `subskills/performance-sexyness/SKILL.md`: runtime speed, bundle weight, rendering, memory, loading, throughput.
@@ -21,7 +22,7 @@ Read only the nested sub-skills needed for the task, then follow them as local p
 - `subskills/copy-sexyness/SKILL.md`: UX writing, labels, errors, empty states, product voice, removal of AI-sounding prose.
 - `subskills/architecture-sexyness/SKILL.md`: system shape, boundaries, data flow, extensibility, resilience, dependency hygiene.
 
-When the user says only "make it sexy" or "sexify this", inspect the artifact first, then select the smallest set of sub-skills that covers the visible problem. For UI work, usually combine design, animate, smoothness, performance, and copy. For code-only work, usually combine code, architecture, performance, and tests.
+When the user says only "make it sexy" or "sexify this", inspect the artifact first, then select the smallest set of sub-skills that covers the visible problem. For UI work, usually combine design, animate, smoothness, performance, and copy. Add `imagegen-sexyness` when the user asks to re-imagine the visual direction, when the current design lacks a strong visual target, or when a generated bitmap asset would materially raise the first impression. For code-only work, usually combine code, architecture, performance, and tests.
 
 Do not select `accessibility-sexyness` as part of the default UI polish bundle. It is explicit opt-in only: use it when the user asks for accessibility, a11y, WCAG, screen reader support, keyboard support, contrast, reduced motion, inclusive design, or an accessibility audit/fix. Do not combine it with `animate-sexyness` unless the user explicitly asks for both motion and accessibility constraints.
 
@@ -31,8 +32,9 @@ Do not select `accessibility-sexyness` as part of the default UI polish bundle. 
 2. Inspect reality: read the current files, behavior, screenshots, tests, logs, or examples before changing anything.
 3. Pick sub-skills: load the relevant nested SKILL.md files and follow their gates.
 4. Make scoped improvements: polish the artifact without changing the user's core intent.
-5. Verify directly: run tests, builds, linters, previews, screenshots, benchmarks, or manual QA as appropriate for the selected sub-skills.
-6. Report the proof: summarize what improved, what was verified, and any remaining risk.
+5. If using image generation, turn the generated concept into implementable design decisions or saved assets; do not replace live UI with a static mockup.
+6. Verify directly: run tests, builds, linters, previews, screenshots, benchmarks, or manual QA as appropriate for the selected sub-skills.
+7. Report the proof: summarize what improved, what was verified, and any remaining risk.
 
 ## Global Taste Rules
 

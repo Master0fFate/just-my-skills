@@ -1,7 +1,7 @@
 ---
 name: design-sexyness
 description: >-
-  Create polished, non-generic visual design with strong hierarchy, spacing, typography, color, alignment, density, and design-system fit. Use when improving UI, pages, dashboards, components, layouts, visual rhythm, brand feel, or anything that should stop looking like AI-generated slop.
+  Create polished, non-generic visual design with strong hierarchy, spacing, typography, color, alignment, density, design-system fit, and optional imagegen-assisted visual direction. Use when improving UI, pages, dashboards, components, layouts, visual rhythm, brand feel, or anything that should stop looking like AI-generated slop.
 ---
 
 # Design Sexyness
@@ -22,9 +22,10 @@ Use this sub-skill to make interfaces feel deliberate, premium, and domain-appro
 
 1. Inspect the existing design system, components, tokens, and screenshots.
 2. Identify the weakest design dimension: hierarchy, density, spacing, color, typography, controls, or responsiveness.
-3. Improve the design using existing patterns first.
-4. Test mobile and desktop layouts, long text, empty states, and error states.
-5. Capture or inspect screenshots when the artifact is visual.
+3. If the surface needs stronger visual direction or generated bitmap assets, load `../imagegen-sexyness/SKILL.md` and use generated images as concept references or saved assets, not as static UI replacements.
+4. Improve the design using existing patterns first.
+5. Test mobile and desktop layouts, long text, empty states, and error states.
+6. Capture or inspect screenshots when the artifact is visual.
 
 ## QA Gate
 
@@ -32,4 +33,5 @@ Use this sub-skill to make interfaces feel deliberate, premium, and domain-appro
 - Visual hierarchy is obvious within five seconds.
 - The design uses at least one meaningful visual asset or product-specific signal when building a site, app, or game.
 - The result fits the domain instead of applying a generic landing-page treatment.
+- If imagegen was used, the final UI implements extracted design decisions rather than embedding a mockup screenshot.
 - Screenshot or real render verification is performed when possible.
