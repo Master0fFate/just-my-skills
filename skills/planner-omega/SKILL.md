@@ -1,10 +1,6 @@
 ---
 name: planner-omega
-description: Build grounded, verification-first, execution-ready plans for complex user goals. Use when the user asks to build, launch, implement, migrate, research, architect, roadmap, strategize, decompose, or create a to-do list for any substantial project. Produces pragmatic plans that balance research depth, speed, risk, dependencies, and measurable execution gates without generic filler.
-argument-hint: "[goal] [--depth=lite|standard|deep|omega] [--format=roadmap|todo|spec]"
-version: 1.0.0
-user-invocable: true
-disable-model-invocation: false
+description: Build grounded, artifact-aware, verification-first execution plans for complex user goals. Use when the user asks to build, launch, implement, migrate, research, architect, roadmap, strategize, decompose, or create a to-do list for any substantial project. Produces pragmatic plans that balance state modeling, hierarchical decomposition, assumptions, risks, dependencies, speed, and measurable execution gates without generic filler.
 ---
 
 # Planner Omega
@@ -40,6 +36,7 @@ A Planner Omega output must be:
 4. **Lean:** excludes generic filler, motivational language, and tasks that do not change decisions or execution.
 5. **Verifiable:** every phase and task has a success condition, acceptance check, or validation method.
 6. **Controllable:** preserves user intent through scope boundaries, non-goals, change control, and plan-state tracking.
+7. **Artifact-aware:** keeps small plans inline, promotes medium or large plans to markdown when durability helps, and uses `.spec` only for very large or explicitly requested formal plans.
 
 ## Planning Depth Modes
 
@@ -61,6 +58,18 @@ Use for high-complexity projects, technical architectures, migrations, regulated
 
 Use when the user explicitly asks for the strongest possible plan, exhaustive material coverage, production readiness, or “research everything.” Explore all material vectors and approaches, but still apply the materiality filter: include only details that affect decisions, implementation, risk, verification, or handoff quality. Do not pad.
 
+## Output Surface Policy
+
+Choose the lightest surface that preserves execution quality:
+
+| Plan size / use | Surface | File creation rule | Task state |
+|---|---|---|---|
+| Small or Lite | Inline response | Do not create a file unless the user asks. | Use concise bullets or a short checklist only if it improves clarity. |
+| Medium to large | Markdown plan (`.md`) | Create or update a markdown file when the user asks for a file, the plan is too long to keep reliably in chat, or follow-up execution needs durable state. | Use markdown task checkboxes for executable work. |
+| Huge, formal, or deeply detailed | Specification (`.spec`) | Create a `.spec` file when the user explicitly asks for a spec, asks for maximum detail, or the planner detects that a large plan needs a durable control artifact with structured assumptions, dependencies, risks, verification, and replanning rules. | Use checkboxes for executable work plus structured sections for state, assumptions, risks, and gates. |
+
+When creating a plan artifact, prefer a user-provided path. If none is provided, choose the least surprising workspace location and report the path. Do not create files for small plans just because the output is markdown-formatted in chat.
+
 ## Intake Protocol
 
 Before planning, silently classify the request:
@@ -73,6 +82,7 @@ Before planning, silently classify the request:
 - Material unknowns: missing facts that could change the plan.
 - Required freshness: whether current documentation, prices, laws, standards, APIs, models, libraries, platform policies, market conditions, or schedules must be checked.
 - Execution posture: plan-only, plan-then-execute, or plan-as-control-artifact for future work.
+- Output surface: inline, `.md`, or `.spec` using the Output Surface Policy.
 
 Ask clarifying questions only when a missing answer would materially change the plan and no reasonable assumption is safe. Use no more than three high-value questions at once. If the user wants momentum or the ambiguity is manageable, proceed with clearly labeled assumptions.
 
@@ -90,6 +100,41 @@ Prioritize evidence in this order:
 For each material source, capture the source name, date or version where available, relevance, and what decision it informs. For research-heavy plans, produce a compact documentation pack that links each source to a concrete decision, dependency, risk, or verification gate. If browsing or external research is unavailable, say so and convert source-dependent claims into assumptions or open research tasks.
 
 Do not collect documentation merely to look thorough. Stop research when additional sources are unlikely to change decisions, risks, sequencing, or verification.
+
+## Omega Planning Architecture
+
+Use Validated Hierarchical Assumption-and-Risk Planning as the default mental architecture:
+
+```text
+Goal -> State Model -> Hierarchical Decomposition -> Assumptions -> Risks -> Candidate Plans -> Verification -> Execution -> Replanning
+```
+
+Apply each layer only as deeply as the task requires:
+
+- **Outcome contract:** define goal, success metric, horizon, hard constraints, soft constraints, non-goals, stakeholders, and failure conditions.
+- **State/action model:** identify current state, desired state, allowed actions, preconditions, effects, resources consumed, risks introduced, and evidence required.
+- **Hierarchical decomposition:** break the goal into deliverables and tasks so child work covers the parent scope without adding unrelated work.
+- **Assumption map:** list what must be true, current evidence level, importance, cheapest test, and consequence if false.
+- **Risk model:** capture failure modes, triggers, mitigation, contingency, reversibility, and escalation points.
+- **Candidate-plan search:** compare materially distinct paths, score them against constraints, and select the path with the strongest correctness-speed-risk tradeoff.
+- **Verification and validation:** define checks for whether the work is built right and whether it solves the right problem.
+- **Execution and replanning:** execute the active step, observe results, mark completion only after proof, and replan when evidence invalidates the current path.
+
+For complex, technical, regulated, costly, or agent-executed plans, include a compact **Plan Model** section:
+
+```markdown
+## Plan Model
+- Current state:
+- Desired state:
+- Allowed actions:
+- Preconditions:
+- Effects:
+- Resources:
+- Evidence required:
+- Replan triggers:
+```
+
+Do not force this section into low-risk Lite plans when it would be ceremony.
 
 ## Vector Sweep
 
@@ -124,23 +169,37 @@ When there are meaningful alternatives, generate only materially distinct approa
 
 Recommend one default path unless the user explicitly asks for an open-ended comparison. Explain why the recommended path dominates under the current assumptions. If no option is clearly best, state the decision point and the smallest evidence-gathering step that will resolve it.
 
+Use this selection guide when it materially improves the plan:
+
+| Planning problem | Preferred method |
+|---|---|
+| Breaking a large goal into inspectable work | HTN-style hierarchy plus deliverable-oriented WBS |
+| Finding a valid sequence of dependent actions | State/action modeling, dependency ordering, or search |
+| Scheduling dependent work | Critical path, topological order, or constraint reasoning |
+| Allocating scarce resources | Constraint or optimization reasoning |
+| Testing uncertain product or market beliefs | Assumption mapping plus MVP-style experiments |
+| Controlling high-risk execution | Risk register, contingency planning, and rollback gates |
+| Agentic execution | ReAct-style observe-act loops, verifier gates, and replanning triggers |
+| Continuous improvement | Retrospective, postmortem, and feedback capture |
+
 ## Plan Construction Workflow
 
 Follow this sequence:
 
 1. **Frame the mission:** restate the goal, success outcome, audience, constraints, and non-goals.
 2. **Ground the plan:** inspect provided materials and research current authoritative sources where required.
-3. **Map the solution space:** identify viable approaches, dependencies, and material vectors.
-4. **Choose the execution strategy:** select the path that maximizes correctness, speed, feasibility, and reversibility.
-5. **Decompose the work:** break the strategy into phases, tasks, deliverables, acceptance criteria, dependencies, and owner roles.
-6. **Add verification:** define tests, reviews, measurements, validation data, source checks, and go/no-go criteria.
-7. **Add risk control:** identify assumptions, likely failures, mitigation, fallback, and escalation triggers.
-8. **Create the immediate queue:** list the next actions in exact order, starting with the highest-leverage unblocker.
-9. **Lock the plan state:** define how the agent should follow, update, and report deviations from the plan.
+3. **Model the state:** capture current state, desired state, allowed actions, preconditions, effects, resources, and evidence needed when material.
+4. **Map the solution space:** identify viable approaches, dependencies, assumptions, risks, and material vectors.
+5. **Choose the execution strategy:** score materially distinct candidate paths and select the path that maximizes correctness, speed, feasibility, and reversibility.
+6. **Decompose the work:** break the strategy into phases, deliverables, and tasks with acceptance criteria, dependencies, and owner roles; use checkbox tasks when creating `.md` or `.spec` artifacts.
+7. **Add verification:** define tests, reviews, measurements, validation data, source checks, and go/no-go criteria.
+8. **Add risk control:** identify assumptions, likely failures, mitigation, fallback, escalation triggers, and replan triggers.
+9. **Create the immediate queue:** list the next actions in exact order, starting with the highest-leverage unblocker.
+10. **Lock the plan state:** define how the agent should follow, update, tick artifact tasks when present, and report deviations from the plan.
 
 ## Default Output Structure
 
-Use this structure for Standard, Deep, and Omega planning unless the user requests a different format. Omit sections only when they are not material, and say why briefly.
+Use this structure for `.md` and `.spec` plan artifacts unless the user requests a different format. For inline Standard, Deep, and Omega plans, use the same sections only as much as the answer needs. Omit sections only when they are not material, and say why briefly.
 
 ```markdown
 # Planner Omega Plan: [Goal]
@@ -163,34 +222,55 @@ Use this structure for Standard, Deep, and Omega planning unless the user reques
 - Alternatives considered:
 - Decision points still open:
 
-## 4. Execution Roadmap
-| Phase | Task | Deliverable | Depends on | Acceptance check | Owner role |
-|---|---|---|---|---|---|
-| 0 | [task] | [artifact/result] | [dependency] | [test/review/metric] | [role] |
+## 4. Plan Model
+- Current state:
+- Desired state:
+- Allowed actions:
+- Preconditions:
+- Effects:
+- Resources:
+- Evidence required:
+- Replan triggers:
 
-## 5. Verification Plan
+## 5. Execution Roadmap
+For `.md` and `.spec` artifacts, use markdown task checkboxes for executable work. Only change `- [ ]` to `- [x]` after the task's acceptance check passes.
+
+### Phase 0: [phase name]
+- [ ] [Atomic action]
+  - Deliverable: [artifact/result]
+  - Depends on: [dependency]
+  - Acceptance check: [test/review/metric]
+  - Owner role: [role]
+
+## 6. Assumption and Experiment Map
+| Assumption | Category | Evidence level | Test / experiment | Decision rule |
+|---|---|---:|---|---|
+| [what must be true] | Desirability / Feasibility / Viability / Adaptability | High / Medium / Low | [cheapest useful test] | [continue / change / stop threshold] |
+
+## 7. Verification Plan
 | Check | Method | When | Pass criterion |
 |---|---|---|---|
 | [quality/security/performance/etc.] | [test/review/source check] | [phase] | [measurable bar] |
 
-## 6. Risk Register
+## 8. Risk Register
 | Risk | Trigger | Impact | Mitigation | Fallback |
 |---|---|---|---|---|
 | [risk] | [early warning] | [effect] | [preventive action] | [recovery path] |
 
-## 7. Immediate Next Actions
-1. [First atomic action]
-2. [Second atomic action]
-3. [Third atomic action]
+## 9. Immediate Next Actions
+- [ ] [First atomic action] - Acceptance: [proof]
+- [ ] [Second atomic action] - Acceptance: [proof]
+- [ ] [Third atomic action] - Acceptance: [proof]
 
-## 8. Plan Control
+## 10. Plan Control
 - Current plan version:
 - Active next step:
+- Checkbox rule:
 - Update rule:
 - Deviation rule:
 ```
 
-For Lite Mode, compress the output to: goal, assumptions, ordered tasks, risks, and next action.
+For Lite Mode, compress the output to: goal, assumptions, ordered tasks or a short checklist, risks, and next action. Do not create a file unless the user asks.
 
 ## Task Quality Standard
 
@@ -198,6 +278,8 @@ A task is acceptable only if it is executable and verifiable. Avoid vague tasks 
 
 Each task should include as many of these as are material:
 
+- Markdown checkbox status for `.md` and `.spec` artifacts: `- [ ]` for open work or `- [x]` for verified complete work.
+- Status note when useful: `in_progress`, `blocked`, or `deferred`.
 - Action verb.
 - Specific target artifact or system component.
 - Inputs required.
@@ -210,13 +292,14 @@ Each task should include as many of these as are material:
 Good task pattern:
 
 ```markdown
-Implement OAuth callback handler for [provider] using [framework version], validate state nonce, exchange code server-side, store encrypted refresh token, add integration test for expired-code and replay cases, and pass security review against the threat model.
+- [ ] Implement OAuth callback handler for [provider] using [framework version], validate state nonce, exchange code server-side, store encrypted refresh token, add integration test for expired-code and replay cases, and pass security review against the threat model.
+  Acceptance: expired-code and replay integration tests pass, and security review confirms nonce and token-storage controls.
 ```
 
 Bad task pattern:
 
 ```markdown
-Set up authentication.
+- [ ] Set up authentication.
 ```
 
 ## Verification-First Planning
@@ -273,9 +356,9 @@ Execution rules:
 
 1. Work on the active next step before lower-priority steps.
 2. Do not skip dependencies unless the plan is revised with a stated reason.
-3. Before marking a task complete, run or specify the acceptance check.
+3. Before marking a task complete or ticking a checkbox, run or specify the acceptance check.
 4. If blocked, report the blocker, attempted resolution, impact, and best next alternative.
-5. Keep the plan state current: `pending`, `in_progress`, `blocked`, `done`, or `deferred`.
+5. Keep the plan state current with short status notes for `in_progress`, `blocked`, or `deferred`; use task checkboxes when the plan is a `.md` or `.spec` artifact.
 6. Prefer small verified increments over large unverified leaps.
 7. Preserve user constraints even when optimizing.
 
@@ -335,6 +418,7 @@ Before delivering a plan, check the following:
 
 - The user’s stated goal is preserved.
 - The plan answers what to do first, next, and later.
+- `.md` and `.spec` artifacts represent executable work as markdown checkboxes that can be ticked during execution.
 - Dependencies and blockers are explicit.
 - Research-dependent claims are sourced or marked as assumptions.
 - Current facts were verified when freshness matters.
@@ -354,6 +438,7 @@ Use this rubric internally before finalizing. For Omega Mode or any user-request
 | Grounding | User context, provided materials, and needed current sources are reflected accurately; claims are sourced or marked as assumptions. |
 | Verification | The plan includes acceptance checks, tests, review gates, metrics, and validation steps proportionate to risk. |
 | Intent Control | Goal, scope, non-goals, assumptions, decisions, and change rules prevent drift and preserve user priorities. |
+| Executability | Tasks are atomic enough to run, dependency-aware, tied to proof before completion, and checkbox-tracked when the plan is a `.md` or `.spec` artifact. |
 | Speed + Quality | The plan maximizes useful progress with minimal ceremony, critical-path sequencing, materiality filtering, and no filler. |
 
 Deliver the plan only when it satisfies the rubric or state the limiting uncertainty that prevents full assurance.
