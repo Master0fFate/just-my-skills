@@ -1,6 +1,6 @@
 # Skills
 
-Reusable Codex skills live here. Each skill sits in its own folder with a `SKILL.md`.
+Reusable LLM skills live here. Each skill sits in its own folder with a `SKILL.md`.
 
 ## Skill Catalog
 
