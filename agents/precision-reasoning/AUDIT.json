@@ -1,0 +1,29 @@
+{
+  "overall_score": 10,
+  "scores": {
+    "Intent Framing": 10,
+    "Branch Search": 10,
+    "Simulation Depth": 10,
+    "Verification": 10,
+    "Token Efficiency": 10
+  },
+  "checks": {
+    "has_title": true,
+    "always_on": true,
+    "higher_priority": true,
+    "private_reasoning": true,
+    "effort_scaling": true,
+    "core_loop": true,
+    "compact_branch": true,
+    "technical_work": true,
+    "research_work": true,
+    "verification_ladder": true,
+    "output_contract": true,
+    "quality_gate": true,
+    "no_forbidden_names": true,
+    "size_ok": true
+  },
+  "bytes": 8616,
+  "lines": 136,
+  "words": 1187
+}
