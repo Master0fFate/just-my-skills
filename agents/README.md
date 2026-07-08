@@ -27,7 +27,8 @@ It is designed for coding, repo work, audits, research, UI QA, documentation, an
 
 Path: `agents/precision-reasoning/AGENTS.md`
 
-![precision_reasoning_audit](precision_reasoning_image.png)
+<img width="1672" height="941" alt="precision_reasoning_image" src="https://github.com/user-attachments/assets/461a06e7-4dd1-418f-a429-1054d9961e99" />
+
 
 Precision Reasoning is an always-on high-rigor reasoning kernel for agents that need better framing, branch selection, edge-case coverage, verification discipline, and concise final synthesis. It converts broad problem solving into a precision-first loop: frame the real goal, separate facts from assumptions, branch when strategy matters, simulate failure cases, attack the chosen path, refine, and answer with calibrated confidence.
 
