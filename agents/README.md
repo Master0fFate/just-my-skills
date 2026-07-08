@@ -53,10 +53,7 @@ agents/
 |-- coherence-governor/
 |   `-- AGENTS.md
 `-- precision-reasoning/
-    |-- AGENTS.md
-    |-- precision_reasoning_audit.png
-    |-- README_SNIPPET.md
-    `-- AUDIT.json
+    `-- AGENTS.md
 ```
 
 Use `agents/[agent-name]/AGENTS.md` for new agents.
