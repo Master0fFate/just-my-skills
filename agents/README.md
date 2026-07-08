@@ -49,11 +49,10 @@ Add new agents below this section using the same pattern: title, path, short exp
 
 ```text
 agents/
-|-- precision_reasoning_image.png
-|-- coherence-governor/
+-- coherence-governor/
 |   `-- AGENTS.md
 `-- precision-reasoning/
-    `-- AGENTS.md
+|   `-- AGENTS.md
 ```
 
 Use `agents/[agent-name]/AGENTS.md` for new agents.
