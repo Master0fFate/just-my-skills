@@ -56,6 +56,13 @@ Provides evidence-based audits across domains with calibrated grading, dimension
 
 Add new skills below this section using the same pattern: title, path, short explanation, and practical use cases.
 
+### Brainstorm Funnel
+
+Transforms raw, dictated brainstorming into a researched, de-duplicated, and evidence-backed decision funnel while preserving the user’s original intent and valuable unconventional ideas.
+
+Guides an interactive capture–research–challenge–prioritize–plan process that converts abstract thinking into coherent options, validated assumptions, concrete actions, and measurable execution plans.
+
+
 ## Layout
 
 ```text
@@ -72,7 +79,9 @@ skills/
 |   `-- SKILL.md
 |-- sexyness/
 |   `-- SKILL.md
-`-- universal-auditor/
+|-- universal-auditor/
+|   `-- SKILL.md
+`-- brainstorm-funnel/
     `-- SKILL.md
 ```
 
