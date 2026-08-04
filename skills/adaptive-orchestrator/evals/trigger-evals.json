@@ -1,0 +1,82 @@
+[
+  {
+    "query": "Investigate why CI is intermittently failing across three services, identify the root cause, implement the smallest safe fix, and verify it across the affected test suites.",
+    "should_trigger": true
+  },
+  {
+    "query": "Research the strongest agent orchestration approaches available through July 2026, compare primary evidence, and recommend an architecture with citations and tradeoffs.",
+    "should_trigger": true
+  },
+  {
+    "query": "Refactor authentication across the API and frontend, preserve backward compatibility, add tests, and audit the result for security regressions.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this large repository, map the payment flow, find the likely source of duplicate charges, propose a fix, and validate the diagnosis.",
+    "should_trigger": true
+  },
+  {
+    "query": "Analyze these 80 reports, extract the evidence relevant to five policy questions, reconcile contradictions, and write a sourced executive conclusion.",
+    "should_trigger": true
+  },
+  {
+    "query": "Design and implement a database migration spanning four tables, update the API, and prove that rollback and data integrity checks work.",
+    "should_trigger": true
+  },
+  {
+    "query": "Compare the current legal requirements in Switzerland, Germany, France, and Italy for this product launch and identify unresolved compliance risks.",
+    "should_trigger": true
+  },
+  {
+    "query": "Debug this distributed production incident from logs, traces, and recent deploys; isolate the failure chain and propose a verified remediation.",
+    "should_trigger": true
+  },
+  {
+    "query": "Build a financial forecast from the supplied workbooks, reconcile the assumptions, stress-test the model, and independently check the calculations.",
+    "should_trigger": true
+  },
+  {
+    "query": "Create an experiment plan, implement the analysis, compare results across datasets, and have the conclusions checked against the preregistered criteria.",
+    "should_trigger": true
+  },
+  {
+    "query": "Fix the typo in this sentence.",
+    "should_trigger": false
+  },
+  {
+    "query": "Translate this paragraph into German.",
+    "should_trigger": false
+  },
+  {
+    "query": "What is 17 times 23?",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain what JSON is in two sentences.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite this email to sound friendlier.",
+    "should_trigger": false
+  },
+  {
+    "query": "Summarize the paragraph I pasted below.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rename this local variable from x to total in the shown function.",
+    "should_trigger": false
+  },
+  {
+    "query": "Format this date as YYYY-MM-DD.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a four-line haiku about rain.",
+    "should_trigger": false
+  },
+  {
+    "query": "What is the capital of France?",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Adaptive Orchestrator"
+  short_description: "Planner-centric specialist delegation and verification"
+  default_prompt: "Apply adaptive orchestration to complete this task."
+policy:
+  allow_implicit_invocation: true

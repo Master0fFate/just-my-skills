@@ -1,0 +1,114 @@
+[
+  {
+    "query": "Take this board memo through two distinct critique passes, verify the calculations, and make it publication-ready.",
+    "should_trigger": true
+  },
+  {
+    "query": "Review this patch, fix the root cause, run the focused tests, and keep refining until the regression is gone.",
+    "should_trigger": true
+  },
+  {
+    "query": "Red-team this policy for loopholes, revise the weak clauses, and return a final version with a compact QA note.",
+    "should_trigger": true
+  },
+  {
+    "query": "Improve this analysis, challenge its assumptions, check edge cases, and verify every load-bearing claim.",
+    "should_trigger": true
+  },
+  {
+    "query": "Pressure-test this launch plan against staffing, dependencies, rollback time, and measurable go-live gates.",
+    "should_trigger": true
+  },
+  {
+    "query": "Polish this slide deck and inspect the exported slides for clipping and broken layouts before delivery.",
+    "should_trigger": true
+  },
+  {
+    "query": "Debug this forecast model, independently recalculate the outputs, run a sensitivity analysis, and state unresolved uncertainty.",
+    "should_trigger": true
+  },
+  {
+    "query": "Create a reusable prompt for this workflow, test normal and adversarial cases, then simplify it without losing coverage.",
+    "should_trigger": true
+  },
+  {
+    "query": "This report will be filed with a regulator. Refine it for accuracy, evidence, scope, and consistency, then verify the final artifact.",
+    "should_trigger": true
+  },
+  {
+    "query": "Iterate on this design spec until requirements, empty states, error states, and keyboard behavior all pass review.",
+    "should_trigger": true
+  },
+  {
+    "query": "Make this implementation production-ready and prove the migration is reversible before rollout.",
+    "should_trigger": true
+  },
+  {
+    "query": "Apply the review feedback, preserve the accepted behavior, and rerun the affected checks for regressions.",
+    "should_trigger": true
+  },
+  {
+    "query": "Give this contract a final polish.",
+    "should_trigger": true
+  },
+  {
+    "query": "Can you improve this? It is going to the board tomorrow.",
+    "should_trigger": true
+  },
+  {
+    "query": "What is the capital of Portugal?",
+    "should_trigger": false
+  },
+  {
+    "query": "Translate `good morning` into Croatian.",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite this one-line text to sound friendlier: `Send it today.`",
+    "should_trigger": false
+  },
+  {
+    "query": "Give me three title ideas for a blog post about remote work.",
+    "should_trigger": false
+  },
+  {
+    "query": "Explain what a regression test is.",
+    "should_trigger": false
+  },
+  {
+    "query": "Summarize this two-sentence paragraph.",
+    "should_trigger": false
+  },
+  {
+    "query": "Convert 12 inches to centimeters.",
+    "should_trigger": false
+  },
+  {
+    "query": "Fix the typo in this sentence: `Their going home.`",
+    "should_trigger": false
+  },
+  {
+    "query": "Review the definition of idempotence in this sentence for correctness.",
+    "should_trigger": false
+  },
+  {
+    "query": "Check whether 17 is prime.",
+    "should_trigger": false
+  },
+  {
+    "query": "Format these four names as a bulleted list.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write a regex that matches six decimal digits.",
+    "should_trigger": false
+  },
+  {
+    "query": "Tell me one risk of storing passwords in plain text.",
+    "should_trigger": false
+  },
+  {
+    "query": "What does this compiler error mean?",
+    "should_trigger": false
+  }
+]
