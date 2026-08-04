@@ -4,6 +4,12 @@ Reusable LLM skills live here. Each skill sits in its own folder with a `SKILL.m
 
 ## Skill Catalog
 
+### Abstraction Layers
+
+Path: `skills/abstraction-layers/SKILL.md`
+
+Applies layered thinking to complex work by separating intent, concepts, contracts, mechanisms, and implementation details while keeping boundaries clear and complexity contained.
+
 ### Adaptive Orchestrator
 
 Path: `skills/adaptive-orchestrator/SKILL.md`
@@ -70,6 +76,8 @@ Add new skills above this note using the same pattern: title, path, and a short 
 
 ```text
 skills/
+|-- abstraction-layers/
+|   `-- SKILL.md
 |-- adaptive-orchestrator/
 |   `-- SKILL.md
 |-- brainstorm-funnel/
