@@ -22,6 +22,12 @@ Path: `skills/brainstorm-funnel/SKILL.md`
 
 Transforms raw, dictated brainstorming into a researched, de-duplicated, and evidence-backed decision funnel. It preserves the user's original intent while turning ideas into validated options, concrete actions, and measurable plans.
 
+### Calibrate How We work
+
+Path: `skills/calibrate-how-we-work/SKILL.md`
+
+This skill interviews you to learn how you think, learn, decide, communicate, and work best with an AI, using concrete examples instead of shallow personality labels. Validate patterns into practical instructions for AGENTS.md, only after checking for exceptions, contradictions, and getting your approval.
+
 ### Constraint-Driven Optimization
 
 Path: `skills/constraint-driven-optimization/SKILL.md`
