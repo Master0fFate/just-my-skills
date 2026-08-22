@@ -40,6 +40,12 @@ Path: `skills/elon-five-principles/SKILL.md`
 
 Applies Elon Musk's five-step engineering algorithm to simplify requirements, delete unnecessary process, accelerate feedback, and automate stable repetition.
 
+### Explain
+
+Path: `skills/explain/SKILL.md`
+
+Creates a nice artifact/html file explaining you any topic. No overly complicated lingo.
+
 ### Iterative Refinement
 
 Path: `skills/iterative-refinement/SKILL.md`
