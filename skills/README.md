@@ -46,6 +46,12 @@ Path: `skills/explain/SKILL.md`
 
 Creates a nice artifact/html file explaining you any topic. No overly complicated lingo.
 
+### Fibonacci Design
+
+Path: `skills/fibonacci-design/SKILL.md`
+
+Designs visual interfaces and layouts on Fibonacci rhythm: golden-ratio spacing scales, layout-physics tests, type and palette recipes, and an anti-slop audit that keeps generated pages calm instead of AI-generic.
+
 ### Iterative Refinement
 
 Path: `skills/iterative-refinement/SKILL.md`
@@ -94,9 +100,15 @@ skills/
 |   `-- SKILL.md
 |-- brainstorm-funnel/
 |   `-- SKILL.md
+|-- calibrate-how-we-work/
+|   `-- SKILL.md
 |-- constraint-driven-optimization/
 |   `-- SKILL.md
 |-- elon-five-principles/
+|   `-- SKILL.md
+|-- explain/
+|   `-- SKILL.md
+|-- fibonacci-design/
 |   `-- SKILL.md
 |-- iterative-refinement/
 |   `-- SKILL.md

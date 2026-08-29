@@ -1,0 +1,62 @@
+/* Fibonacci Design — starter tokens.
+   Copy into an artifact and commit to one base.
+   Do not add a second spacing scale beside this. */
+
+:root {
+  --f-base: 8px;
+
+  --f-1: 1px;
+  --f-2: 2px;
+  --f-3: 3px;
+  --f-5: 5px;
+  --f-8: 8px;
+  --f-13: 13px;
+  --f-21: 21px;
+  --f-34: 34px;
+  --f-55: 55px;
+  --f-89: 89px;
+  --f-144: 144px;
+  --f-233: 233px;
+
+  --t-1: 13px;
+  --t-2: 16px;
+  --t-3: 21px;
+  --t-4: 34px;
+  --t-5: 55px;
+  --t-6: 89px;
+
+  --lh-body: 1.618;
+  --lh-title: 1.146;
+  --lh-meta: 1.236;
+
+  --split-major: 1.618fr;
+  --split-minor: 1fr;
+  --ratio-golden: 1.618;
+
+  --r-plane: 0px;
+  --r-card: 8px;
+  --r-control: 21px;
+
+  --ease-calm: cubic-bezier(0.22, 1, 0.36, 1);
+  --ms-130: 130ms;
+  --ms-210: 210ms;
+  --ms-340: 340ms;
+  --ms-550: 550ms;
+
+  /* Mineral light — replace hue to commit to a recipe */
+  --field: #f4efe6;
+  --raised: #ebe4d8;
+  --ink: #1c1914;
+  --mute: #6b6458;
+  --accent: #7a2e1f;
+  --hairline: color-mix(in oklab, var(--ink) 18%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --ms-130: 0ms;
+    --ms-210: 0ms;
+    --ms-340: 0ms;
+    --ms-550: 0ms;
+  }
+}
