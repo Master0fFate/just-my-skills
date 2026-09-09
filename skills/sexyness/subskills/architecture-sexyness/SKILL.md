@@ -1,7 +1,7 @@
 ---
 name: architecture-sexyness
 description: >-
-  Improve system shape and maintainability: clean boundaries, cohesive modules, simple data flow, dependency hygiene, resilience, observability, and extensibility without overengineering. Use when sexyness means the internals feel elegant, scalable, safe to change, and pleasant to inherit.
+  Improve system shape and maintainability: clean boundaries, cohesive modules, simple data flow, dependency hygiene, resilience, observability, and extensibility without overengineering. Use for architecture review/refactoring, abstraction layers, separation of concerns, layered workflows or documentation, and maintainable system boundaries.
 ---
 
 # Architecture Sexyness
@@ -33,3 +33,7 @@ Use this sub-skill when the artifact's deeper structure needs to feel inevitable
 - No speculative framework or abstraction was added.
 - Error paths and integration boundaries remain explicit.
 - A future maintainer can locate the relevant behavior faster than before.
+
+## Layered work
+
+For abstraction design or cross-domain layering, read [references/layers-and-contracts.md](references/layers-and-contracts.md). It supplies the intent-to-details model, explicit boundary contracts, layer-value test, dependency direction, and substitution/failure checks. Use it to complete the requested work and reveal only the detail the user needs.

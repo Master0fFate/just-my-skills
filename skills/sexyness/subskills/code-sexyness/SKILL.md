@@ -32,3 +32,11 @@ Use this sub-skill when code must feel sharp, intentional, and fast without beco
 - No new unused code, dead branches, broad casts, swallowed errors, or needless abstractions were introduced.
 - Complexity is lower or justified by real requirements.
 - The final diff looks like something a maintainer would keep.
+
+## Surgical execution
+
+Translate the request into observable behavior before editing: reproduce a bug, specify invalid inputs for validation, or identify public behavior that must survive a refactor. Inspect callers and state material assumptions; ask only when ambiguity blocks a correct choice.
+
+Every changed line should serve the request. Match local conventions and preserve unrelated work. Remove imports and helpers made obsolete by your edits; broader dead-code cleanup belongs only to a cleanup scope. Avoid unrequested configurability, one-use frameworks, and defensive branches for impossible states. Consider a simpler solution before adding machinery.
+
+Match verification to the change. Use a meaningful reproduction or regression test for changed behavior, and existing type/build/format checks for low-impact changes. Do not add tests that merely mirror implementation or formatting. Re-read the final diff for scope creep and accidental churn.

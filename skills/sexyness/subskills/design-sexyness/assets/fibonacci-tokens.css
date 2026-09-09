@@ -1,0 +1,20 @@
+/* Optional scoped spacing scale; map semantic roles to the project's tokens. */
+.fibonacci-theme {
+  --f-scale: 1;
+  --f-1: calc(1px * var(--f-scale));
+  --f-2: calc(2px * var(--f-scale));
+  --f-3: calc(3px * var(--f-scale));
+  --f-5: calc(5px * var(--f-scale));
+  --f-8: calc(8px * var(--f-scale));
+  --f-13: calc(13px * var(--f-scale));
+  --f-21: calc(21px * var(--f-scale));
+  --f-34: calc(34px * var(--f-scale));
+  --f-55: calc(55px * var(--f-scale));
+  --f-89: calc(89px * var(--f-scale));
+  --f-144: calc(144px * var(--f-scale));
+  --f-233: calc(233px * var(--f-scale));
+  --f-body-size: 1rem;
+  --f-body-leading: 1.618;
+  --f-major: 1.618fr;
+  --f-minor: 1fr;
+}

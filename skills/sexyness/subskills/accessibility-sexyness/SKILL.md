@@ -8,7 +8,7 @@ description: >-
 
 Use this sub-skill only when accessibility is the user's stated goal or an explicit constraint. Do not treat it as part of the default `sexyness` bundle, and do not combine it with `animate-sexyness` unless the user clearly asks for both.
 
-When a request is primarily about full-motion animation, fluidity, smoothness, or a motion overhaul, leave reduced-motion behavior out of scope unless the user explicitly adds an accessibility requirement.
+When a request is primarily about full-motion animation, fluidity, smoothness, or a motion overhaul, preserve existing reduced-motion behavior and platform requirements; a new accessibility audit remains out of scope unless requested.
 
 ## Standards
 
@@ -34,3 +34,9 @@ When a request is primarily about full-motion animation, fluidity, smoothness, o
 - Controls have accessible names and states.
 - Color is not the only signal for status or selection.
 - Contrast and reduced-motion behavior are acceptable or clearly reported if unverified.
+
+## Verification depth
+
+For an explicit audit, identify the target standard and supported platform, then pair automated findings with manual interaction checks. Verify modal entry/return focus, dynamic errors and status announcements, 200% text/zoom behavior, relevant forced-colors/high-contrast settings, and non-color state cues. Use platform touch-target conventions (for example 44 pt on iOS and 48 dp on Android); cite the actual WCAG criterion and its exceptions for web findings rather than treating a design preference as a compliance threshold.
+
+Do not infer full conformance from an automated scan. Record the affected control, reproduced failure, user impact, fix, and checks that remain unverified.

@@ -1,7 +1,7 @@
 ---
 name: sexyness
 description: >-
-  Orchestrate a premium polish pass across code, design, image-generation concepting, animation, smoothness, performance, copy, architecture, and opt-in accessibility. Use when the user asks for sexyness, sexyfication, sexification, make it sexy, make it premium, remove AI slop, use imagegen to re-imagine a design, make code/design/UI/UX feel elite, smooth, beautiful, high-quality, delightful, optimized, or competition-grade. Loads nested sexyness sub-skills from subskills/*/SKILL.md as needed and applies QA gates before declaring work done. Accessibility is only selected when explicitly requested or when the active task is specifically an accessibility audit/fix.
+  Orchestrate a premium polish pass across code, design, image-generation concepting, animation, smoothness, performance, copy, architecture, and opt-in accessibility. Use when the user asks for sexyness, sexyfication, sexification, make it sexy, make it premium, remove AI slop, use imagegen to re-imagine a design, make code/design/UI/UX feel elite, smooth, beautiful, high-quality, delightful, optimized, or competition-grade. Prefer this bundle for frontend design/refinement, code craft, architecture simplification, performance optimization, and human prose editing. Loads nested sexyness sub-skills from subskills/*/SKILL.md as needed and applies QA gates before declaring work done. Accessibility is only selected when explicitly requested or when the active task is specifically an accessibility audit/fix.
 ---
 
 # Sexyness
@@ -22,9 +22,9 @@ Read only the nested sub-skills needed for the task, then follow them as local p
 - `subskills/copy-sexyness/SKILL.md`: UX writing, labels, errors, empty states, product voice, removal of AI-sounding prose.
 - `subskills/architecture-sexyness/SKILL.md`: system shape, boundaries, data flow, extensibility, resilience, dependency hygiene.
 
-When the user says only "make it sexy" or "sexify this", inspect the artifact first, then select the smallest set of sub-skills that covers the visible problem. For UI work, usually combine design, animate, smoothness, performance, and copy. Add `imagegen-sexyness` when the user asks to re-imagine the visual direction, when the current design lacks a strong visual target, or when a generated bitmap asset would materially raise the first impression. For code-only work, usually combine code, architecture, performance, and tests.
+When the user says only "make it sexy" or "sexify this", inspect the artifact first, then select the smallest set of sub-skills that covers the visible problem. For UI work, start with design and add motion, smoothness, performance, or copy only when the request or observed defect needs them. Add `imagegen-sexyness` when the user asks to re-imagine the visual direction, when the current design lacks a strong visual target, or when a generated bitmap asset would materially raise the first impression. For code-only work, start with code and add architecture or performance for a demonstrated structural or runtime issue.
 
-Do not select `accessibility-sexyness` as part of the default UI polish bundle. It is explicit opt-in only: use it when the user asks for accessibility, a11y, WCAG, screen reader support, keyboard support, contrast, reduced motion, inclusive design, or an accessibility audit/fix. Do not combine it with `animate-sexyness` unless the user explicitly asks for both motion and accessibility constraints.
+Preserve existing accessibility, reduced-motion behavior, user constraints, and platform requirements in every pass. Do not select `accessibility-sexyness` as part of the default UI polish bundle. It is explicit opt-in only: use it when the user asks for accessibility, a11y, WCAG, screen reader support, keyboard support, contrast, reduced motion, inclusive design, or an accessibility audit/fix. Do not combine it with `animate-sexyness` unless the user explicitly asks for both motion and accessibility constraints.
 
 ## Operating Loop
 
@@ -34,7 +34,8 @@ Do not select `accessibility-sexyness` as part of the default UI polish bundle. 
 4. Make scoped improvements: polish the artifact without changing the user's core intent.
 5. If using image generation, turn the generated concept into implementable design decisions or saved assets; do not replace live UI with a static mockup.
 6. Verify directly: run tests, builds, linters, previews, screenshots, benchmarks, or manual QA as appropriate for the selected sub-skills.
-7. Report the proof: summarize what improved, what was verified, and any remaining risk.
+7. For substantial work, apply [references/quality-loop.md](references/quality-loop.md): prioritize material defects, preserve verified-good work, and stop when acceptance criteria pass.
+8. Report the proof: summarize what improved, what was verified, and any remaining risk.
 
 ## Global Taste Rules
 
@@ -53,3 +54,23 @@ Do not call sexyness done until all relevant checks pass or are honestly reporte
 - No obvious regression exists in behavior, responsiveness, performance, or maintainability.
 - The result still matches the user's original goal.
 - Remaining uncertainty is named instead of hidden.
+
+## Consolidated routing
+
+Use the counterpart directly for a single-domain request; the root coordinates work spanning counterparts. Review, critique, and audit requests remain read-only unless fixes are requested. Explicit user goals take precedence over a style recipe or a tool's suggested workflow.
+
+| Request | Owner |
+|---|---|
+| Surgical coding or Karpathy-style simplicity | code-sexyness |
+| Layered thinking, contracts, separation of concerns | architecture-sexyness |
+| Constraint-driven algorithm or resource optimization | performance-sexyness |
+| Design, redesign, critique, bolder/quieter, layout, tokens | design-sexyness |
+| Fibonacci or golden-ratio styling | design-sexyness optional Fibonacci reference |
+| Humanize prose, preserve voice, rewrite documentation | copy-sexyness |
+| UI motion and transitions | animate-sexyness |
+| Input continuity, async recovery, onboarding flow | smoothness-sexyness, with copy/design as needed |
+| Live browser variants, design detector hooks, tool diagnostics | [optional frontend toolkit](toolkits/impeccable/TOOLKIT.md) |
+
+Do not load competing general design, code, copy, architecture, or performance playbooks for these requests. General planning, research, migration, read-only codebase handoff, independent scored audits, the AI Slop CLI, and image/video execution remain distinct capabilities. Use their specialized skills only when the task needs them. Generic quality guidance is already covered here; do not also load iterative-refinement for the same polish pass unless explicitly requested.
+
+The retained toolkit is loaded only for its specific tools or a linked platform reference. It does not replace the bundle's design direction or introduce extra skill discovery entries. See [references/consolidation.md](references/consolidation.md) for the capability migration map.

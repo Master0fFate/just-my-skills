@@ -1,13 +1,12 @@
 ---
 name: iterative-refinement
 description: >-
-  Use this skill when a task is quality-sensitive, complex, reusable, high-impact,
-  or explicitly asks to refine, improve, critique, debug, verify, optimize,
-  red-team, polish, or make an output production-ready. Apply an adaptive
-  define-build-evaluate-revise-verify loop to writing, code, research, analysis,
-  plans, prompts, designs, decisions, and files. Do not activate for trivial
-  one-step answers, casual conversation, or simple transformations unless the
-  user explicitly requests iteration.
+  Apply an evidence-based define-build-evaluate-revise-verify loop when the user
+  explicitly requests iterative refinement, or for substantial research,
+  analysis, plans, prompts, policies, decisions, and data artifacts. For ordinary
+  frontend polish, code craft, architecture, performance, or prose editing,
+  prefer the Sexyness bundle's built-in quality loop. Do not activate for
+  trivial answers or merely because a task contains the word improve.
 metadata:
   version: "2.0"
 ---

@@ -1,7 +1,7 @@
 ---
 name: performance-sexyness
 description: >-
-  Make software feel fast and efficient: lower latency, reduce bundle or payload size, improve render speed, remove repeated work, optimize memory, tighten queries, and verify measurable performance. Use when sexyness requires speed, responsiveness, load-time polish, or high-throughput implementation.
+  Make software feel fast and efficient: lower latency, reduce bundle or payload size, improve render speed, remove repeated work, optimize memory, tighten queries, and verify measurable performance. Use for profiling and constraint-driven optimization of algorithms, backend systems, frontend rendering, latency, memory, I/O, bundles, queries, or throughput.
 ---
 
 # Performance Sexyness
@@ -32,3 +32,7 @@ Use this sub-skill when the premium feel depends on speed, efficiency, or scale.
 - The fix does not add brittle caching, stale data, memory leaks, or unreadable cleverness.
 - Slow-path and large-input behavior are considered.
 - Remaining performance uncertainty is reported.
+
+## Optimization contract
+
+Read [references/optimization-contract.md](references/optimization-contract.md) for substantial optimization. Establish input/resource bounds, a representative baseline, and protected metrics before choosing a fix. Bound concurrency and retained state, define cache invalidation, verify adversarial inputs, and compare equivalent workloads. Stop when the real budget is met; complexity that buys no material benefit is a regression.

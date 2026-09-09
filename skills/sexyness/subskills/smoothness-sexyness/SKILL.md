@@ -31,3 +31,9 @@ Use this sub-skill when the target is not just animated, but frictionless.
 - Rapid repeated actions do not break UI state.
 - Focus, scroll, and user-entered state are preserved where users expect them.
 - The workflow feels coherent from start to finish, not just pretty in screenshots.
+
+## Async and recovery
+
+Distinguish perceived response from completed work. Optimistic changes need rollback or reconciliation; cancel obsolete work or ignore stale responses, prevent duplicate mutations, and clean up timers/listeners/subscriptions. Debounce expensive search requests without delaying input feedback. Prefetch only when likely reuse justifies bandwidth and invalidation costs.
+
+Test a slow request followed by a newer fast request, repeat submission, navigation during work, and failure after optimistic success. Preserve drafts and useful partial progress, show local recovery, and keep server-authoritative state consistent. First-use flows should lead to a useful outcome with clear next actions and resumable progress where appropriate.

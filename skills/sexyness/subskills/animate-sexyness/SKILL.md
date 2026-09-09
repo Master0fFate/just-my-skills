@@ -8,7 +8,7 @@ description: >-
 
 Use this sub-skill when motion should explain change, reward action, or make state transitions feel physical and confident. Treat this as the full-motion path: fluidic, smooth, visibly animated, and expressive where the interface benefits from it.
 
-Do not load or apply `accessibility-sexyness` from this skill. If the user explicitly asks for both animation and accessibility, reconcile the two as a separate, named constraint instead of silently reducing the motion pass.
+Preserve existing reduced-motion behavior and platform requirements. Do not automatically load `accessibility-sexyness` from this skill. If the user explicitly asks for both animation and accessibility, reconcile the two as a separate, named constraint instead of silently reducing the motion pass.
 
 ## Standards
 
@@ -32,3 +32,11 @@ Do not load or apply `accessibility-sexyness` from this skill. If the user expli
 - Active states transition smoothly between previous and next state.
 - Animations are responsive to interruption and do not create stuck states.
 - Visual verification confirms the motion is visible, non-janky, and not layout-breaking.
+
+## Motion composition
+
+Separate immediate feedback, continuity, and a focal expressive sequence. Operational and reading surfaces should not delay tasks with page-load choreography. Marketing or experience surfaces can earn a longer focal moment; avoid repeating the same reveal everywhere.
+
+Useful starting ranges are 100-150 ms for feedback, 150-300 ms for routine changes, 300-500 ms for view transitions, and 500-800 ms for an authored entrance. Tune to distance and consequence; cap total stagger and usually exit faster than entering.
+
+Choose shared-element transitions or FLIP for continuity, masks for reveal, and bounded filters/material effects only when the visual intent needs them. Keep default content visible if scripts fail. Release temporary `will-change`, stop offscreen loops, and verify expensive effects on target devices. The existing runtime or platform primitives are preferable to a new dependency for a small effect.

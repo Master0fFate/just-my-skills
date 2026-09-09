@@ -45,7 +45,23 @@
   },
   {
     "query": "Apply the review feedback, preserve the accepted behavior, and rerun the affected checks for regressions.",
-    "should_trigger": true
+    "should_trigger": false
+  },
+  {
+    "query": "Make this dashboard feel premium and polish its typography and spacing.",
+    "should_trigger": false
+  },
+  {
+    "query": "Humanize this article while preserving every fact and the author's voice.",
+    "should_trigger": false
+  },
+  {
+    "query": "Optimize this query's latency while keeping memory use within the existing budget.",
+    "should_trigger": false
+  },
+  {
+    "query": "Simplify these service boundaries and remove pass-through abstractions.",
+    "should_trigger": false
   },
   {
     "query": "Give this contract a final polish.",

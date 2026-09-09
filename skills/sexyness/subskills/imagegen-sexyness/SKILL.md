@@ -52,3 +52,9 @@ Use this sub-skill when generated images can sharpen visual direction before imp
 - Generated UI mockups are translated into interactive, code-native UI.
 - Project-bound generated assets are saved in the workspace and referenced from there.
 - Final verification uses the built artifact, not the generated image alone.
+
+## Asset integration
+
+For a chosen concept, separate the composition reference from final asset regions. Record which decisions become tokens/components and which require a real image. Keep required subjects, crop, aspect ratio, transparency, and brand constraints consistent across variants; inspect legibility and invented text before accepting a candidate.
+
+Save the selected asset at a stable project path, choose a delivery format and resolution appropriate to its rendered size, and reserve its layout dimensions. Preserve source or generation provenance in the project's existing asset records when available. Verify the asset in the final responsive crop; a strong standalone image may fail inside the actual component.

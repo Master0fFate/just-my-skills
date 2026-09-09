@@ -1,1 +1,24 @@
+# Local indexes and tool session state
 .parallax/
+.codegraph
+.impeccable/
+
+# Installed dependencies and Python caches
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Local environment settings; keep shareable examples
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Logs and OS metadata
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini

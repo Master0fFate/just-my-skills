@@ -4,12 +4,6 @@ Reusable LLM skills live here. Each skill sits in its own folder with a `SKILL.m
 
 ## Skill Catalog
 
-### Abstraction Layers
-
-Path: `skills/abstraction-layers/SKILL.md`
-
-Applies layered thinking to complex work by separating intent, concepts, contracts, mechanisms, and implementation details while keeping boundaries clear and complexity contained.
-
 ### Adaptive Orchestrator
 
 Path: `skills/adaptive-orchestrator/SKILL.md`
@@ -28,12 +22,6 @@ Path: `skills/calibrate-how-we-work/SKILL.md`
 
 This skill interviews you to learn how you think, learn, decide, communicate, and work best with an AI, using concrete examples instead of shallow personality labels. Validate patterns into practical instructions for AGENTS.md, only after checking for exceptions, contradictions, and getting your approval.
 
-### Constraint-Driven Optimization
-
-Path: `skills/constraint-driven-optimization/SKILL.md`
-
-Optimizes code and interfaces within explicit constraints, prioritizing correctness and required behavior while reducing the costs that matter, such as runtime, memory, I/O, network transfer, or rendering work.
-
 ### Elon Five Principles
 
 Path: `skills/elon-five-principles/SKILL.md`
@@ -46,17 +34,11 @@ Path: `skills/explain/SKILL.md`
 
 Creates a nice artifact/html file explaining you any topic. No overly complicated lingo.
 
-### Fibonacci Design
-
-Path: `skills/fibonacci-design/SKILL.md`
-
-Designs visual interfaces and layouts on Fibonacci rhythm: golden-ratio spacing scales, layout-physics tests, type and palette recipes, and an anti-slop audit that keeps generated pages calm instead of AI-generic.
-
 ### Iterative Refinement
 
 Path: `skills/iterative-refinement/SKILL.md`
 
-Guides deliberate generate-evaluate-revise-verify loops for complex or quality-sensitive work.
+Guides explicit iterative refinement and quality work on research, analysis, plans, prompts, policies, decisions, and data. Sexyness owns the quality loop for its polish domains.
 
 ### Planner Omega
 
@@ -80,7 +62,7 @@ Modernizes old systems, code, designs, docs, workflows, or prompts while preserv
 
 Path: `skills/sexyness/SKILL.md`
 
-Drives premium transformations across design, code, motion, performance, accessibility, copy, and architecture.
+Owns design, code craft, motion, performance, human prose editing, architecture, and opt-in accessibility. Includes optional Fibonacci styling and an on-demand frontend browser toolkit; overlapping standalone playbooks are consolidated here.
 
 ### Universal Auditor
 
@@ -94,21 +76,15 @@ Add new skills above this note using the same pattern: title, path, and a short 
 
 ```text
 skills/
-|-- abstraction-layers/
-|   `-- SKILL.md
 |-- adaptive-orchestrator/
 |   `-- SKILL.md
 |-- brainstorm-funnel/
 |   `-- SKILL.md
 |-- calibrate-how-we-work/
 |   `-- SKILL.md
-|-- constraint-driven-optimization/
-|   `-- SKILL.md
 |-- elon-five-principles/
 |   `-- SKILL.md
 |-- explain/
-|   `-- SKILL.md
-|-- fibonacci-design/
 |   `-- SKILL.md
 |-- iterative-refinement/
 |   `-- SKILL.md
