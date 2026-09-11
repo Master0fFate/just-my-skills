@@ -10,6 +10,12 @@ Path: `skills/adaptive-orchestrator/SKILL.md`
 
 Coordinates complex work by decomposing it into focused tasks, delegating when useful, and integrating the results. It keeps planning and final verification with the parent agent while avoiding unnecessary orchestration for simple requests.
 
+### Angelcore Design
+
+Path: `skills/angelcore-design/SKILL.md`
+
+Applies an ethereal, monochrome, gothic-leaning visual language across images, identity, print, fashion, motion, and interfaces. Style is not subject: no default angels, wings, halos, or religious mascots. Prefer ASCII for character-based marks.
+
 ### Brainstorm Funnel
 
 Path: `skills/brainstorm-funnel/SKILL.md`
@@ -77,6 +83,8 @@ Add new skills above this note using the same pattern: title, path, and a short 
 ```text
 skills/
 |-- adaptive-orchestrator/
+|   `-- SKILL.md
+|-- angelcore-design/
 |   `-- SKILL.md
 |-- brainstorm-funnel/
 |   `-- SKILL.md
