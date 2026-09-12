@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Field notes / website example</title>
+  <link rel="stylesheet" href="../../assets/angelcore.css"><link rel="stylesheet" href="demo.css">
+</head>
+<body class="ac" data-demo="archive">
+<a class="ac-action ac-skip" href="#notes">Skip to notes</a>
+<div class="page-shell">
+  <header class="page-top ac-row ac-between"><a href="archive.html" class="brand ac-action"><span class="brand-mark" aria-hidden="true">f</span><span class="brand-name">field notes / 003</span></a><nav aria-label="Examples"><a class="ac-action" href="index.html">Workspace</a><a class="ac-action" href="archive.html" aria-current="page">&gt; Website</a><a class="ac-action" href="components.html">Controls</a></nav></header>
+  <main>
+    <section class="page-intro" aria-labelledby="site-title"><div><p class="ac-kicker">An independent working archive</p><h1 class="page-title" id="site-title">Small details.<br>Clear decisions.<br>Useful tools.</h1></div><div class="intro-side reading"><p>Notes on type, image treatment, and interfaces built for work.</p><p class="ac-muted">A website study in the same visual system. No terminal frame. No background image.</p></div></section>
+    <section class="page-section" id="notes" aria-labelledby="notes-title"><div class="section-top ac-row ac-between"><h2 id="notes-title">Selected notes</h2><p class="ac-meta" id="archive-count" role="status">4 entries / local sample content</p></div>
+      <div class="filter-row"><div class="ac-field"><label for="archive-search">/ Find a note</label><input type="search" id="archive-search" placeholder="Title or topic" autocomplete="off"></div><div class="ac-field"><label for="archive-type">Type</label><select id="archive-type"><option value="all">All notes</option><option value="interface">Interface</option><option value="image">Image</option><option value="process">Process</option></select></div></div>
+      <div class="archive-list" id="archive-list"></div><div id="archive-empty" hidden><p>No matching notes.</p><button type="button" id="archive-clear">[clear filters]</button></div>
+    </section>
+    <section class="page-section subscribe" aria-labelledby="subscribe-title"><div><p class="ac-kicker">Form example</p><h2 id="subscribe-title" style="margin-block:12px">Keep a place for the next note.</h2><p class="reading ac-muted">This form checks an email address locally. It does not create a subscription or send mail.</p></div><form id="subscribe-form" novalidate><div class="ac-field"><label for="email">Email address</label><input id="email" type="email" name="email" autocomplete="email" required aria-describedby="email-message" placeholder="name@example.com"></div><p id="email-message" class="ac-help" role="status">Your address stays in this page.</p><div><button type="submit">[check address locally]</button></div></form></section>
+  </main>
+  <footer class="page-footer ac-row ac-between ac-wrap"><span class="ac-meta">angelcore-design / website transfer study</span><a class="ac-action" href="../../SKILL.md">[read the skill]</a></footer>
+</div>
+<script src="demo.js" defer></script>
+</body></html>

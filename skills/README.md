@@ -14,7 +14,7 @@ Coordinates complex work by decomposing it into focused tasks, delegating when u
 
 Path: `skills/angelcore-design/SKILL.md`
 
-Applies an ethereal, monochrome, gothic-leaning visual language across images, identity, print, fashion, motion, and interfaces. Style is not subject: no default angels, wings, halos, or religious mascots. Prefer ASCII for character-based marks.
+Builds hard-edged monochrome interfaces: near-black fields, square corners, compact mono type, thin separators, and source-driven dither only when an image has a role. Style is not subject, so no default angels, mascots, pastel angelcore, or generic dark dashboards.
 
 ### Brainstorm Funnel
 

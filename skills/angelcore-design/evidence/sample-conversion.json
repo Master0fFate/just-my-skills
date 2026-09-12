@@ -1,0 +1,22 @@
+{
+  "source": "examples/web/assets/sample-light-map.png",
+  "output": "examples/web/assets/sample-1bit.png",
+  "mode": "pixels",
+  "grid": [
+    384,
+    384
+  ],
+  "scale": 2,
+  "matrix": 4,
+  "black": 5.0,
+  "white": 200.0,
+  "gamma": 1.1,
+  "inverted": false,
+  "alpha_ground": "black",
+  "binary_values": [
+    0,
+    255
+  ],
+  "ink_coverage": 0.059712727864583336,
+  "png_mode": "1"
+}

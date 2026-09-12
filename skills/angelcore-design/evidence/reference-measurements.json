@@ -1,0 +1,68 @@
+{
+  "source": "references/target-ui.png",
+  "width": 2048,
+  "height": 835,
+  "pixel_count": 1710080,
+  "top_colors": [
+    {
+      "rgb": [
+        9,
+        10,
+        11
+      ],
+      "count": 1537064,
+      "fraction": 0.8988257859281437
+    },
+    {
+      "rgb": [
+        15,
+        17,
+        19
+      ],
+      "count": 79411,
+      "fraction": 0.04643700879491018
+    },
+    {
+      "rgb": [
+        33,
+        34,
+        34
+      ],
+      "count": 19794,
+      "fraction": 0.011574897080838323
+    },
+    {
+      "rgb": [
+        10,
+        11,
+        12
+      ],
+      "count": 3921,
+      "fraction": 0.0022928751871257487
+    },
+    {
+      "rgb": [
+        11,
+        12,
+        13
+      ],
+      "count": 2064,
+      "fraction": 0.0012069610778443114
+    },
+    {
+      "rgb": [
+        16,
+        16,
+        16
+      ],
+      "count": 2023,
+      "fraction": 0.0011829855913173652
+    }
+  ],
+  "channel_mean_lte_24_fraction": 0.9679453592814371,
+  "observed_vertical_boundaries_x": [
+    291,
+    1607
+  ],
+  "scope": "Pixel measurements of one screenshot. Not CSS or a full UI audit."
+}

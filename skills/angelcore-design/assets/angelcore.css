@@ -1,0 +1,152 @@
+/* angelcore-design v5.0.0. Scoped primitives; no framework or font download. */
+.ac {
+  --ac-bg: #090909;
+  --ac-surface: #111111;
+  --ac-selected: #191919;
+  --ac-rule: #2b2b2b;
+  --ac-control: #737373;
+  --ac-muted: #909090;
+  --ac-text: #b8b8b8;
+  --ac-strong: #eeeeee;
+  --ac-art-ink: #252525;
+  --ac-radius: 0;
+  --ac-step: 4px;
+  --ac-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  color-scheme: dark;
+  background: var(--ac-bg);
+  color: var(--ac-text);
+  font: 0.8125rem/1.55 var(--ac-mono);
+  font-variant-numeric: tabular-nums;
+}
+.ac, .ac *, .ac *::before, .ac *::after { box-sizing: border-box; }
+.ac :where(button, input, select, textarea, fieldset, dialog, details, pre) {
+  border-radius: var(--ac-radius);
+  box-shadow: none;
+}
+.ac :where(h1, h2, h3, p, ul, ol, pre, figure) { margin: 0; }
+.ac :where(h1, h2, h3) { color: var(--ac-strong); font-size: 1rem; font-weight: 600; }
+.ac h1 { font-size: 1.125rem; }
+.ac :where(a) { color: inherit; text-underline-offset: 0.2em; }
+.ac :where(button, input, select, textarea) { font: inherit; color: inherit; }
+.ac :where(button, .ac-action) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-inline-size: 1.5rem;
+  min-block-size: 1.75rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ac-text);
+  cursor: pointer;
+  text-decoration: none;
+}
+.ac :where(button, .ac-action):hover:not(:disabled) {
+  background: var(--ac-selected);
+  color: var(--ac-strong);
+}
+.ac :where(button, a, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--ac-strong);
+  outline-offset: 2px;
+}
+.ac :where(button, input, select, textarea):disabled {
+  color: var(--ac-muted);
+  cursor: not-allowed;
+}
+.ac :where(button, .ac-action)[data-primary] {
+  background: var(--ac-strong);
+  color: var(--ac-bg);
+  border-color: var(--ac-strong);
+}
+.ac :where(button, .ac-action)[data-primary]:hover:not(:disabled) {
+  background: var(--ac-text);
+  color: var(--ac-bg);
+}
+.ac :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+  display: block;
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 2rem;
+  padding: 0.5rem 0.625rem;
+  border: 1px solid var(--ac-control);
+  background: var(--ac-bg);
+  color: var(--ac-strong);
+}
+.ac textarea { resize: vertical; min-block-size: 5rem; }
+.ac input::placeholder, .ac textarea::placeholder { color: var(--ac-muted); opacity: 1; }
+.ac input[type="checkbox"], .ac input[type="radio"] {
+  accent-color: var(--ac-strong);
+  inline-size: 1rem;
+  block-size: 1rem;
+  flex: 0 0 auto;
+}
+.ac label { display: block; color: var(--ac-text); }
+.ac .ac-field { display: grid; gap: 0.5rem; }
+.ac .ac-checkbox { display: flex; align-items: center; gap: 0.5rem; min-block-size: 2rem; cursor: pointer; }
+.ac .ac-help, .ac .ac-meta { font-size: 0.75rem; color: var(--ac-muted); }
+.ac .ac-muted { color: var(--ac-muted); }
+.ac .ac-strong { color: var(--ac-strong); }
+.ac .ac-kicker { color: var(--ac-muted); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.ac .ac-row { display: flex; align-items: center; gap: 0.5rem; min-inline-size: 0; }
+.ac .ac-wrap { flex-wrap: wrap; }
+.ac .ac-between { justify-content: space-between; }
+.ac .ac-rule { border: 0; border-block-start: 1px solid var(--ac-rule); margin: 1rem 0; }
+.ac .ac-list { list-style: none; padding: 0; }
+.ac .ac-list-button { inline-size: 100%; justify-content: space-between; text-align: start; min-block-size: 1.875rem; }
+.ac .ac-list-button[aria-current="true"], .ac .ac-action[aria-current="page"] {
+  background: var(--ac-selected);
+  color: var(--ac-strong);
+}
+.ac .ac-list-button > span:first-child { min-inline-size: 0; overflow-wrap: anywhere; }
+.ac .ac-status { border-block-start: 1px solid var(--ac-rule); padding-block-start: 0.75rem; }
+.ac .ac-error { color: var(--ac-strong); }
+.ac [aria-invalid="true"] { border-width: 2px !important; }
+.ac pre { white-space: pre; overflow: auto; font: inherit; }
+.ac .ac-table-wrap { max-inline-size: 100%; overflow: auto; }
+.ac table { inline-size: 100%; border-collapse: collapse; text-align: start; }
+.ac :where(th, td) { padding: 0.75rem 0.5rem; border-block-end: 1px solid var(--ac-rule); text-align: start; }
+.ac th { color: var(--ac-strong); font-weight: 600; }
+.ac td.numeric, .ac th.numeric { text-align: end; }
+.ac details { border-block: 1px solid var(--ac-rule); }
+.ac details + details { border-block-start: 0; }
+.ac summary { min-block-size: 2rem; padding: 0.5rem; cursor: pointer; color: var(--ac-strong); }
+.ac details > :not(summary) { padding: 0.5rem; }
+.ac .ac-dialog {
+  inline-size: min(34rem, calc(100vw - 2rem));
+  max-block-size: calc(100dvh - 2rem);
+  padding: 1.5rem;
+  border: 1px solid var(--ac-control);
+  background: var(--ac-bg);
+  color: var(--ac-text);
+  font: inherit;
+}
+.ac .ac-dialog::backdrop { background: rgb(0 0 0 / 80%); }
+.ac .ac-dialog > * + * { margin-block-start: 1rem; }
+.ac .ac-dialog form { display: grid; gap: 1rem; }
+.ac .ac-sr-only {
+  position: absolute; inline-size: 1px; block-size: 1px;
+  padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); border: 0;
+}
+.ac [hidden] { display: none !important; }
+.ac .ac-art { pointer-events: none; image-rendering: pixelated; }
+.ac .ac-skip { position: absolute; inset-block-start: -10rem; inset-inline-start: 1rem; z-index: 10; background: var(--ac-bg); }
+.ac .ac-skip:focus { inset-block-start: 0.5rem; }
+.ac[data-ac-palette="binary"] {
+  --ac-bg: #000000; --ac-surface: #000000; --ac-selected: #000000;
+  --ac-rule: #ffffff; --ac-control: #ffffff; --ac-muted: #ffffff;
+  --ac-text: #ffffff; --ac-strong: #ffffff; --ac-art-ink: #ffffff;
+}
+@media (pointer: coarse) {
+  .ac :where(button, .ac-action, summary, .ac-checkbox) { min-block-size: 2.75rem; }
+  .ac :where(input:not([type="checkbox"]):not([type="radio"]), select) { min-block-size: 2.75rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ac *, .ac *::before, .ac *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+@media (forced-colors: active) {
+  .ac { --ac-bg: Canvas; --ac-surface: Canvas; --ac-selected: Canvas; --ac-rule: CanvasText; --ac-control: ButtonText; --ac-muted: CanvasText; --ac-text: CanvasText; --ac-strong: CanvasText; }
+  .ac .ac-art { display: none !important; }
+  .ac :where(button, .ac-action)[data-primary] { background: ButtonFace; color: ButtonText; }
+  .ac .ac-list-button[aria-current="true"] { outline: 1px solid Highlight; }
+}

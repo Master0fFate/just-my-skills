@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Controls / component example</title>
+  <link rel="stylesheet" href="../../assets/angelcore.css"><link rel="stylesheet" href="demo.css">
+</head>
+<body class="ac" data-demo="components">
+<a class="ac-action ac-skip" href="#controls">Skip to controls</a>
+<div class="page-shell">
+  <header class="page-top ac-row ac-between"><div class="brand"><span class="brand-mark" aria-hidden="true">f</span><span class="brand-name">controls / 003</span></div><nav aria-label="Examples"><a class="ac-action" href="index.html">Workspace</a><a class="ac-action" href="archive.html">Website</a><a class="ac-action" aria-current="page" href="components.html">&gt; Controls</a></nav></header>
+  <main id="controls"><section class="page-intro"><div><p class="ac-kicker">Component study / no image</p><h1 class="page-title">One visual system.<br>Real states.</h1></div><div class="intro-side reading"><p>Square geometry. Thin rules. Neutral inks. A visible keyboard path.</p><p class="ac-muted">These controls operate on local example state. They do not call a backend.</p></div></section>
+    <div class="component-grid">
+      <section class="component-block"><h2>01 / Actions</h2><div class="ac-row ac-wrap"><button type="button" id="apply-example" data-primary>[apply locally]</button><button type="button" id="open-dialog">[open dialog]</button><button type="button" disabled>[unavailable]</button></div><p class="ac-help">Use Tab to inspect focus. The unavailable action is disabled.</p><p class="ac-status" role="status" id="action-status">[ready] No local changes applied.</p></section>
+      <section class="component-block"><h2>02 / Settings</h2><form id="control-form" class="demo-stack" novalidate><div class="ac-field"><label for="project-name">Project name</label><input id="project-name" value="field-notes" maxlength="80" required aria-describedby="control-error"><p class="ac-error" id="control-error" hidden></p></div><div class="ac-field"><label for="density">Row density</label><select id="density"><option value="compact">Compact</option><option value="comfortable">Comfortable</option></select></div><label class="ac-checkbox"><input id="show-details" type="checkbox" checked>Show record details</label><div><button type="submit">[update local preview]</button></div></form></section>
+      <section class="component-block"><h2>03 / Selected records</h2><ul class="ac-list" id="control-records"><li><button type="button" class="ac-list-button" aria-current="true" data-record="0"><span>&gt; Source files</span><span>08</span></button></li><li><button type="button" class="ac-list-button" data-record="1"><span>&nbsp; Design notes</span><span>12</span></button></li><li><button type="button" class="ac-list-button" data-record="2"><span>&nbsp; Test output</span><span>04</span></button></li></ul><div class="plain-preview"><p class="ac-strong" id="record-title">field-notes / Source files</p><p class="ac-help" id="record-detail">8 sample files in the selected group.</p></div></section>
+      <section class="component-block"><h2>04 / Status and disclosure</h2><p>[ok] This is a success-state example.</p><p class="ac-error">[!] This is an error-state example. No real operation failed.</p><p class="ac-muted">... Loading-state sample, not an active request.</p><details><summary>What does the image-free check prove?</summary><p>It checks that type, spacing, controls, and boundaries carry the style without a large illustration.</p></details></section>
+      <section class="component-block"><h2>05 / Table</h2><div class="ac-table-wrap" tabindex="0" aria-label="Sample file table"><table><thead><tr><th scope="col">File</th><th scope="col">State</th><th scope="col" class="numeric">Lines</th></tr></thead><tbody><tr><td>index.html</td><td>+ added</td><td class="numeric">48</td></tr><tr><td>styles.css</td><td>modified</td><td class="numeric">126</td></tr><tr><td>notes.md</td><td>unchanged</td><td class="numeric">32</td></tr></tbody></table></div></section>
+      <section class="component-block"><h2>06 / Empty result</h2><p class="ac-muted">No records in this example group.</p><button type="button" id="add-record">[add a local record]</button><p id="added-record" role="status" hidden></p></section>
+    </div>
+  </main>
+  <footer class="page-footer ac-row ac-between ac-wrap"><span class="ac-meta">Tested controls / not a complete widget library</span><a class="ac-action" href="../../references/components.md">[component contracts]</a></footer>
+</div>
+<dialog class="ac-dialog" id="example-dialog" aria-labelledby="dialog-title"><h2 id="dialog-title">Local dialog example</h2><p>The dialog keeps keyboard focus inside it. Escape closes it.</p><form method="dialog"><div class="ac-field"><label for="dialog-note">Example note</label><input id="dialog-note" autocomplete="off"></div><button type="submit">[close dialog]</button></form></dialog>
+<script src="demo.js" defer></script>
+</body></html>

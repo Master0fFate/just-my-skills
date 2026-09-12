@@ -1,0 +1,40 @@
+Fate / field-notes
+[ready] Local sample data / ASCII display fallback
+------------------------------------------------------------------------------------------------------------------------
+> Files    Review    Empty    Error
+
+FILES                           | PREVIEW
+> index.html                    | index.html / sample
+  styles.css                    | 
+  app.js                        | <main class="ac">
+  notes.md                      |   <h1>Field notes</h1>
+  tokens.json                   |   <button>[open]</button>
+  .gitignore                    | </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+[sample] Plain snapshot; use --interactive for keyboard input.

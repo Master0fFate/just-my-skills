@@ -1,0 +1,280 @@
+{
+  "scope": "Local file, token, contrast-pair, and static CSS checks only. Not full WCAG conformance or a visual score.",
+  "passed": true,
+  "check_count": 47,
+  "checks": [
+    {
+      "name": "All required package files exist",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "Token bg is neutral",
+      "passed": true,
+      "details": "#090909"
+    },
+    {
+      "name": "CSS matches token bg",
+      "passed": true,
+      "details": "#090909"
+    },
+    {
+      "name": "Token surface is neutral",
+      "passed": true,
+      "details": "#111111"
+    },
+    {
+      "name": "CSS matches token surface",
+      "passed": true,
+      "details": "#111111"
+    },
+    {
+      "name": "Token selected is neutral",
+      "passed": true,
+      "details": "#191919"
+    },
+    {
+      "name": "CSS matches token selected",
+      "passed": true,
+      "details": "#191919"
+    },
+    {
+      "name": "Token rule is neutral",
+      "passed": true,
+      "details": "#2b2b2b"
+    },
+    {
+      "name": "CSS matches token rule",
+      "passed": true,
+      "details": "#2b2b2b"
+    },
+    {
+      "name": "Token control is neutral",
+      "passed": true,
+      "details": "#737373"
+    },
+    {
+      "name": "CSS matches token control",
+      "passed": true,
+      "details": "#737373"
+    },
+    {
+      "name": "Token muted is neutral",
+      "passed": true,
+      "details": "#909090"
+    },
+    {
+      "name": "CSS matches token muted",
+      "passed": true,
+      "details": "#909090"
+    },
+    {
+      "name": "Token text is neutral",
+      "passed": true,
+      "details": "#b8b8b8"
+    },
+    {
+      "name": "CSS matches token text",
+      "passed": true,
+      "details": "#b8b8b8"
+    },
+    {
+      "name": "Token strong is neutral",
+      "passed": true,
+      "details": "#eeeeee"
+    },
+    {
+      "name": "CSS matches token strong",
+      "passed": true,
+      "details": "#eeeeee"
+    },
+    {
+      "name": "Token art-ink is neutral",
+      "passed": true,
+      "details": "#252525"
+    },
+    {
+      "name": "CSS matches token art-ink",
+      "passed": true,
+      "details": "#252525"
+    },
+    {
+      "name": "Text contrast: muted on bg",
+      "passed": true,
+      "details": {
+        "ratio": 6.237121052499278,
+        "minimum": 4.5
+      }
+    },
+    {
+      "name": "Text contrast: muted on surface",
+      "passed": true,
+      "details": {
+        "ratio": 5.914790883941123,
+        "minimum": 4.5
+      }
+    },
+    {
+      "name": "Text contrast: muted on selected",
+      "passed": true,
+      "details": {
+        "ratio": 5.507159402213949,
+        "minimum": 4.5
+      }
+    },
+    {
+      "name": "Text contrast: text on bg",
+      "passed": true,
+      "details": {
+        "ratio": 10.037980056662544,
+        "minimum": 4.5
+      }
+    },
+    {
+      "name": "Text contrast: text on surface",
+      "passed": true,
+      "details": {
+        "ratio": 9.51922408312714,
+        "minimum": 4.5
+      }
+    },
+    {
+      "name": "Text contrast: text on selected",
+      "passed": true,
+      "details": {
+        "ratio": 8.863184758316287,
+        "minimum": 4.5
+      }
+    },
+    {
+      "name": "Text contrast: strong on bg",
+      "passed": true,
+      "details": {
+        "ratio": 17.16219793199851,
+        "minimum": 4.5
+      }
+    },
+    {
+      "name": "Text contrast: strong on surface",
+      "passed": true,
+      "details": {
+        "ratio": 16.275267230207366,
+        "minimum": 4.5
+      }
+    },
+    {
+      "name": "Text contrast: strong on selected",
+      "passed": true,
+      "details": {
+        "ratio": 15.153619579980617,
+        "minimum": 4.5
+      }
+    },
+    {
+      "name": "Control contrast on bg",
+      "passed": true,
+      "details": {
+        "ratio": 4.199388997147052,
+        "minimum": 3
+      }
+    },
+    {
+      "name": "Control contrast on surface",
+      "passed": true,
+      "details": {
+        "ratio": 3.982367433528486,
+        "minimum": 3
+      }
+    },
+    {
+      "name": "Control contrast on selected",
+      "passed": true,
+      "details": {
+        "ratio": 3.7079133793507317,
+        "minimum": 3
+      }
+    },
+    {
+      "name": "Square radius declarations: assets/angelcore.css",
+      "passed": true,
+      "details": [
+        "var(--ac-radius)"
+      ]
+    },
+    {
+      "name": "No decorative effects in CSS: assets/angelcore.css",
+      "passed": true,
+      "details": "Static CSS check only"
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #252525",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #eeeeee",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #000000",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #ffffff",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #111111",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #090909",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #737373",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #b8b8b8",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #909090",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #191919",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Neutral declared hex: assets/angelcore.css #2b2b2b",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Square radius declarations: examples/web/demo.css",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "No decorative effects in CSS: examples/web/demo.css",
+      "passed": true,
+      "details": "Static CSS check only"
+    },
+    {
+      "name": "No bundled font files",
+      "passed": true,
+      "details": ""
+    }
+  ]
+}

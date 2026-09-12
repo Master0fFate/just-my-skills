@@ -1,0 +1,107 @@
+PASS workspace 2048px: no page-wide overflow
+PASS workspace 2048px: square controls
+PASS workspace 2048px: tested targets at least 24px
+PASS workspace 2048px: no script error
+PASS workspace 1440px: no page-wide overflow
+PASS workspace 1440px: square controls
+PASS workspace 1440px: tested targets at least 24px
+PASS workspace 1440px: no script error
+PASS workspace 768px: no page-wide overflow
+PASS workspace 768px: square controls
+PASS workspace 768px: tested targets at least 24px
+PASS workspace 768px: no script error
+PASS workspace 390px: no page-wide overflow
+PASS workspace 390px: square controls
+PASS workspace 390px: tested targets at least 24px
+PASS workspace 390px: no script error
+PASS workspace 320px: no page-wide overflow
+PASS workspace 320px: square controls
+PASS workspace 320px: tested targets at least 24px
+PASS workspace 320px: no script error
+PASS website 2048px: no page-wide overflow
+PASS website 2048px: square controls
+PASS website 2048px: tested targets at least 24px
+PASS website 2048px: no script error
+PASS website 2048px: image-free transfer
+PASS website 1440px: no page-wide overflow
+PASS website 1440px: square controls
+PASS website 1440px: tested targets at least 24px
+PASS website 1440px: no script error
+PASS website 1440px: image-free transfer
+PASS website 768px: no page-wide overflow
+PASS website 768px: square controls
+PASS website 768px: tested targets at least 24px
+PASS website 768px: no script error
+PASS website 768px: image-free transfer
+PASS website 390px: no page-wide overflow
+PASS website 390px: square controls
+PASS website 390px: tested targets at least 24px
+PASS website 390px: no script error
+PASS website 390px: image-free transfer
+PASS website 320px: no page-wide overflow
+PASS website 320px: square controls
+PASS website 320px: tested targets at least 24px
+PASS website 320px: no script error
+PASS website 320px: image-free transfer
+PASS components 2048px: no page-wide overflow
+PASS components 2048px: square controls
+PASS components 2048px: tested targets at least 24px
+PASS components 2048px: no script error
+PASS components 2048px: image-free transfer
+PASS components 1440px: no page-wide overflow
+PASS components 1440px: square controls
+PASS components 1440px: tested targets at least 24px
+PASS components 1440px: no script error
+PASS components 1440px: image-free transfer
+PASS components 768px: no page-wide overflow
+PASS components 768px: square controls
+PASS components 768px: tested targets at least 24px
+PASS components 768px: no script error
+PASS components 768px: image-free transfer
+PASS components 390px: no page-wide overflow
+PASS components 390px: square controls
+PASS components 390px: tested targets at least 24px
+PASS components 390px: no script error
+PASS components 390px: image-free transfer
+PASS components 320px: no page-wide overflow
+PASS components 320px: square controls
+PASS components 320px: tested targets at least 24px
+PASS components 320px: no script error
+PASS components 320px: image-free transfer
+PASS Workspace search empty state
+PASS Workspace clear search restores records
+PASS Workspace project selection changes state
+PASS File filtering and preview work
+PASS Empty note shows linked error
+PASS Local note is added as text
+PASS Active work removes ambient art
+PASS Clearing notes restores idle state
+PASS Art setting works locally
+PASS Small workspace starts with secondary regions closed
+PASS Small layout has a route to files
+PASS Website type filter works
+PASS Website note disclosure works
+PASS Website empty state works
+PASS Website filters can be cleared
+PASS Website invalid email state
+PASS Website valid email reports local scope
+PASS Action has a real local result
+PASS Keyboard focus has a visible outline
+PASS Keyboard opens dialog
+PASS Dialog keeps Tab focus inside
+PASS Escape closes dialog and returns focus
+PASS Component error preserves editable field
+PASS Density and detail controls work
+PASS Record selection updates preview
+PASS Unbroken 80-character label stays within small page
+PASS Empty-state action changes local state
+PASS workspace: 200 percent text at 390px has no page overflow
+PASS website: 200 percent text at 390px has no page overflow
+PASS components: 200 percent text at 390px has no page overflow
+PASS Reduced-motion example has no active CSS animation
+PASS Forced-color mode retains visible controls
+PASS Local example link exists: index.html
+PASS Local example link exists: archive.html
+PASS Local example link exists: components.html
+PASS Local example link exists: ../../SKILL.md
+PASS Local example link exists: ../../references/components.md

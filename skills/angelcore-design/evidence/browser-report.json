@@ -1,0 +1,624 @@
+{
+  "scope": "Chromium, local examples, listed states only. No screen-reader, touch-device, cross-browser, or full WCAG audit.",
+  "browser": "144.0.7559.96",
+  "platform": "Linux-6.18.35-x86_64-with-glibc2.41",
+  "sizes": [
+    [
+      2048,
+      835
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      320,
+      800
+    ]
+  ],
+  "load_mode": "offline: trusted local HTML/CSS/JS/images inlined",
+  "passed": true,
+  "check_count": 107,
+  "checks": [
+    {
+      "name": "workspace 2048px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 2048,
+        "page": 2048
+      }
+    },
+    {
+      "name": "workspace 2048px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 2048px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 2048px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 1440px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 1440,
+        "page": 1440
+      }
+    },
+    {
+      "name": "workspace 1440px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 1440px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 1440px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 768px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 768,
+        "page": 768
+      }
+    },
+    {
+      "name": "workspace 768px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 768px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 768px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 390px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "page": 390
+      }
+    },
+    {
+      "name": "workspace 390px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 390px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 390px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 320px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 320,
+        "page": 320
+      }
+    },
+    {
+      "name": "workspace 320px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 320px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "workspace 320px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 2048px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 2048,
+        "page": 2048
+      }
+    },
+    {
+      "name": "website 2048px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 2048px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 2048px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 2048px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "website 1440px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 1440,
+        "page": 1440
+      }
+    },
+    {
+      "name": "website 1440px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 1440px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 1440px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 1440px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "website 768px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 768,
+        "page": 768
+      }
+    },
+    {
+      "name": "website 768px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 768px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 768px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 768px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "website 390px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "page": 390
+      }
+    },
+    {
+      "name": "website 390px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 390px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 390px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 390px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "website 320px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 320,
+        "page": 320
+      }
+    },
+    {
+      "name": "website 320px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 320px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 320px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "website 320px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "components 2048px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 2048,
+        "page": 2048
+      }
+    },
+    {
+      "name": "components 2048px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 2048px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 2048px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 2048px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "components 1440px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 1440,
+        "page": 1440
+      }
+    },
+    {
+      "name": "components 1440px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 1440px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 1440px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 1440px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "components 768px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 768,
+        "page": 768
+      }
+    },
+    {
+      "name": "components 768px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 768px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 768px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 768px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "components 390px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "page": 390
+      }
+    },
+    {
+      "name": "components 390px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 390px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 390px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 390px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "components 320px: no page-wide overflow",
+      "passed": true,
+      "details": {
+        "viewport": 320,
+        "page": 320
+      }
+    },
+    {
+      "name": "components 320px: square controls",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 320px: tested targets at least 24px",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 320px: no script error",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "components 320px: image-free transfer",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Workspace search empty state",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Workspace clear search restores records",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Workspace project selection changes state",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "File filtering and preview work",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Empty note shows linked error",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Local note is added as text",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Active work removes ambient art",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Clearing notes restores idle state",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Art setting works locally",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Small workspace starts with secondary regions closed",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Small layout has a route to files",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Website type filter works",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Website note disclosure works",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Website empty state works",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Website filters can be cleared",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Website invalid email state",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Website valid email reports local scope",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Action has a real local result",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Keyboard focus has a visible outline",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Keyboard opens dialog",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Dialog keeps Tab focus inside",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Escape closes dialog and returns focus",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Component error preserves editable field",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Density and detail controls work",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Record selection updates preview",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Unbroken 80-character label stays within small page",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "page": 390
+      }
+    },
+    {
+      "name": "Empty-state action changes local state",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "workspace: 200 percent text at 390px has no page overflow",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "page": 390
+      }
+    },
+    {
+      "name": "website: 200 percent text at 390px has no page overflow",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "page": 390
+      }
+    },
+    {
+      "name": "components: 200 percent text at 390px has no page overflow",
+      "passed": true,
+      "details": {
+        "viewport": 390,
+        "page": 390
+      }
+    },
+    {
+      "name": "Reduced-motion example has no active CSS animation",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Forced-color mode retains visible controls",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Local example link exists: index.html",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Local example link exists: archive.html",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Local example link exists: components.html",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Local example link exists: ../../SKILL.md",
+      "passed": true,
+      "details": ""
+    },
+    {
+      "name": "Local example link exists: ../../references/components.md",
+      "passed": true,
+      "details": ""
+    }
+  ]
+}

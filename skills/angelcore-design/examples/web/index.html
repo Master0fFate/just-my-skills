@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Fate UI / local workspace example</title>
+  <link rel="stylesheet" href="../../assets/angelcore.css">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body class="ac" data-demo="workspace">
+  <a class="ac-action ac-skip" href="#main-work">Skip to work</a>
+  <div class="workspace" id="workspace" data-nav-open="true" data-files-open="true">
+    <aside class="sidebar" id="project-panel" aria-label="Projects">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">f</span><div><div class="brand-name">Fate UI</div><div class="ac-meta">reference / local example</div></div></div>
+      <nav class="example-links" aria-label="Examples">
+        <a class="ac-action" aria-current="page" href="index.html">&gt; Workspace</a>
+        <a class="ac-action" href="archive.html">Website</a>
+        <a class="ac-action" href="components.html">Controls</a>
+      </nav>
+      <div class="ac-field rail-search"><label for="project-search">/ Search projects</label><input id="project-search" type="search" autocomplete="off" placeholder="Project name"></div>
+      <div class="rail-section"><p class="ac-kicker">Recent projects</p><ul id="project-list" class="ac-list"></ul><div id="project-empty" hidden><p>No matching projects.</p><button type="button" id="project-clear">[clear search]</button></div></div>
+      <p class="ac-help rail-note">Sample records. Search and selection work locally. No account is connected.</p>
+    </aside>
+    <main class="workspace-main" id="main-work" tabindex="-1">
+      <header class="work-header ac-row ac-between">
+        <div class="header-label"><span class="ac-kicker">Project</span><strong class="ac-strong" id="project-title">field-notes</strong><p class="ac-meta">[ready] Local workspace</p></div>
+        <div class="ac-row" aria-label="Workspace controls">
+          <button type="button" id="toggle-projects" aria-expanded="true" aria-controls="project-panel">[projects]</button>
+          <button type="button" id="toggle-files" aria-expanded="true" aria-controls="files-panel">[files]</button>
+          <button type="button" id="open-settings">[settings]</button>
+        </div>
+      </header>
+      <section class="work-area" aria-label="Local notes">
+        <div class="work-art-clip" id="art-wrap" aria-hidden="true"><img class="ac-art work-art" src="assets/sample-ambient.png" width="768" height="768" alt=""></div>
+        <div class="work-state ac-row ac-between ac-wrap"><span class="ac-meta" id="note-count">0 local notes</span><span class="ac-meta">workspace / 01</span></div>
+        <div class="work-empty" id="work-empty"><p class="ac-strong">No local notes yet.</p><p class="ac-meta">Write a local note below. Select a sample file to inspect it.</p></div>
+        <div class="local-log" id="local-log" aria-label="Saved local notes" hidden></div>
+        <form class="composer" id="note-form">
+          <div class="ac-row ac-between"><label for="note-input">message / local note</label><span class="ac-meta">No AI connection</span></div>
+          <textarea id="note-input" rows="3" placeholder="> Add a project note..." aria-describedby="note-help note-error" maxlength="4000"></textarea>
+          <p class="ac-error" id="note-error" hidden></p>
+          <div class="composer-actions ac-row ac-between"><button type="button" id="clear-notes">[clear notes]</button><div class="ac-row"><span class="ac-meta">Stored in this page only</span><button type="submit">[add note]</button></div></div>
+          <p class="ac-help composer-note" id="note-help">Enter inserts a new line. Add note saves to this page, not a server.</p>
+          <p class="ac-sr-only" id="note-status" role="status"></p>
+        </form>
+        <p class="ac-meta fixture-credit" id="fixture-credit">Image: synthetic folded-surface renderer test. Not a photograph.</p>
+      </section>
+    </main>
+    <aside class="inspector" id="files-panel" aria-label="Sample files">
+      <div class="inspector-title ac-row ac-between"><strong class="ac-strong">&gt; Files</strong><span class="ac-meta">sample / read only</span></div>
+      <div class="ac-field rail-search"><label for="file-search">/ Search sample files</label><input id="file-search" type="search" autocomplete="off" placeholder="File name"></div>
+      <ul class="ac-list file-list" id="file-list"></ul>
+      <div id="file-empty" hidden><p>No matching files.</p><button type="button" id="file-clear">[clear search]</button></div>
+      <section class="file-preview" aria-label="File preview"><h2 id="file-title">File preview</h2><p class="ac-meta file-placeholder" id="file-placeholder">Select a file to preview.</p><pre id="file-content" tabindex="0" aria-label="Selected sample file content" hidden></pre></section>
+    </aside>
+  </div>
+  <dialog class="ac-dialog" id="settings-dialog" aria-labelledby="settings-title">
+    <h2 id="settings-title">Workspace settings</h2><p>These settings affect this local example only.</p>
+    <form method="dialog" id="settings-form"><label class="ac-checkbox"><input id="art-enabled" type="checkbox" checked>Show the image in the idle view</label><p class="ac-help">Active notes and small layouts use no image.</p><div class="ac-row ac-between"><button type="button" id="cancel-settings">[cancel]</button><button type="submit">[apply locally]</button></div></form>
+  </dialog>
+  <script src="demo.js" defer></script>
+</body>
+</html>
