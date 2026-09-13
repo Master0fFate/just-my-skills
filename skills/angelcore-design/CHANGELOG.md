@@ -1,5 +1,13 @@
 # Change record
 
+## 5.1.0 / 2026-09-13
+
+Added a hard no-cage contract. `--ac-control` is no longer a default 4-sided
+field or button border. In-page fields use a label plus a one-sided `--ac-rule`
+hairline. Buttons have no resting border. Floating dialogs may keep one square
+`--ac-rule` outline. Native desktop Light/Midlight bevels are a hard failure.
+See `references/no-cages.md`. CSS primitives follow the same resting chrome.
+
 ## 5.0.0 / 2026-09-12
 
 Changed the default from broad art direction to an explicit interface profile

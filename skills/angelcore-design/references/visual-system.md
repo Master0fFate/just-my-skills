@@ -25,16 +25,18 @@ same values. The audit checks them together. Color roles:
 | surface | Local support, fields, rail details | Do not turn every section into a card. |
 | selected | A selected list row or local state | Do not use it as the only selection cue. |
 | rule | Nonessential separators | Never the only visible boundary needed to find a control. |
-| control | Input outline, necessary state geometry | Do not use it for low-priority ambient art. |
+| control | Small marks: checkbox geometry, resize handles | Default 4-sided field/button/card border. On `#090909` it is a white cage. |
 | muted | Readable metadata and secondary labels | Do not lower opacity on useful text. |
 | text | Main text | Do not use image masks on it. |
 | strong | Current item, focus, important value | Avoid large unneeded white areas. |
 | art-ink | Ambient marks only | Never a readable label or state indicator. |
 
 A faint separator may be acceptable when spacing and headings already explain
-the regions. An input whose location depends on its outline uses `control`, not
-`rule`. A decorative hairline and an interactive resize handle are different
-objects. Give a handle a clear affordance and a usable hit area.
+the regions. An in-page field with a visible label uses a one-sided `rule`
+hairline or no stroke, not a 4-sided `control` box. `control` is for small
+marks, not whiteboard cages. A decorative hairline and an interactive resize
+handle are different objects. Give a handle a clear affordance and a usable
+hit area. See `no-cages.md`.
 
 ## Typography
 
@@ -86,6 +88,7 @@ before describing the result as an interactive TUI.
 | 9px labels to match the screenshot | Readable labels with compact spacing and a larger hit area |
 | Permanent large background art | Idle-only art; remove it during dense active work |
 | Fake command links | Real links, buttons, input, and clearly labeled local demo behavior |
+| A 4-sided `#737373` box on every field | Label + one-sided `--ac-rule` hairline; 2px focus outline |
 
 ## Responsive rules
 

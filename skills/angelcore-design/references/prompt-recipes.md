@@ -7,7 +7,8 @@ reduce ambiguity; it cannot guarantee a model's output quality.
 
 > Use angelcore-design in reference-monochrome mode. Build only the requested
 > component in the existing stack. Keep square corners, neutral inks, compact
-> mono type, one useful separator, and visible keyboard focus. Do not add a
+> mono type, one useful separator, and visible keyboard focus. Do not cage
+> fields or buttons in 4-sided mid-gray borders. Do not add a
 > terminal shell or hero image. Implement the states that apply. Check narrow
 > width and long labels. Use the current product's real labels and data.
 
@@ -15,7 +16,8 @@ reduce ambiguity; it cannot guarantee a model's output quality.
 
 > Use angelcore-design in reference-monochrome mode. Keep normal website
 > navigation and reading flow. Use ruled lists, restrained headings, 16px reading
-> text, square form controls, and no colored accents. Do not copy the three-pane
+> text, square form controls, and no colored accents. In-page fields use a label
+> plus a one-sided hairline, not a whiteboard box. Do not copy the three-pane
 > workspace. Start without art. Add a source-derived dither image only if it
 > serves the content. Test the form, links, filter, and small-screen layout.
 
@@ -24,7 +26,8 @@ reduce ambiguity; it cannot guarantee a model's output quality.
 > Use angelcore-design with the supplied reference screenshot. Match the visual
 > relationships, not the private project names or image subject. Build clear
 > navigation, an open work area, and only the side regions the task needs.
-> Keep ambient art dim and idle-only. Make labels readable. Implement selection,
+> Keep ambient art dim and idle-only. Make labels readable. Do not leave native
+> white bevels or 4-sided control cages. Implement selection,
 > search, keyboard focus, empty state, and error state before visual polish.
 
 ## A terminal tool
@@ -48,4 +51,4 @@ reduce ambiguity; it cannot guarantee a model's output quality.
 > Retain the approved token values, typography, image method, and square geometry.
 > Add the new behavior without redesigning the style. Check the new state beside
 > the approved state. Do not add a new gray palette, icon style, accent color,
-> animation, or border system. Record only the changes needed for this task.
+> animation, or a new 4-sided border system. Record only the changes needed for this task.

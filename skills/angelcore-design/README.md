@@ -1,4 +1,4 @@
-# angelcore-design / v5.0.0
+# angelcore-design / v5.1.0
 
 A reusable skill for the hard-edged monochrome UI in the supplied reference.
 The skill is interface-first. It still supports native websites, CLI output,
@@ -34,6 +34,7 @@ the reference, helper code, state contracts, and repeatable tests.
 | `references/target-ui.png` | User-supplied visual reference only. Never use it as a product background. |
 | `references/tokens.json` | Neutral palette, geometry, type, and spacing values. |
 | `references/visual-system.md` | Relationships that carry the style across layouts. |
+| `references/no-cages.md` | Hard ban on 4-sided mid-gray field/button cages and native white bevels. |
 | `references/components.md` | Component anatomy and state contracts. |
 | `references/image-treatment.md` | Binary, ambient, and ASCII workflows. |
 | `references/quality-check.md` | Hard failures, visual review, and test reporting. |

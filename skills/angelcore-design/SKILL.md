@@ -8,7 +8,7 @@ description: >-
   user requests this specific ethereal or angelcore treatment. Do not substitute
   pastel angelcore, a generic dark dashboard, rounded cards, neon, or a fixed mascot.
 metadata:
-  version: "5.0.0"
+  version: "5.1.0"
   scope: "interface-first; cross-medium rules remain available"
   default-profile: "reference-monochrome"
   character-default: "printable ASCII for interface marks"
@@ -72,7 +72,7 @@ These are requirements, not suggestions for a mood board.
 | Corners | `border-radius: 0` on frames, inputs, buttons, tabs, menus, and dialogs | Pills, soft cards, rounded chips |
 | Ground | One near-black field with very small surface changes | A stack of floating gray cards |
 | Palette | Neutral inks only; status also uses words or marks | Neon, gradients, colored success/error dots |
-| Boundaries | One thin rule where it explains structure | A full box around each content block |
+| Boundaries | One thin `--ac-rule` hairline where it explains structure | A 4-sided cage around each field, button, chip, card, or group |
 | Type | One mono family for interface text; a small, controlled scale | Giant dashboard headlines, wide tracking on paragraphs |
 | Actions | Compact words; brackets are optional visual syntax | Decorative command labels with no action |
 | State | `>`, a local rule, a text label, or restrained inversion | Color-only state, glow, motion-only status |
@@ -85,6 +85,28 @@ off text antialiasing or damage font rendering to make normal text look rough.
 Native control glyphs may differ by operating system. Do not rebuild them only
 to force a pixel shape if that would remove their useful behavior.
 
+### 4.1 No cages
+
+Do not stroke every control. On `--ac-bg`, `--ac-control` (`#737373`) reads as a
+white whiteboard. That is a hard failure, not “necessary contrast.”
+
+- In-page fields with a visible label: no box, or one 1px `--ac-rule` hairline
+  on a single side (usually bottom). Never a 4-sided `--ac-control` rectangle.
+- Buttons, chips, tabs, badges, tool buttons: no resting border. Hover uses
+  `--ac-selected`. Focus is a 2px outline with offset, not a light box.
+- One structural hairline between regions. Do not also box every child.
+- A floating dialog, menu, or tooltip may have one square `--ac-rule` outline
+  because it left the page. That permission does not extend to every input.
+- `--ac-control` is for small marks (checkbox geometry, resize handles), not
+  default field/button borders.
+- Desktop toolkits: kill native 3D bevels. Set Light/Midlight/Mid away from
+  white. Turn sunken frames off (`setFrame(False)`, `NoFrame`, flat group
+  boxes). A dark stylesheet does not remove Win32/Qt white cages by itself.
+
+Read `references/no-cages.md` when it is present. If a screenshot of the idle
+UI looks like stacked empty whiteboards, stop and remove sides before adding
+anything else.
+
 ## 5. Use a small token system
 
 These are **new implementation defaults**, not extracted CSS from the screenshot.
@@ -95,8 +117,8 @@ Use them as one system. Do not add arbitrary intermediate shades per component.
   --ac-bg: #090909;
   --ac-surface: #111111;
   --ac-selected: #191919;
-  --ac-rule: #2b2b2b;       /* Decorative separators only. */
-  --ac-control: #737373;    /* Necessary control boundary. */
+  --ac-rule: #2b2b2b;       /* Hairlines and one-sided field underlines only. */
+  --ac-control: #737373;    /* Small marks only. NEVER a resting 4-sided cage. */
   --ac-muted: #909090;      /* Readable metadata, not faint decoration. */
   --ac-text: #b8b8b8;
   --ac-strong: #eeeeee;
@@ -121,8 +143,10 @@ are design defaults, not WCAG minimum font sizes. Respect user text scaling.
 
 Keep readable small text at least 4.5:1 against its actual surface. Keep visual
 information needed to identify controls and state at least 3:1 against adjacent
-colors. The dim rule token is for nonessential separators only. Use visible
-labels and real focus states. See `references/sources.md` for the standards.
+colors. Do **not** meet that 3:1 bar by boxing every widget in `--ac-control`.
+Use visible labels, hit area, and a real focus outline. `--ac-rule` hairlines
+are separators, not cages. See `references/sources.md` and
+`references/no-cages.md`.
 
 Default targets are at least 24 by 24 CSS pixels. Use about 44px height for
 coarse-pointer controls. Do not shrink the hit area to match a small label.
@@ -145,9 +169,11 @@ terminal header around a pricing row, product record, or settings control.
 Keep empty space where it gives the main work room. Keep lists and tool areas
 compact. Do not use a large empty hero to hide a lack of usable content.
 
-Use one boundary between regions. An input or modal may need a full outline.
-Do not add a second box around the same boundary. Put metadata on a shared
-alignment line. Use a local selected-row fill only when it supports a real list.
+Use one boundary between regions. A floating dialog, menu, or tooltip may have
+one square outline because it left the page field. An in-page input with a
+visible label does **not** get a 4-sided box. Do not add a second box around
+the same boundary. Put metadata on a shared alignment line. Use a local
+selected-row fill only when it supports a real list.
 
 ## 7. Keep image processing honest
 
@@ -248,7 +274,9 @@ The minimum contract still applies when only this file is available:
 - Show errors beside the relevant field. Use `[!]` plus useful text. Keep entered
   data. A full failure screen is not a reason to add decorative art.
 
-On the web, keep semantic HTML, logical reading order, visible focus, and
+On desktop hosts, do not leave native sunken frames enabled. Flatten the style,
+repaint Light/Midlight away from white, and disable widget frames before QSS
+or theme CSS. On the web, keep semantic HTML, logical reading order, visible focus, and
 keyboard access. Decorative art uses empty alt text or `aria-hidden="true"` and
 must not intercept pointer input. Meaningful art needs a useful text equivalent.
 
@@ -270,7 +298,7 @@ Content and image role:
 Geometry, type, and density:
 Palette and art inks:
 States and responsive behavior:
-What must not be added:
+What must not be added: cages, 4-sided --ac-control borders, native white bevels
 ```
 
 Then complete this loop:
@@ -296,6 +324,8 @@ as not run. Do not invent screenshots, test results, or a fidelity score.
 Do not ship while an applicable hard failure remains:
 
 - Rounded interface corners, hue accents, decorative gradients, glow, or blur.
+- Four-sided mid-gray or light cages around in-page fields, buttons, chips, or cards. `--ac-control` as a default border.
+- Native desktop 3D bevels or white Light/Midlight frames left enabled.
 - Generic card-heavy layout, giant type, or fake terminal structure for a website.
 - Readable content made faint to preserve atmosphere.
 - A source image covered by unrelated dots instead of being quantized.
@@ -315,9 +345,10 @@ source notes, used token values, a short change record, and actual test limits.
 The bundled screenshot is a visual reference only. It is not a reusable image
 asset, a font source, or a layout that every future request must copy.
 
-Read as needed: `references/visual-system.md`, `references/components.md`,
-`references/image-treatment.md`, `references/quality-check.md`,
-`references/prompt-recipes.md`, and `references/tokens.json`.
+Read as needed: `references/visual-system.md`, `references/no-cages.md`,
+`references/components.md`, `references/image-treatment.md`,
+`references/quality-check.md`, `references/prompt-recipes.md`, and
+`references/tokens.json`.
 Use `assets/angelcore.css` and `tools/ascii_dither.py` where they fit the task.
 
 ```text
@@ -326,7 +357,9 @@ not a generic dark dashboard or a copy of a three-pane terminal. Lock square
 corners, neutral inks, compact mono type, exact alignment, and thin separators.
 Keep functional text clear. Use real controls and complete states. Add faint,
 fixed, source-derived dither only when an image has a role. Do not add a mascot,
-noise overlay, rounded cards, glow, or color accents. Render and compare at
-normal size. Check an active state, a narrow state, and the no-image result.
+noise overlay, rounded cards, glow, color accents, or 4-sided mid-gray cages
+around every control. In-page fields use a label plus a one-sided hairline.
+Buttons have no resting border. Kill native white bevels on desktop toolkits.
+Render and compare at normal size. Check an active state, a narrow state, and the no-image result.
 Report only tests that actually ran.
 ```

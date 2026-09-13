@@ -1,10 +1,10 @@
-/* angelcore-design v5.0.0. Scoped primitives; no framework or font download. */
+/* angelcore-design v5.1.0. Scoped primitives; no framework or font download. */
 .ac {
   --ac-bg: #090909;
   --ac-surface: #111111;
   --ac-selected: #191919;
-  --ac-rule: #2b2b2b;
-  --ac-control: #737373;
+  --ac-rule: #2b2b2b;       /* hairlines / one-sided underlines */
+  --ac-control: #737373;    /* small marks only; never a 4-sided field cage */
   --ac-muted: #909090;
   --ac-text: #b8b8b8;
   --ac-strong: #eeeeee;
@@ -69,7 +69,8 @@
   min-inline-size: 0;
   min-block-size: 2rem;
   padding: 0.5rem 0.625rem;
-  border: 1px solid var(--ac-control);
+  border: none;
+  border-block-end: 1px solid var(--ac-rule);
   background: var(--ac-bg);
   color: var(--ac-strong);
 }
@@ -101,7 +102,10 @@
 .ac .ac-list-button > span:first-child { min-inline-size: 0; overflow-wrap: anywhere; }
 .ac .ac-status { border-block-start: 1px solid var(--ac-rule); padding-block-start: 0.75rem; }
 .ac .ac-error { color: var(--ac-strong); }
-.ac [aria-invalid="true"] { border-width: 2px !important; }
+.ac [aria-invalid="true"] {
+  border: none !important;
+  border-block-end: 2px solid var(--ac-strong) !important;
+}
 .ac pre { white-space: pre; overflow: auto; font: inherit; }
 .ac .ac-table-wrap { max-inline-size: 100%; overflow: auto; }
 .ac table { inline-size: 100%; border-collapse: collapse; text-align: start; }
@@ -116,7 +120,7 @@
   inline-size: min(34rem, calc(100vw - 2rem));
   max-block-size: calc(100dvh - 2rem);
   padding: 1.5rem;
-  border: 1px solid var(--ac-control);
+  border: 1px solid var(--ac-rule);
   background: var(--ac-bg);
   color: var(--ac-text);
   font: inherit;

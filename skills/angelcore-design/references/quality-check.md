@@ -17,8 +17,11 @@ for the renderer and terminal example. None of these tools proves visual appeal.
 Reject an applicable default-profile output that has rounded component frames,
 hue accents, decorative gradients, glass, glow, decorative shadows, illegible
 functional text, color-only state, or a noise overlay presented as dithering.
-Also reject fake functionality, broken keyboard focus, unhandled small widths,
-unrequested mascots, or a claimed binary file with nonbinary pixel values.
+Also reject 4-sided mid-gray or light cages around in-page fields, buttons,
+chips, or cards (`--ac-control` used as a default border); native desktop 3D
+bevels or white Light/Midlight frames; fake functionality, broken keyboard
+focus, unhandled small widths, unrequested mascots, or a claimed binary file
+with nonbinary pixel values.
 
 A user's explicit requirement can override a style default. Record that override;
 do not conceal it as a perfect reference match. Native controls and forced-color
@@ -34,7 +37,7 @@ Use 0 for absent, half credit for inconsistent, and full credit for consistent.
 | Geometry and flatness | 15 | Square corners, no unneeded depth or floating cards. |
 | Palette and hierarchy | 15 | Neutral tokens, clear text, dim ambient art, controlled highlights. |
 | Type and density | 15 | Compact tool rhythm; readable website copy; native terminal scale. |
-| Layout and boundaries | 15 | Shared alignment, thin useful rules, task-first structure. |
+| Layout and boundaries | 15 | Shared alignment, thin useful rules, no 4-sided cages on every control. |
 | Image treatment | 15 | Relevant source, correct crop, fixed marks, correct display role; no image is full credit when appropriate. |
 | Components and states | 10 | Consistent selection, focus, error, empty, and loading states. |
 | Medium and narrow layout | 10 | No fake medium; useful small-screen or small-cell fallback. |

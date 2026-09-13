@@ -7,8 +7,9 @@ reference implementation, not a requirement to use plain JavaScript in all apps.
 
 An action has a real button or link, a useful name, a hit area, and a visible
 focus state. Brackets are display syntax. They do not replace HTML semantics.
-Default: clear text on open ground. Hover: strong text and a local surface change.
-Focus: square 2px outline, separate from selected state. Disabled: native disabled
+Default: clear text on open ground, **no resting border**. Hover: strong text and a local surface change.
+Focus: square 2px outline with offset, separate from selected state. Do not draw a
+mid-gray rectangle around every action. Disabled: native disabled
 state plus plain wording when the reason matters. Busy: preserve width, prevent
 duplicate submission, and say what is happening. No spinner is required.
 
@@ -35,8 +36,10 @@ buttons or page navigation. Appearance alone is not a reason to add ARIA roles.
 ## Search and fields
 
 Keep a visible label, a square input, and an optional help line. A placeholder
-is an example, not the only label. Use the `control` boundary token when the
-field's border is needed to find it. Keep text contrast after a value is entered.
+is an example, not the only label. Resting field chrome is no box, or one 1px
+`rule` hairline on a single side. Do not use `control` (`#737373`) as a 4-sided
+field border; on near-black it is a whiteboard. Labels find the field. Focus
+outline finds the active field. Keep text contrast after a value is entered.
 Clear buttons need a name. Search must filter real data or state its exact scope.
 
 For errors, retain the input value, use a direct message, set `aria-invalid`, and
@@ -71,7 +74,9 @@ AI reply; a local preview must say it is local and does not call a model.
 
 ## Dialog and command menu
 
-A dialog may have a full square outline because it defines an actual boundary.
+A dialog may have one full square `--ac-rule` outline because it left the page
+and defines an actual boundary. That is one frame for one overlay, not a license
+to cage every in-page control.
 Use a native dialog or a complete accessible dialog pattern. Keep a visible name,
 initial focus, Escape behavior, focus containment, and focus return. The backdrop
 is a flat neutral layer, not blurred glass. Avoid closing data-entry dialogs on
