@@ -5,7 +5,7 @@ Sexyness owns these formerly separate general playbooks. Read the relevant count
 | Former skill | Maintained destination |
 |---|---|
 | abstraction-layers | architecture-sexyness, layers-and-contracts reference |
-| constraint-driven-optimization | performance-sexyness, optimization-contract reference; UI resilience in design/smoothness |
+| constraint-driven-optimization | performance-sexyness, optimization-contract reference, campaign simplification mandate; UI resilience in design/smoothness |
 | fibonacci-design | design-sexyness, optional Fibonacci direction, scoped tokens, containment checks |
 | karpathy-guidelines | code-sexyness surgical execution and verification |
 | humanizer | copy-sexyness meaning preservation, voice matching, contextual pattern review; MIT notice retained |

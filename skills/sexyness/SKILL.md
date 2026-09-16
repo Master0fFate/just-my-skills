@@ -17,12 +17,12 @@ Read only the nested sub-skills needed for the task, then follow them as local p
 - `subskills/imagegen-sexyness/SKILL.md`: image-generation-assisted visual exploration, concept references, UI re-imagining, and project-bound bitmap assets before implementation.
 - `subskills/animate-sexyness/SKILL.md`: full-motion website or UI overhaul, transitions, micro-interactions, state changes, timing, easing, motion intent.
 - `subskills/smoothness-sexyness/SKILL.md`: perceived fluidity, input feel, UX continuity, latency masking, interaction flow.
-- `subskills/performance-sexyness/SKILL.md`: runtime speed, bundle weight, rendering, memory, loading, throughput.
+- `subskills/performance-sexyness/SKILL.md`: runtime speed, bundle weight, rendering, memory, loading, throughput, plus obsessive simplification (LOC collapse, god files, unified helpers, branch collapse) that finishes as PRs.
 - `subskills/accessibility-sexyness/SKILL.md`: opt-in accessibility audit/fix for keyboard, screen reader, contrast, focus, semantics, and reduced-motion constraints.
 - `subskills/copy-sexyness/SKILL.md`: UX writing, labels, errors, empty states, product voice, removal of AI-sounding prose.
 - `subskills/architecture-sexyness/SKILL.md`: system shape, boundaries, data flow, extensibility, resilience, dependency hygiene.
 
-When the user says only "make it sexy" or "sexify this", inspect the artifact first, then select the smallest set of sub-skills that covers the visible problem. For UI work, start with design and add motion, smoothness, performance, or copy only when the request or observed defect needs them. Add `imagegen-sexyness` when the user asks to re-imagine the visual direction, when the current design lacks a strong visual target, or when a generated bitmap asset would materially raise the first impression. For code-only work, start with code and add architecture or performance for a demonstrated structural or runtime issue.
+When the user says only "make it sexy" or "sexify this", inspect the artifact first, then select the smallest set of sub-skills that covers the visible problem. For UI work, start with design and add motion, smoothness, performance, or copy only when the request or observed defect needs them. Add `imagegen-sexyness` when the user asks to re-imagine the visual direction, when the current design lacks a strong visual target, or when a generated bitmap asset would materially raise the first impression. For code-only work, start with code and add architecture or performance for a demonstrated structural or runtime issue. If the user wants a maximal speed or simplification campaign (LOC collapse, god files, unified helpers, no-waiting PRs), load `performance-sexyness` and let it run to completion.
 
 Preserve existing accessibility, reduced-motion behavior, user constraints, and platform requirements in every pass. Do not select `accessibility-sexyness` as part of the default UI polish bundle. It is explicit opt-in only: use it when the user asks for accessibility, a11y, WCAG, screen reader support, keyboard support, contrast, reduced motion, inclusive design, or an accessibility audit/fix. Do not combine it with `animate-sexyness` unless the user explicitly asks for both motion and accessibility constraints.
 
@@ -63,7 +63,7 @@ Use the counterpart directly for a single-domain request; the root coordinates w
 |---|---|
 | Surgical coding or Karpathy-style simplicity | code-sexyness |
 | Layered thinking, contracts, separation of concerns | architecture-sexyness |
-| Constraint-driven algorithm or resource optimization | performance-sexyness |
+| Constraint-driven algorithm or resource optimization, maximal simplification, LOC collapse, god-file breakup | performance-sexyness |
 | Design, redesign, critique, bolder/quieter, layout, tokens | design-sexyness |
 | Fibonacci or golden-ratio styling | design-sexyness optional Fibonacci reference |
 | Humanize prose, preserve voice, rewrite documentation | copy-sexyness |
