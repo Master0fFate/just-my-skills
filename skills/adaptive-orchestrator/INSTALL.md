@@ -1,36 +1,27 @@
 # Installation
 
-## Portable Agent Skills / Codex
+Copy the skill directory to a skill location supported by your host. Keep `SKILL.md` and its support files together. Installation does not grant delegation tools, model controls, or permissions.
 
-Place the skill at:
+## Hosts that use `.agents`
 
-```text
-.agents/skills/adaptive-orchestrator/SKILL.md
-```
+Where supported, use `.agents/skills/adaptive-orchestrator/SKILL.md`. For project-level routing, merge only the relevant supplied `AGENTS.md` guidance into the project's existing instructions; do not overwrite them. Check the host's current discovery rules. The description can route implicitly only when the host supports that behavior.
 
-For proactive project-wide assessment in Codex, merge the supplied `AGENTS.md` text into the repository's applicable `AGENTS.md` file. The skill description can also trigger implicitly without the wrapper when the host supports implicit skill invocation.
+## Hosts that use `.claude`
 
-Codex worker model selection is runtime configuration, not portable `SKILL.md` metadata. Configure a cheaper default subagent model or role-specific custom agents in Codex when you need guaranteed strong-parent/weak-worker routing.
+Where supported, use `.claude/skills/adaptive-orchestrator/SKILL.md`. The supplied `CLAUDE.md` provides equivalent optional project guidance. Merge it without replacing existing rules. Worker/model setup belongs to supported host configuration, not this skill.
 
-## Claude Code
+## Other hosts
 
-Place the skill at:
+Load `SKILL.md` using the host's documented skill mechanism. Map briefing, waiting, result collection, permission control, and workspace ownership to real capabilities. No particular tool name is required or assumed. Without delegation, use the serial fallback.
 
-```text
-.claude/skills/adaptive-orchestrator/SKILL.md
-```
+## Runtime choices
 
-For proactive project-wide assessment, merge the supplied `CLAUDE.md` text into the repository's applicable `CLAUDE.md`. Claude Code subagent model selection belongs in custom subagent definitions or runtime configuration; the portable skill requests economical routing whenever the host exposes that choice.
+- Use sufficient parent and worker capability for the actual task. Select a model or effort level only if the host exposes that choice.
+- Host capacity, permissions, cost limits, resource ownership, and useful independent outcomes govern staffing. There is no skill-imposed total-worker cap or fixed depth.
+- Further delegation needs parent approval and host permission. Keep ownership and final integration with the parent.
+- Start with least privilege. Grant writes and consequential actions only within authorized scope.
+- Reuse an existing plan. `planner-omega` is an optional plan/specification producer, not a required setup step or a delegation tool.
 
-## Generic agent harness
+## Check the installation
 
-Load `SKILL.md` as an available skill or developer instruction and expose a subagent/task tool. The tool should let the parent provide a bounded prompt, choose a worker tier when possible, wait or run concurrently, resume a worker, and collect a structured result.
-
-## Recommended runtime limits
-
-- Parent: strongest available reasoning model.
-- Default worker: economical model suitable for bounded tasks.
-- Maximum active workers: 3.
-- Maximum total workers per user task: 4.
-- Delegation depth: 1; workers cannot delegate.
-- Read-only tools by default; write and external-action permissions only when needed.
+Use `evals/trigger-evals.json` for routing cases and `evals/behavior-evals.md` for observable behavior. A trigger means assess coordination value, not automatically create workers. These fixtures are evaluation inputs, not proof of a passing live run.

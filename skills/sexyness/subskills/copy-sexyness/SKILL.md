@@ -2,11 +2,12 @@
 name: copy-sexyness
 description: >-
   Edit product language and prose so they feel clear, human, and specific while preserving meaning: labels, buttons, empty states, errors, onboarding, settings, tooltips, docs snippets, and microcopy. Use for UX writing, humanizing AI-sounding prose, preserving an author's voice, documentation, articles, PR descriptions, or removing filler and unsupported rhetoric.
+disable-model-invocation: true
 ---
 
 # Copy Sexyness
 
-Use this sub-skill for product words and standalone prose. For humanizing or substantial rewriting, read [references/human-editing.md](references/human-editing.md).
+Use this sub-skill for product words and standalone prose. A critique request returns findings; edit files only when rewriting or fixes are requested. For humanizing or substantial rewriting, read [references/human-editing.md](references/human-editing.md).
 
 ## Standards
 
@@ -16,7 +17,7 @@ Use this sub-skill for product words and standalone prose. For humanizing or sub
 - Make errors explain what happened, why it matters, and what the user can do next.
 - Keep tone consistent with the product: calm for tools, playful only where it helps.
 - Remove filler, hype, vague adjectives, duplicated explanation, and AI-sounding structure.
-- Avoid visible instructions that explain obvious UI mechanics.
+- Remove redundant instructions for obvious UI mechanics; keep help required by unfamiliar controls or non-obvious consequences.
 
 ## Process
 

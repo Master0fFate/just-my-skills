@@ -2,13 +2,14 @@
 name: accessibility-sexyness
 description: >-
   Make premium work inclusive and robust: keyboard access, screen reader semantics, focus management, contrast, target size, reduced motion, error messaging, and resilient content. Use only when the user explicitly asks for accessibility, a11y, WCAG, screen reader support, keyboard support, contrast, reduced motion, inclusive design, or an accessibility audit/fix. Do not trigger from general sexyness, premium UI, design polish, or animation requests.
+disable-model-invocation: true
 ---
 
 # Accessibility Sexyness
 
-Use this sub-skill only when accessibility is the user's stated goal or an explicit constraint. Do not treat it as part of the default `sexyness` bundle, and do not combine it with `animate-sexyness` unless the user clearly asks for both.
+Use this sub-skill for an explicit accessibility audit, fix, or applicable accessibility requirement. Do not expand a general polish request into a full audit. All UI work must still preserve existing accessibility and platform requirements; opt-in audit scope is not permission to introduce a regression. Pair with smoothness-sexyness when the requested change covers motion or interaction.
 
-When a request is primarily about full-motion animation, fluidity, smoothness, or a motion overhaul, preserve existing reduced-motion behavior and platform requirements; a new accessibility audit remains out of scope unless requested.
+Audit-only requests return evidence and recommendations without edits. Fix requests permit scoped changes. Name the supported platforms and target standard before judging compliance.
 
 ## Standards
 

@@ -1,6 +1,6 @@
 # Layout and resilience
 
-Use for responsive design, layout bugs, hardening, onboarding, or design-system extraction. Select cases that belong to the product's supported platforms and flows.
+Use for responsive design, line breaking, layout bugs, hardening, onboarding, or design-system extraction. Select cases that belong to the product's supported platforms and flows.
 
 ## Containment
 
@@ -12,6 +12,16 @@ Check six failure classes: nested growth, parent distortion, static drift, sibli
 
 Inspect phone and desktop, plus a relevant intermediate breakpoint. Plan sidebar collapse, table overflow, navigation, and content ordering. A smaller desktop screenshot is not a mobile design. Use screenshots and interactions; report unavailable rendering honestly.
 
+## Line breaking
+
+Keep browser-native line breaking before adding custom layout code. Paragraph-wide methods such as Knuth-Plass can improve rag and spacing, but CSS does not promise one algorithm across engines.
+
+- Body prose: consider `text-wrap: pretty` to reduce awkward last lines. Keep a usable normal-wrap fallback; inspect the supported browsers and large text blocks.
+- Short headings, captions, blockquotes: consider `text-wrap: balance`. Line-count limits and behavior depend on the engine and version; verify the target rather than relying on a fixed limit.
+- Editable regions: consider `text-wrap: stable` to limit changes to earlier lines while typing. Check support and caret behavior.
+
+For canvas, SVG, PDF, or generated documents, use the renderer's line-layout support first. A custom Knuth-Plass pass is justified only by a real typography requirement: score spacing, hyphenation, and short final lines, bound the search, and test performance. Do not disable hyphenation to hide a problem that width, measure, or native wrapping can solve.
+
 ## Real states
 
 Cover default, hover/focus, active, selected, disabled, loading, empty, error, and success where applicable. Distinguish first-use emptiness, filtered zero results, and unavailable data. Give onboarding a path to the user's first useful outcome; allow skip/resume where appropriate and teach at the point of use.
@@ -20,7 +30,7 @@ Exercise network failure, timeouts, expired authentication, forbidden actions, v
 
 For multilingual products, test expanded translations, RTL, CJK, emoji, localized numbers/dates/currencies, and plural rules. Use logical CSS properties and existing internationalization utilities; do not concatenate English grammar. Truncate only with a usable route to full content. Check the intended locale set rather than assuming one language is always longest.
 
-For native apps, preserve platform navigation, safe-area and keyboard insets, system Back/dismiss gestures, native controls, and scalable type. Read the retained [iOS](../../../toolkits/impeccable/reference/ios.md) or [Android](../../../toolkits/impeccable/reference/android.md) reference only for the matching target. The bundle's scope and accessibility rules govern those references.
+For native apps, preserve platform navigation, safe-area and keyboard insets, system Back/dismiss gestures, native controls, and scalable type. Check current official platform guidance for the target version when behavior is uncertain; do not assume web interaction rules transfer unchanged. Inspect relevant simulator/emulator or device states, light/dark appearance, and enlarged text. Name the environment; simulator rendering is not hardware-performance evidence. Restore any device settings changed for a test.
 
 ## Extracting a design system
 

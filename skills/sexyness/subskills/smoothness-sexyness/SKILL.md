@@ -1,39 +1,79 @@
 ---
 name: smoothness-sexyness
 description: >-
-  Push interaction smoothness beyond basic animation: fluid input feel, continuity, latency masking, scroll quality, state preservation, ergonomic flows, and UI that feels effortless. Use when the user wants overdrive smoothness, buttery UX, silky interactions, or an interface that feels premium under real use.
+  Improve UI interaction continuity, async feedback, state preservation, motion,
+  transitions, and micro-interactions. Use for smoothness, animation polish,
+  loading/recovery flows, rapid-input bugs, or a requested motion overhaul.
+  Covers both motion and non-animated responsiveness. Not a video-rendering
+  workflow or a substitute for measured runtime optimization.
+disable-model-invocation: true
 ---
 
 # Smoothness Sexyness
 
-Use this sub-skill when the target is not just animated, but frictionless.
+Make state changes clear and controls responsive. Motion is one tool, not the
+objective. This playbook owns the former animation and smoothness workflows.
 
-## Standards
+## Inspect the real flow
 
-- Preserve context across transitions: scroll position, selection, focus, filters, drafts, and user progress.
-- Make feedback immediate even when work is async.
-- Hide unavoidable latency with skeletons, optimistic states, progress, prefetching, or staged rendering when appropriate.
-- Prevent jank: avoid forced reflow, heavy synchronous work, layout shift, scroll traps, and expensive re-renders.
-- Make controls feel stable: fixed dimensions, predictable hit areas, no hover-induced layout movement.
-- Make flows reversible and forgiving: undo, clear exits, preserved state, and no surprise resets.
+Exercise normal use, rapid input, mistakes, slow work, and recovery. Identify
+waiting, jumps, stale responses, double submission, lost focus, awkward scroll,
+and lost drafts. Preserve scroll, selection, filters, focus, and progress where
+users expect continuity. Keep hit areas and control dimensions stable.
 
-## Process
+For review-only requests, report findings without changing files. Preserve
+existing accessibility, reduced-motion behavior, and platform requirements in
+all work. A full accessibility audit is a separate scope, not a prerequisite
+for preventing regressions.
 
-1. Exercise the workflow like a real user, including rapid input and mistakes.
-2. Find friction points: waiting, jumping, snapping, losing state, double clicks, focus loss, awkward scroll, or delayed feedback.
-3. Add continuity and immediate response before adding visual decoration.
-4. Verify on keyboard, pointer, touch-sized viewport, and slow conditions when possible.
+## Immediate feedback and async correctness
 
-## QA Gate
+- Show input feedback immediately; debounce expensive work, not typing feedback.
+- Distinguish perceived response from completed work. Skeletons and progress
+  explain waiting; they must not claim success before it exists.
+- Optimistic mutations need reconciliation or rollback. Cancel obsolete work
+  or reject stale results; prevent duplicate mutations and preserve server truth.
+  Client cancellation does not undo a server mutation: use appropriate idempotency
+  and reconciliation before retrying or declaring cancellation complete.
+- Preserve drafts and useful partial progress. Keep errors local with a clear
+  retry, undo, exit, or next action. Onboarding should reach a useful outcome,
+  not a tour with no task value.
+- Prefetch only when reuse justifies bandwidth and invalidation. Clean up timers,
+  observers, listeners, and subscriptions on cancellation or unmount.
 
-- Common interactions give immediate feedback.
-- No visible layout shift occurs from hover, loading, or active states.
-- Rapid repeated actions do not break UI state.
-- Focus, scroll, and user-entered state are preserved where users expect them.
-- The workflow feels coherent from start to finish, not just pretty in screenshots.
+## Motion that serves the task
 
-## Async and recovery
+Map a purpose to each animated change: orientation, feedback, continuity,
+attention, or a justified expressive moment. Prefer the existing runtime or
+platform primitives over a new dependency.
 
-Distinguish perceived response from completed work. Optimistic changes need rollback or reconciliation; cancel obsolete work or ignore stale responses, prevent duplicate mutations, and clean up timers/listeners/subscriptions. Debounce expensive search requests without delaying input feedback. Prefetch only when likely reuse justifies bandwidth and invalidation costs.
+- Prefer transform and opacity; profile layout, masks, filters, and material
+  effects when they are needed. Avoid forced reflow and layout jumps.
+- Keep transitions interruptible. New input must not queue obsolete animations
+  or leave a stale selected state.
+- Start near 100–150 ms for feedback, 150–300 ms for routine changes, and
+  300–500 ms for view changes. These are tuning ranges, not compliance rules.
+  Tune easing and duration to distance, content, and device performance.
+- Use shared elements or FLIP when they preserve spatial continuity. Bound
+  staggers, usually exit faster than entering, and avoid repeated reveal effects.
+- Operational and reading surfaces must not delay tasks with entrance sequences.
+  Expressive entrances belong only where the brief earns them.
+- Keep default content visible if animation scripts fail. Release temporary
+  `will-change`, stop offscreen loops, and make changed motion honor the user/system
+  reduced-motion preference. Test both the normal and reduced paths.
 
-Test a slow request followed by a newer fast request, repeat submission, navigation during work, and failure after optimistic success. Preserve drafts and useful partial progress, show local recovery, and keep server-authoritative state consistent. First-use flows should lead to a useful outcome with clear next actions and resumable progress where appropriate.
+## Verification gate
+
+Test the applicable cases through the real UI:
+
+1. Repeated clicks, fast tab changes, pointer, keyboard, and touch-sized layouts.
+2. A slow old request finishing after a newer fast request.
+3. Repeat submission, navigation during work, and failure after optimistic success.
+4. Focus, scroll, drafts, and active-state continuity after completion or failure.
+5. Narrow layouts, slow conditions, reduced motion, and target-device performance.
+
+No stuck state, stale overwrite, accidental duplicate mutation, hidden failure,
+or hover/loading jump should remain in the changed flow. Pair visible motion
+review with behavior checks; a still screenshot cannot verify interruption.
+Report the tested flows and limits. Use performance-sexyness for a measured
+runtime bottleneck rather than masking it with a longer animation.

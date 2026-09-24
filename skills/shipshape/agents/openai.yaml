@@ -1,0 +1,6 @@
+interface:
+  display_name: "Shipshape"
+  short_description: "Audit, improve, and verify project readiness"
+  default_prompt: "Use $shipshape to assess the supplied artifact against its objective. Select Audit, Improve, or Recheck from my request; make changes only when authorized, and report actual evidence and limits."
+policy:
+  allow_implicit_invocation: true

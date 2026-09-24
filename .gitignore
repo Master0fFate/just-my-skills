@@ -1,7 +1,6 @@
 # Local indexes and tool session state
 .parallax/
 .codegraph
-.impeccable/
 
 # Installed dependencies and Python caches
 node_modules/

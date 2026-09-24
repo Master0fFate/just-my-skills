@@ -1,6 +1,6 @@
 interface:
   display_name: "Adaptive Orchestrator"
-  short_description: "Planner-centric specialist delegation and verification"
-  default_prompt: "Apply adaptive orchestration to complete this task."
+  short_description: "Bounded worker coordination with verified evidence"
+  default_prompt: "Complete this task using delegation only when useful and permitted. Reuse its work contract, keep parent control, and report actual evidence."
 policy:
   allow_implicit_invocation: true

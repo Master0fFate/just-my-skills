@@ -1,7 +1,11 @@
 ---
 name: design-sexyness
 description: >-
-  Create polished, non-generic visual design with strong hierarchy, spacing, typography, color, alignment, density, design-system fit, and optional imagegen-assisted visual direction. Use for frontend creation, redesign, critique, visual polish, responsive layout, typography, color, design-system extraction, hardening, onboarding, or optional Fibonacci/golden-ratio design.
+  Create or refine visual hierarchy, layout, typography, color, density, responsive
+  behavior, and design-system fit. Use for frontend design, redesign, visual
+  critique, token extraction, or optional Fibonacci styling. Interaction timing
+  and async state belong to smoothness-sexyness; wording belongs to copy-sexyness.
+disable-model-invocation: true
 ---
 
 # Design Sexyness
@@ -13,9 +17,9 @@ Use this sub-skill to make interfaces feel deliberate, premium, and domain-appro
 - Match the product context: dense and calm for operational tools, expressive for games, editorial only when the content calls for it.
 - Build hierarchy with layout, scale, contrast, spacing, and grouping before adding decoration.
 - Use a real palette with restraint. Avoid one-note color themes and generic purple-blue gradient energy.
-- Make typography feel intentional: readable sizes, deliberate weights, and typography suited to the surface. Preserve established type; use a stable rem scale for dense controls and choose display treatment from the brief.
+- Make typography feel intentional: readable sizes, deliberate weights, and typography suited to the surface. Preserve established type; use a stable rem scale for dense controls and choose display treatment from the brief. Let the browser break lines well: `text-wrap: pretty` for prose, `balance` for short headings.
 - Align edges, rhythm, and whitespace. Keep repeated items consistent.
-- Use real controls for real actions: icons for tool buttons, segmented controls for modes, toggles for binary choices, sliders or inputs for numbers.
+- Use real controls that match the action: labeled buttons, segmented controls for a small mode set, toggles for binary settings, and numeric inputs or sliders where appropriate. Icon-only controls need an accessible name and a clear meaning.
 - Use containers to express real grouping. Avoid repetitive nested card chrome; retain established containers when they communicate meaningful structure.
 
 ## Process
@@ -31,7 +35,7 @@ Use this sub-skill to make interfaces feel deliberate, premium, and domain-appro
 
 - No overlapping text, clipped labels, unstable control sizes, or incoherent responsive layout.
 - Visual hierarchy is obvious within five seconds.
-- The design uses at least one meaningful visual asset or product-specific signal when building a site, app, or game.
+- Real content and product-specific decisions establish identity. Do not add an image merely to satisfy an asset quota.
 - The result fits the domain instead of applying a generic landing-page treatment.
 - If imagegen was used, the final UI implements extracted design decisions rather than embedding a mockup screenshot.
 - Screenshot or real render verification is performed when possible.
@@ -46,8 +50,9 @@ For critique, report concrete evidence, user impact, and priority before recomme
 
 ## Focused references
 
-- Responsive fixes, hardening, localization, native considerations, onboarding, and token/component extraction: [references/layout-and-resilience.md](references/layout-and-resilience.md).
+- Responsive fixes, line breaking, hardening, localization, native considerations, onboarding, and token/component extraction: [references/layout-and-resilience.md](references/layout-and-resilience.md).
 - Explicit Fibonacci/golden ratio or a suitable calm new direction: [references/fibonacci.md](references/fibonacci.md). Optional; never overrides the brief or incumbent design system.
-- Live browser variants or detector/diagnostic tooling: [optional frontend toolkit](../../toolkits/impeccable/TOOLKIT.md). Ordinary design work does not need its setup or files.
+
+For critique-only requests, inspect and report; do not edit. Use the project's browser and test tools without installing a separate design toolkit.
 
 Choose real assets for a concrete role. Reserve dimensions, use appropriate image formats/sizes, and verify font loading and fallback behavior. Image generation remains optional and follows imagegen-sexyness when useful.

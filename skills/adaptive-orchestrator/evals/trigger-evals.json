@@ -1,42 +1,34 @@
 [
   {
-    "query": "Investigate why CI is intermittently failing across three services, identify the root cause, implement the smallest safe fix, and verify it across the affected test suites.",
+    "query": "Investigate CI failures across independent services, implement the smallest safe fixes, then check integration.",
     "should_trigger": true
   },
   {
-    "query": "Research the strongest agent orchestration approaches available through July 2026, compare primary evidence, and recommend an architecture with citations and tradeoffs.",
+    "query": "Compare primary evidence across several jurisdictions, reconcile contradictions, and produce one sourced conclusion.",
     "should_trigger": true
   },
   {
-    "query": "Refactor authentication across the API and frontend, preserve backward compatibility, add tests, and audit the result for security regressions.",
+    "query": "Implement these separately owned API and frontend changes from the accepted plan. Keep integration with the coordinator.",
     "should_trigger": true
   },
   {
-    "query": "Review this large repository, map the payment flow, find the likely source of duplicate charges, propose a fix, and validate the diagnosis.",
+    "query": "Independently check this high-impact authentication change against the security criteria after the tests pass.",
     "should_trigger": true
   },
   {
-    "query": "Analyze these 80 reports, extract the evidence relevant to five policy questions, reconcile contradictions, and write a sourced executive conclusion.",
+    "query": "Analyze 80 reports against five distinct policy questions; divide the evidence gathering where it helps.",
     "should_trigger": true
   },
   {
-    "query": "Design and implement a database migration spanning four tables, update the API, and prove that rollback and data integrity checks work.",
+    "query": "Inspect this large repository for payment flow evidence while I supply the incident timeline; return a verified diagnosis.",
     "should_trigger": true
   },
   {
-    "query": "Compare the current legal requirements in Switzerland, Germany, France, and Italy for this product launch and identify unresolved compliance risks.",
+    "query": "Validate the financial model with a separate check of formulas and assumptions before final synthesis.",
     "should_trigger": true
   },
   {
-    "query": "Debug this distributed production incident from logs, traces, and recent deploys; isolate the failure chain and propose a verified remediation.",
-    "should_trigger": true
-  },
-  {
-    "query": "Build a financial forecast from the supplied workbooks, reconcile the assumptions, stress-test the model, and independently check the calculations.",
-    "should_trigger": true
-  },
-  {
-    "query": "Create an experiment plan, implement the analysis, compare results across datasets, and have the conclusions checked against the preregistered criteria.",
+    "query": "Use adaptive-orchestrator, but this host has no delegation tools. Complete the work serially and report actual checks.",
     "should_trigger": true
   },
   {
@@ -52,15 +44,7 @@
     "should_trigger": false
   },
   {
-    "query": "Explain what JSON is in two sentences.",
-    "should_trigger": false
-  },
-  {
-    "query": "Rewrite this email to sound friendlier.",
-    "should_trigger": false
-  },
-  {
-    "query": "Summarize the paragraph I pasted below.",
+    "query": "Explain JSON in two sentences.",
     "should_trigger": false
   },
   {
@@ -68,15 +52,27 @@
     "should_trigger": false
   },
   {
-    "query": "Format this date as YYYY-MM-DD.",
+    "query": "Build a small helper that formats this date as YYYY-MM-DD.",
     "should_trigger": false
   },
   {
-    "query": "Write a four-line haiku about rain.",
+    "query": "Research this one function in the supplied API excerpt and tell me its return type.",
     "should_trigger": false
   },
   {
-    "query": "What is the capital of France?",
+    "query": "Give me a plan only for my migration; do not execute, investigate in parallel, or delegate.",
+    "should_trigger": false
+  },
+  {
+    "query": "Converge these five ideas into one recommendation using only the notes provided.",
+    "should_trigger": false
+  },
+  {
+    "query": "Turn this task into a copy-ready prompt specification. Do not execute it.",
+    "should_trigger": false
+  },
+  {
+    "query": "Solve this tightly coupled derivation yourself; no delegation is allowed.",
     "should_trigger": false
   }
 ]

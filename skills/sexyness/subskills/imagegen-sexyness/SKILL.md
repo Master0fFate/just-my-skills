@@ -1,60 +1,56 @@
 ---
 name: imagegen-sexyness
 description: >-
-  Use image generation as a premium design accelerator for UI re-imagining, visual direction, mockups, hero/product assets, game visuals, and bitmap concept references. Use when the user asks to use imagegen, generate visual variants, re-imagine a design, or when generated imagery can materially improve a visual implementation before code is changed.
+  Use an available image-generation tool for requested visual concepts, UI
+  re-imagining, mockups, or project bitmap assets. Translate concepts into real
+  interactive components; do not substitute a UI screenshot for implementation.
+  Optional for design work, not a prerequisite for ordinary frontend fixes.
+disable-model-invocation: true
 ---
 
 # Imagegen Sexyness
 
-Use this sub-skill when generated images can sharpen visual direction before implementation. The image is a concept reference, critique surface, or project-bound bitmap asset. It is not a substitute for building the actual interactive UI.
+A generated image is a concept reference or an asset. It does not prove that a
+working interface exists.
 
-## Use When
+## Tool and scope rules
 
-- The user asks to use imagegen, generate visual variants, re-imagine a design, create a mockup, or make a visual surface feel more premium.
-- A UI, page, game, brand, or asset task lacks a strong visual target after inspecting the current artifact.
-- A hero image, product visual, illustration, texture, sprite, or editorial bitmap would improve the user-visible result.
-- Two or three distinct visual directions would help choose better hierarchy, palette, composition, or product signal before coding.
+- For a direct image request, use the host's image tool and follow its execution
+  rules immediately. Do not delay generation to search for another skill.
+- Do not assume a tool named `imagegen`, a provider, or a script is installed.
+  Use the actual available capability. If none exists, state the limit; never
+  present SVG, HTML, screenshots, or prose as a generated raster image.
+- Generate one strong direction by default. Produce multiple variants only
+  when requested. Do not trigger paid generation from a vague polish request
+  without applicable authorization.
+- For optional implementation-led exploration, skip generation when the task is
+  code, copy, accessibility, or a deterministic layout fix, or a suitable asset
+  or exact target already exists. This skip does not override an explicit request
+  to generate or edit an image, including one based on an exact supplied target.
+- Do not upload private screenshots, source material, or personal data to an
+  external generator without authorization for that disclosure.
 
-## Skip When
+## Concept-to-product workflow
 
-- The task is code-only, copy-only, accessibility-only, or a deterministic layout/control fix.
-- The right asset already exists as editable SVG, canvas, HTML/CSS, or an established icon system.
-- No image generation capability is available. Continue with `design-sexyness` and name the skipped imagegen pass only if it matters to the result.
-- The user asks not to generate images or provides an exact deterministic design target.
+1. Use the supplied brief and available context to identify domain, audience,
+   asset role, composition, crop, aspect ratio, brand constraints, and exclusions.
+   For implementation-led exploration, inspect the real UI first. A direct
+   image-only request does not require a codebase inspection.
+2. Prompt the chosen direction. Include exact text only when essential; invented
+   small UI text is not a reliable content source.
+3. Inspect the returned image before using it as a design reference. Extract
+   concrete decisions: hierarchy, density, spacing, palette, imagery, and materials.
+   Do not claim visual inspection if the result cannot be opened.
+4. Implement concepts with native components, tokens, and responsive behavior.
+   Keep meaningful text editable. Never embed a mockup as the functional UI.
+5. Save assets actually used by the project to a stable local path when export
+   is supported. Do not invent a local file from a chat attachment. Record the
+   generation/source provenance and check usage constraints.
+6. Choose an appropriate delivery format and resolution; reserve dimensions.
+   Check the final responsive crop, legibility, loading, and interaction.
 
-## Workflow
+## Completion
 
-1. Inspect the real artifact first: files, screenshots, design system, product domain, viewport, and constraints.
-2. Decide the image role: concept reference, asset candidate, edit target, or final project-bound bitmap.
-3. If generating or editing an image, load and follow the `imagegen` skill/tool instructions.
-4. Prompt one strong direction for narrow tasks, or up to three distinct directions when the visual strategy is unclear.
-5. Include domain, audience, current weakness, screen or asset role, viewport, design-system constraints, brand/product signals, exact text only when needed, and an avoid list.
-6. Inspect the generated result. Extract implementable decisions: composition, density, spacing rhythm, palette, material feel, imagery style, product cues, and motion ideas.
-7. Implement with code-native components, tokens, and responsive behavior. Do not embed a generated UI screenshot as the interface.
-8. Save any generated asset used by the project into the workspace and wire references to that saved file.
-9. Verify the final real surface with screenshot or browser/app inspection. Compare against the extracted decisions, not pixel-perfect resemblance to the generated concept.
-
-## Prompt Checklist
-
-- Product/domain and audience.
-- Current visual problem.
-- Screen, component, or asset role.
-- Viewport and composition.
-- Existing design-system constraints.
-- Required product or brand signals.
-- Exact text only when required; otherwise avoid tiny fake UI text.
-- Must keep, must avoid, and accessibility or performance constraints if the user requested them.
-
-## QA Gate
-
-- The imagegen step has a clear role and follows real artifact inspection.
-- Generated concepts are critiqued before implementation.
-- Generated UI mockups are translated into interactive, code-native UI.
-- Project-bound generated assets are saved in the workspace and referenced from there.
-- Final verification uses the built artifact, not the generated image alone.
-
-## Asset integration
-
-For a chosen concept, separate the composition reference from final asset regions. Record which decisions become tokens/components and which require a real image. Keep required subjects, crop, aspect ratio, transparency, and brand constraints consistent across variants; inspect legibility and invented text before accepting a candidate.
-
-Save the selected asset at a stable project path, choose a delivery format and resolution appropriate to its rendered size, and reserve its layout dimensions. Preserve source or generation provenance in the project's existing asset records when available. Verify the asset in the final responsive crop; a strong standalone image may fail inside the actual component.
+For an image-only request, return the generated image without unnecessary
+implementation work. For a design/build request, verify the built surface, not
+just the concept. State unavailable export, render, or tool steps honestly.

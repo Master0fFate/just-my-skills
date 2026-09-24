@@ -1,12 +1,17 @@
 ---
 name: architecture-sexyness
 description: >-
-  Improve system shape and maintainability: clean boundaries, cohesive modules, simple data flow, dependency hygiene, resilience, observability, and extensibility without overengineering. Use for architecture review/refactoring, abstraction layers, separation of concerns, layered workflows or documentation, and maintainable system boundaries.
+  Review or refactor system boundaries, module ownership, dependency direction,
+  state flow, integration contracts, and resilience. Use when a problem spans
+  modules or layers, including layered documents or operational workflows.
+  Local implementation cleanup belongs to code-sexyness;
+  measured runtime bottlenecks belong to performance-sexyness.
+disable-model-invocation: true
 ---
 
 # Architecture Sexyness
 
-Use this sub-skill when the artifact's deeper structure needs to feel inevitable rather than patched together.
+Use this playbook for structural changes with a concrete cause. Review-only requests remain read-only. Preserve public contracts and unrelated work; do not create speculative extension points.
 
 ## Standards
 
@@ -36,4 +41,4 @@ Use this sub-skill when the artifact's deeper structure needs to feel inevitable
 
 ## Layered work
 
-For abstraction design or cross-domain layering, read [references/layers-and-contracts.md](references/layers-and-contracts.md). It supplies the intent-to-details model, explicit boundary contracts, layer-value test, dependency direction, and substitution/failure checks. Use it to complete the requested work and reveal only the detail the user needs.
+For abstraction design or cross-domain layering, read [references/layers-and-contracts.md](references/layers-and-contracts.md). It supplies the intent-to-details model, explicit boundary contracts, layer-value test, dependency direction, and substitution/failure checks. Use it to complete the requested work and reveal only the detail the user needs. For non-code artifacts, verify ownership, handoffs, consistency, and representative examples rather than requiring compilers or code tests.

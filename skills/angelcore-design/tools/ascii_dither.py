@@ -8,6 +8,7 @@ No network access, font dependency, random noise, or extra dither pass is used.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -138,6 +139,12 @@ def parse_crop(value: str) -> tuple[int, int, int, int]:
     return parts  # type: ignore[return-value]
 
 
+def same_file(left: Path, right: Path) -> bool:
+    return left.resolve() == right.resolve() or (
+        left.exists() and right.exists() and left.samefile(right)
+    )
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("source", type=Path)
@@ -158,13 +165,17 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--report", type=Path, help="Optional JSON conversion record.")
     args = parser.parse_args(argv)
     try:
-        if args.source.resolve() == args.output.resolve():
+        if same_file(args.source, args.output):
             raise ValueError("Source and output must be different files.")
-        if args.report and args.report.resolve() in (args.source.resolve(), args.output.resolve()):
+        if args.report and any(same_file(args.report, path) for path in (args.source, args.output)):
             raise ValueError("Report must not replace the source or output.")
         if args.mode == "ascii" and args.scale != 1:
             raise ValueError("Use text columns and cell ratio for ASCII; --scale is pixel-only.")
         image = load_source(args.source, args.crop)
+        source_hash = hashlib.sha256()
+        with args.source.open("rb") as stream:
+            for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                source_hash.update(chunk)
         width = args.width if args.width is not None else (80 if args.mode == "ascii" else 512)
         size = output_size(image.size, width, args.height,
                            args.cell_ratio if args.mode == "ascii" else 1.0)
@@ -179,8 +190,11 @@ def main(argv: Sequence[str] | None = None) -> int:
             text = ascii_text(tone, args.ramp, coverage, args.matrix)
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(text, encoding="utf-8")
-            extra = {"ramp": args.ramp, "coverage_source": "supplied" if coverage else "estimate"}
-        record = {"source": str(args.source), "output": str(args.output), "mode": args.mode,
+            extra = {"ramp": args.ramp, "coverage_source": "supplied" if coverage is not None else "estimate",
+                     "supplied_coverage": coverage, "cell_ratio": args.cell_ratio}
+        record = {"source": str(args.source), "source_sha256": source_hash.hexdigest(),
+                  "crop": list(args.crop) if args.crop else None,
+                  "output": str(args.output), "mode": args.mode,
                   "grid": list(size), "scale": args.scale, "matrix": args.matrix,
                   "black": args.black, "white": args.white, "gamma": args.gamma,
                   "inverted": args.invert, "alpha_ground": "black", **extra}

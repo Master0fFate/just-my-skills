@@ -1,76 +1,73 @@
 ---
 name: sexyness
 description: >-
-  Orchestrate a premium polish pass across code, design, image-generation concepting, animation, smoothness, performance, copy, architecture, and opt-in accessibility. Use when the user asks for sexyness, sexyfication, sexification, make it sexy, make it premium, remove AI slop, use imagegen to re-imagine a design, make code/design/UI/UX feel elite, smooth, beautiful, high-quality, delightful, optimized, or competition-grade. Prefer this bundle for frontend design/refinement, code craft, architecture simplification, performance optimization, and human prose editing. Loads nested sexyness sub-skills from subskills/*/SKILL.md as needed and applies QA gates before declaring work done. Accessibility is only selected when explicitly requested or when the active task is specifically an accessibility audit/fix.
+  Build or polish code, UI design, interaction, performance, architecture, or
+  prose. Use for sexyness, premium design, code craft, humanizing text, animation,
+  smoothness, measured optimization, rapid build-test iteration (ACCELERATE),
+  requested image concepts, or accessibility/a11y/WCAG audit and fixes.
+  Select only the needed local playbooks. Not a broad project-readiness audit,
+  migration workflow, planning interview, video renderer, or CLI slop scanner.
 ---
 
 # Sexyness
 
-Use this skill to turn a merely working artifact into something that feels deliberately crafted. "Sexyness" means high taste plus proof: clean structure, beautiful execution, fluid interaction, strong performance, sharp language, and verification on the real surface.
+Improve the artifact, not the size of the process. Inspect the real surface,
+choose the smallest relevant playbook, make scoped changes, and verify them.
+A single-domain task needs one playbook, not the whole bundle.
 
-## Router
+## Route once
 
-Read only the nested sub-skills needed for the task, then follow them as local playbooks.
+Resolve paths from this directory. Nested playbooks are loaded on demand; their
+`disable-model-invocation` flag hides duplicate automatic prompt entries in Pi;
+explicit commands and file loading remain available.
 
-- `subskills/code-sexyness/SKILL.md`: code quality, formatting, naming, types, complexity, algorithms, maintainability, tests.
-- `subskills/design-sexyness/SKILL.md`: visual design, composition, hierarchy, spacing, color, typography, design-system fit.
-- `subskills/imagegen-sexyness/SKILL.md`: image-generation-assisted visual exploration, concept references, UI re-imagining, and project-bound bitmap assets before implementation.
-- `subskills/animate-sexyness/SKILL.md`: full-motion website or UI overhaul, transitions, micro-interactions, state changes, timing, easing, motion intent.
-- `subskills/smoothness-sexyness/SKILL.md`: perceived fluidity, input feel, UX continuity, latency masking, interaction flow.
-- `subskills/performance-sexyness/SKILL.md`: runtime speed, bundle weight, rendering, memory, loading, throughput, plus obsessive simplification (LOC collapse, god files, unified helpers, branch collapse) that finishes as PRs.
-- `subskills/accessibility-sexyness/SKILL.md`: opt-in accessibility audit/fix for keyboard, screen reader, contrast, focus, semantics, and reduced-motion constraints.
-- `subskills/copy-sexyness/SKILL.md`: UX writing, labels, errors, empty states, product voice, removal of AI-sounding prose.
-- `subskills/architecture-sexyness/SKILL.md`: system shape, boundaries, data flow, extensibility, resilience, dependency hygiene.
+| User need | Read |
+| --- | --- |
+| Implementation, bug fix, refactor, code review, ACCELERATE | [code-sexyness](subskills/code-sexyness/SKILL.md) |
+| Layout, visual hierarchy, typography, color, responsive design, critique | [design-sexyness](subskills/design-sexyness/SKILL.md) |
+| Requested image concepts or bitmap assets | [imagegen-sexyness](subskills/imagegen-sexyness/SKILL.md) |
+| Animation, transitions, input feel, async continuity, loading and recovery | [smoothness-sexyness](subskills/smoothness-sexyness/SKILL.md) |
+| Profiling, latency, memory, queries, bundles, resource limits | [performance-sexyness](subskills/performance-sexyness/SKILL.md) |
+| System boundaries, ownership, state flow, contracts, layered documents/workflows | [architecture-sexyness](subskills/architecture-sexyness/SKILL.md) |
+| Labels, errors, UX writing, humanizing prose, voice-preserving edits | [copy-sexyness](subskills/copy-sexyness/SKILL.md) |
+| Explicit accessibility audit/fix or applicable accessibility requirement | [accessibility-sexyness](subskills/accessibility-sexyness/SKILL.md) |
 
-When the user says only "make it sexy" or "sexify this", inspect the artifact first, then select the smallest set of sub-skills that covers the visible problem. For UI work, start with design and add motion, smoothness, performance, or copy only when the request or observed defect needs them. Add `imagegen-sexyness` when the user asks to re-imagine the visual direction, when the current design lacks a strong visual target, or when a generated bitmap asset would materially raise the first impression. For code-only work, start with code and add architecture or performance for a demonstrated structural or runtime issue. If the user wants a maximal speed or simplification campaign (LOC collapse, god files, unified helpers, no-waiting PRs), load `performance-sexyness` and let it run to completion.
+For “make it sexy,” inspect first. Start with design for a visible UI defect or
+code for an implementation defect. Add another playbook only for a distinct
+problem found in scope. Broad code simplification uses code and, where needed,
+architecture; do not confuse fewer lines with faster runtime.
 
-Preserve existing accessibility, reduced-motion behavior, user constraints, and platform requirements in every pass. Do not select `accessibility-sexyness` as part of the default UI polish bundle. It is explicit opt-in only: use it when the user asks for accessibility, a11y, WCAG, screen reader support, keyboard support, contrast, reduced motion, inclusive design, or an accessibility audit/fix. Do not combine it with `animate-sexyness` unless the user explicitly asks for both motion and accessibility constraints.
+## Working contract
 
-## Operating Loop
+1. Name the intended outcome, audience, protected behavior, scope, and checks.
+2. Inspect current files, behavior, design evidence, and existing user changes.
+3. Load the selected playbook and use its concrete domain checks.
+4. Improve the real artifact. Preserve purpose, factual content, public contracts,
+   and established conventions unless their replacement is requested.
+5. Exercise the changed surface: tests, real interactions, renders, source checks,
+   or equivalent measurements. Use [quality-loop](references/quality-loop.md)
+   when a substantial pass needs explicit acceptance and stopping rules.
+6. Report the result, changed paths, actual checks, and unresolved limits.
 
-1. Define the target: identify what "premium" means for this artifact, audience, and domain.
-2. Inspect reality: read the current files, behavior, screenshots, tests, logs, or examples before changing anything.
-3. Pick sub-skills: load the relevant nested SKILL.md files and follow their gates.
-4. Make scoped improvements: polish the artifact without changing the user's core intent.
-5. If using image generation, turn the generated concept into implementable design decisions or saved assets; do not replace live UI with a static mockup.
-6. Verify directly: run tests, builds, linters, previews, screenshots, benchmarks, or manual QA as appropriate for the selected sub-skills.
-7. For substantial work, apply [references/quality-loop.md](references/quality-loop.md): prioritize material defects, preserve verified-good work, and stop when acceptance criteria pass.
-8. Report the proof: summarize what improved, what was verified, and any remaining risk.
+Critique, review, and audit requests remain read-only unless fixes are requested.
+Do not publish, create PRs, install tooling, or generate paid assets merely
+because a playbook suggests them. Host instructions and user authorization govern.
 
-## Global Taste Rules
+## Non-regression rules
 
-- Prefer craft over decoration. Every flourish must improve clarity, feel, speed, trust, or delight.
-- Remove AI slop: filler text, generic layouts, bloated abstractions, redundant logic, inconsistent spacing, vague labels, dead states, and performative comments.
-- Preserve the product's purpose. Do not make operational tools look like landing pages or serious workflows feel like toys.
-- Keep the artifact usable under stress: long text, small screens, slow devices, loading states, errors, and repeated use.
-- Choose strong defaults, then verify them.
+- Preserve accessibility, reduced motion, focus, semantics, and platform rules.
+  An optional full accessibility audit does not make basic preservation optional.
+- Keep loading, empty, error, long-content, narrow-screen, and repeated-use states
+  functional. Decoration must not hide missing behavior.
+- Use existing assets and tools first. Image generation is optional; a direct
+  image request follows the host image-tool instructions without extra setup.
+- Never invent metrics, testimonials, users, test passes, screenshots, or speed
+  gains. Report blocked checks instead of claiming perfection.
+- Stop when material acceptance criteria pass. Fix demonstrated defects, not
+  everything a larger skill catalog could possibly suggest.
 
-## Global QA Gate
-
-Do not call sexyness done until all relevant checks pass or are honestly reported:
-
-- The selected sub-skill QA gates are satisfied.
-- The changed artifact is exercised through its real surface.
-- No obvious regression exists in behavior, responsiveness, performance, or maintainability.
-- The result still matches the user's original goal.
-- Remaining uncertainty is named instead of hidden.
-
-## Consolidated routing
-
-Use the counterpart directly for a single-domain request; the root coordinates work spanning counterparts. Review, critique, and audit requests remain read-only unless fixes are requested. Explicit user goals take precedence over a style recipe or a tool's suggested workflow.
-
-| Request | Owner |
-|---|---|
-| Surgical coding or Karpathy-style simplicity | code-sexyness |
-| Layered thinking, contracts, separation of concerns | architecture-sexyness |
-| Constraint-driven algorithm or resource optimization, maximal simplification, LOC collapse, god-file breakup | performance-sexyness |
-| Design, redesign, critique, bolder/quieter, layout, tokens | design-sexyness |
-| Fibonacci or golden-ratio styling | design-sexyness optional Fibonacci reference |
-| Humanize prose, preserve voice, rewrite documentation | copy-sexyness |
-| UI motion and transitions | animate-sexyness |
-| Input continuity, async recovery, onboarding flow | smoothness-sexyness, with copy/design as needed |
-| Live browser variants, design detector hooks, tool diagnostics | [optional frontend toolkit](toolkits/impeccable/TOOLKIT.md) |
-
-Do not load competing general design, code, copy, architecture, or performance playbooks for these requests. General planning, research, migration, read-only codebase handoff, independent scored audits, the AI Slop CLI, and image/video execution remain distinct capabilities. Use their specialized skills only when the task needs them. Generic quality guidance is already covered here; do not also load iterative-refinement for the same polish pass unless explicitly requested.
-
-The retained toolkit is loaded only for its specific tools or a linked platform reference. It does not replace the bundle's design direction or introduce extra skill discovery entries. See [references/consolidation.md](references/consolidation.md) for the capability migration map.
+See [the capability map](references/consolidation.md) for migrated playbooks.
+Planning belongs to planner-omega; broad review/fix work to shipshape; migration
+to retrofit; a specific monochrome style to angelcore-design. Use installed
+specialist tools for explicit CLI or media tasks rather than pretending this
+bundle contains them.

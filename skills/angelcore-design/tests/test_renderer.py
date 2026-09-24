@@ -1,5 +1,7 @@
 from pathlib import Path
 import importlib.util
+import hashlib
+import json
 import subprocess
 import sys
 
@@ -113,6 +115,42 @@ def test_actual_fixture_files():
     ambient = np.asarray(Image.open(ROOT / "examples/web/assets/sample-ambient.png"))
     assert set(np.unique(ambient)) == {9, 37}
     assert np.array_equal(ambient == 37, np.asarray(binary.convert("L")) == 255)
+
+
+@pytest.mark.parametrize("linked_target", ["output", "report"])
+def test_cli_protects_source_from_hardlink_aliases(tmp_path, linked_target):
+    source = tmp_path / "source.png"
+    Image.new("L", (20, 30), 128).save(source)
+    original = source.read_bytes()
+    alias = tmp_path / ("output.png" if linked_target == "output" else "report.json")
+    try:
+        alias.hardlink_to(source)
+    except OSError as error:
+        pytest.skip(f"Hardlinks unavailable: {error}")
+    args = [str(source), str(alias if linked_target == "output" else tmp_path / "result.png")]
+    if linked_target == "report":
+        args += ["--report", str(alias)]
+    with pytest.raises(SystemExit) as error:
+        r.main(args)
+    assert error.value.code == 2
+    assert source.read_bytes() == original
+
+
+def test_conversion_report_records_reproduction_inputs(tmp_path, capsys):
+    source = tmp_path / "source.png"
+    Image.new("L", (20, 30), 128).save(source)
+    output = tmp_path / "output.txt"
+    report = tmp_path / "conversion.json"
+    assert r.main([str(source), str(output), "--mode", "ascii", "--width", "8",
+                   "--crop", "1,2,11,22", "--cell-ratio", "0.6", "--ramp", " #",
+                   "--coverage", "0,0.8", "--report", str(report)]) == 0
+    record = json.loads(report.read_text(encoding="utf-8"))
+    assert record == json.loads(capsys.readouterr().out)
+    assert record["source_sha256"] == hashlib.sha256(source.read_bytes()).hexdigest()
+    assert record["crop"] == [1, 2, 11, 22]
+    assert record["supplied_coverage"] == [0, 0.8]
+    assert record["cell_ratio"] == 0.6
+    assert record["grid"] == [8, 10]
 
 
 def test_cli_success_and_source_protection(tmp_path):

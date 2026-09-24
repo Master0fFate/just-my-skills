@@ -1,0 +1,113 @@
+{
+  "checked_at": "2026-09-24T21:44:18.973816+00:00",
+  "status": "passed with stated coverage limits",
+  "platform": "Windows-10-10.0.19044-SP0",
+  "before": {
+    "skills": 23,
+    "root_skills": 14,
+    "skill_words": 33003,
+    "files": 281,
+    "bytes": 8052317
+  },
+  "after": {
+    "skills": 16,
+    "root_skills": 8,
+    "skill_words": 13022,
+    "files": 114,
+    "bytes": 3120129
+  },
+  "skill_word_reduction_percent": 60.5,
+  "checks": [
+    {
+      "command": "C:\\Python314\\python.exe scripts/validate_skills.py",
+      "exit_code": 0,
+      "stdout": "{\n  \"skills\": 16,\n  \"root_skills\": 8,\n  \"skill_words\": 13022,\n  \"json_files\": 10,\n  \"yaml_files\": 2,\n  \"errors\": 0\n}",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Python314\\python.exe -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_cases_must_target_existing_owner (test_validate_skills.SkillValidationTests.test_cases_must_target_existing_owner) ... ok\ntest_catalog_must_cover_root_skills (test_validate_skills.SkillValidationTests.test_catalog_must_cover_root_skills) ... ok\ntest_code_examples_are_not_links (test_validate_skills.SkillValidationTests.test_code_examples_are_not_links) ... ok\ntest_description_limit (test_validate_skills.SkillValidationTests.test_description_limit) ... ok\ntest_discovery_flag_must_be_boolean (test_validate_skills.SkillValidationTests.test_discovery_flag_must_be_boolean) ... ok\ntest_duplicate_name (test_validate_skills.SkillValidationTests.test_duplicate_name) ... ok\ntest_duplicate_yaml_key (test_validate_skills.SkillValidationTests.test_duplicate_yaml_key) ... ok\ntest_external_links_and_anchors_are_not_local_files (test_validate_skills.SkillValidationTests.test_external_links_and_anchors_are_not_local_files) ... ok\ntest_invalid_json (test_validate_skills.SkillValidationTests.test_invalid_json) ... ok\ntest_invalid_support_yaml (test_validate_skills.SkillValidationTests.test_invalid_support_yaml) ... ok\ntest_invalid_yaml (test_validate_skills.SkillValidationTests.test_invalid_yaml) ... ok\ntest_link_escape (test_validate_skills.SkillValidationTests.test_link_escape) ... ok\ntest_malformed_cases_report_errors_without_crashing (test_validate_skills.SkillValidationTests.test_malformed_cases_report_errors_without_crashing) ... ok\ntest_malformed_url_reports_error_without_crashing (test_validate_skills.SkillValidationTests.test_malformed_url_reports_error_without_crashing) ... ok\ntest_missing_frontmatter (test_validate_skills.SkillValidationTests.test_missing_frontmatter) ... ok\ntest_missing_relative_link (test_validate_skills.SkillValidationTests.test_missing_relative_link) ... ok\ntest_parenthesized_and_escaped_link_paths (test_validate_skills.SkillValidationTests.test_parenthesized_and_escaped_link_paths) ... ok\ntest_reference_style_link (test_validate_skills.SkillValidationTests.test_reference_style_link) ... ok\ntest_valid_pack (test_validate_skills.SkillValidationTests.test_valid_pack) ... ok\n\n----------------------------------------------------------------------\nRan 19 tests in 0.134s\n\nOK"
+    },
+    {
+      "command": "C:\\Python314\\python.exe -m pytest skills/angelcore-design/tests -q -rs",
+      "exit_code": 0,
+      "stdout": "..............................................s.............             [100%]\n=========================== short test summary info ===========================\nSKIPPED [1] skills\\angelcore-design\\tests\\test_terminal.py:45: PTY test requires POSIX\n59 passed, 1 skipped in 1.15s",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Python314\\python.exe skills/angelcore-design/tools/audit.py --require-reference",
+      "exit_code": 0,
+      "summary": {
+        "passed": true,
+        "check_count": 47,
+        "reference_present": true
+      }
+    },
+    {
+      "command": "node --check skills/angelcore-design/examples/web/demo.js",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "C:\\Python314\\python.exe -m compileall -q scripts skills/angelcore-design/tools skills/angelcore-design/tests",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "git -c core.safecrlf=false diff --check",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "check": "Removed toolkit name/path residue, case-insensitive actual working tree",
+      "passed": true,
+      "matches": []
+    }
+  ],
+  "browser_runs": [
+    {
+      "report": "C:\\Users\\fate\\AppData\\Local\\Temp\\skill-browser-check-l6ro7awz\\http\\browser-report.json",
+      "passed": true,
+      "check_count": 131,
+      "browser": "153.0.8010.53",
+      "platform": "Windows-10-10.0.19044-SP0",
+      "load_mode": "local HTTP",
+      "chromium_sandbox": true
+    },
+    {
+      "report": "C:\\Users\\fate\\AppData\\Local\\Temp\\skill-browser-check-l6ro7awz\\offline\\browser-report.json",
+      "passed": true,
+      "check_count": 131,
+      "browser": "153.0.8010.53",
+      "platform": "Windows-10-10.0.19044-SP0",
+      "load_mode": "offline: trusted local HTML/CSS/JS/images inlined",
+      "chromium_sandbox": true
+    }
+  ],
+  "limits": [
+    "One POSIX PTY test skipped on Windows.",
+    "Behavior and routing fixtures are specifications, not live model evaluation results.",
+    "Chrome checks are not cross-browser, hardware-device, screen-reader, or full WCAG certification.",
+    "Historical evidence files were preserved, not treated as current verification.",
+    "Global skill installations and agents/ were not changed."
+  ],
+  "source_hashes": {
+    "scripts/validate_skills.py": "6c87792e48678364c4dc63b084b59bdfffd96e31ff036af0ec2e370c859d6ae7",
+    "skills/angelcore-design/tools/audit.py": "9e03c46abab11adf9d3d0ac4978de4365f53785690f42be916c2bdbf3299f35a",
+    "skills/angelcore-design/tools/ascii_dither.py": "e3841112e6d470b6e171184738fe6db58861cf974373f714df50aff2670d99d4",
+    "skills/angelcore-design/tests/browser_check.py": "c527f9764d7d810b0dcb05bf92c2922387582ee53a063d27ed10cf43e688d9da",
+    "skills/angelcore-design/examples/web/demo.js": "a9e2a0aff97f34b22490f403d05faaccd974140f19acff7bcb08ba359feb93c4"
+  },
+  "test_summary": {
+    "validator_tests_passed": 19,
+    "angelcore_tests_passed": 59,
+    "angelcore_tests_skipped": 1,
+    "http_browser_checks_passed": 131,
+    "offline_browser_checks_passed": 131
+  }
+}

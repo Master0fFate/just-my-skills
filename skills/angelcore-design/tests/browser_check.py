@@ -22,6 +22,17 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 SIZES = [(2048, 835), (1440, 900), (768, 1024), (390, 844), (320, 800)]
+CAGE_CHECK_JS = r"""els => els.filter(e => {
+    const s = getComputedStyle(e);
+    const visibleInk = color => color !== 'transparent' &&
+        !/rgba\([^)]*,\s*0(?:\.0+)?\)$/.test(color) && !/\/\s*0(?:\.0+)?%?\s*\)$/.test(color);
+    return e.getClientRects().length && ['Top','Right','Bottom','Left'].every(side => {
+        const color = s['border'+side+'Color'];
+        return parseFloat(s['border'+side+'Width']) > 0 &&
+            !['none','hidden'].includes(s['border'+side+'Style']) &&
+            visibleInk(color) && color !== s.backgroundColor;
+    });
+}).map(e => e.id || e.tagName)"""
 
 
 class QuietHandler(SimpleHTTPRequestHandler):
@@ -32,7 +43,9 @@ class QuietHandler(SimpleHTTPRequestHandler):
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=ROOT / "evidence")
-    parser.add_argument("--offline", action="store_true", help="Inline trusted local assets; no HTTP navigation is used.")
+    parser.add_argument("--offline", action="store_true", help="Inline trusted local assets; no HTTP server or navigation is used.")
+    parser.add_argument("--no-sandbox", action="store_true", help="Opt out only for trusted local demos in an approved isolated environment.")
+    parser.add_argument("--executable", type=Path, help="Use an existing Chromium-compatible browser instead of downloading one.")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     screenshots = args.output / "screenshots"; screenshots.mkdir(exist_ok=True)
@@ -40,9 +53,12 @@ def main() -> int:
     def check(name, passed, details=""):
         checks.append({"name": name, "passed": bool(passed), "details": details})
         print(("PASS " if passed else "FAIL ") + name)
-    server = ThreadingHTTPServer(("127.0.0.1", 0), partial(QuietHandler, directory=str(ROOT)))
-    thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
-    base = f"http://127.0.0.1:{server.server_address[1]}/examples/web/"
+    server = None
+    base = ""
+    if not args.offline:
+        server = ThreadingHTTPServer(("127.0.0.1", 0), partial(QuietHandler, directory=str(ROOT)))
+        thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+        base = f"http://127.0.0.1:{server.server_address[1]}/examples/web/"
     def load_page(page, file):
         if not args.offline:
             page.goto(base + file, wait_until="networkidle")
@@ -65,21 +81,35 @@ def main() -> int:
         page.wait_for_function("Array.from(document.images).every(i => i.complete && i.naturalWidth > 0)")
     try:
         with sync_playwright() as playwright:
-            executable = shutil.which("chromium") or shutil.which("chromium-browser")
-            browser = playwright.chromium.launch(executable_path=executable, headless=True, args=["--no-sandbox"])
+            executable = str(args.executable) if args.executable else (shutil.which("chromium") or shutil.which("chromium-browser"))
+            browser = playwright.chromium.launch(executable_path=executable, headless=True,
+                                                 chromium_sandbox=not args.no_sandbox)
             version = browser.version
             context = browser.new_context()
+            probe = context.new_page()
+            probe.set_content('<button id="cage" style="background:#090909;border:1px solid #737373">cage</button>'
+                              '<button id="transparent" style="background:#090909;border:1px solid transparent">clear</button>'
+                              '<button id="filled" style="background:#eeeeee;border:1px solid #eeeeee">filled</button>'
+                              '<input id="underlined" style="border:0;border-bottom:1px solid #737373">')
+            check("Cage detector distinguishes visible strokes from layout borders",
+                  probe.locator("button,input").evaluate_all(CAGE_CHECK_JS) == ["cage"])
+            probe.close()
             for file, name in [("index.html", "workspace"), ("archive.html", "website"), ("components.html", "components")]:
                 for width, height in SIZES:
                     page = context.new_page()
                     page.set_viewport_size({"width": width, "height": height})
                     errors = []; page.on("pageerror", lambda error: errors.append(str(error)))
                     load_page(page, file)
+                    if page.locator("img").count():
+                        image_errors = page.locator("img").evaluate_all("async els => (await Promise.all(els.map(async e => { try { await e.decode(); return null; } catch { return e.id || e.getAttribute('src').slice(0, 80); } }))).filter(Boolean)")
+                        check(f"{name} {width}px: images decode", not image_errors, image_errors)
                     page.screenshot(path=str(screenshots / f"{name}-{width}.png"), full_page=True)
                     overflow = page.evaluate("({viewport: innerWidth, page: document.documentElement.scrollWidth})")
                     check(f"{name} {width}px: no page-wide overflow", overflow["page"] <= overflow["viewport"] + 1, overflow)
-                    corners = page.locator("button, input:not([type=checkbox]), select, textarea, dialog").evaluate_all("els => els.filter(e => getComputedStyle(e).borderTopLeftRadius !== '0px').map(e => e.id || e.tagName)")
+                    corners = page.locator("button, input:not([type=checkbox]), select, textarea, dialog").evaluate_all("els => els.filter(e => ['borderTopLeftRadius','borderTopRightRadius','borderBottomLeftRadius','borderBottomRightRadius'].some(k => getComputedStyle(e)[k] !== '0px')).map(e => e.id || e.tagName)")
                     check(f"{name} {width}px: square controls", not corners, corners)
+                    cages = page.locator("button, input:not([type=checkbox]), select, textarea").evaluate_all(CAGE_CHECK_JS)
+                    check(f"{name} {width}px: no four-sided control cages", not cages, cages)
                     targets = page.locator("button, a.ac-action, summary, input:not([type=checkbox]), select, textarea, label.ac-checkbox").evaluate_all("els => els.filter(e => { const r=e.getBoundingClientRect(); return r.width > 0 && r.height > 0 && (r.width < 24 || r.height < 24); }).map(e => ({id:e.id,tag:e.tagName,text:e.textContent.slice(0,50)}))")
                     check(f"{name} {width}px: tested targets at least 24px", not targets, targets)
                     check(f"{name} {width}px: no script error", not errors, errors)
@@ -88,16 +118,20 @@ def main() -> int:
                     page.close()
 
             page = context.new_page(); page.set_viewport_size({"width": 1440, "height": 900})
+            interaction_errors = []
+            page.on("pageerror", lambda error: interaction_errors.append(str(error)))
             load_page(page, "index.html")
             page.locator("#project-search").fill("no-match")
             check("Workspace search empty state", page.locator("#project-empty").is_visible())
             page.locator("#project-clear").click()
             check("Workspace clear search restores records", page.locator("#project-list button").count() == 8)
-            page.locator("#project-list button").nth(1).click()
+            page.locator("#project-list button").nth(1).press("Enter")
             check("Workspace project selection changes state", page.locator("#project-title").inner_text() == "mono-kit")
+            check("Project selection preserves keyboard focus", page.locator('#project-list [aria-current="true"]').evaluate("e => document.activeElement === e"))
             page.locator("#project-list button").nth(0).click()
             page.locator("#file-search").fill("styles")
-            page.locator("#file-list button").click()
+            page.locator("#file-list button").press("Enter")
+            check("File selection preserves keyboard focus", page.locator('#file-list [aria-current="true"]').evaluate("e => document.activeElement === e"))
             check("File filtering and preview work", "border-radius: 0" in page.locator("#file-content").inner_text())
             page.locator("#note-form button[type=submit]").click()
             check("Empty note shows linked error", page.locator("#note-error").is_visible() and page.locator("#note-input").get_attribute("aria-invalid") == "true")
@@ -186,15 +220,18 @@ def main() -> int:
             page.screenshot(path=str(screenshots / "components-forced-colors-390.png"), full_page=True)
             for path in ("index.html", "archive.html", "components.html", "../../SKILL.md", "../../references/components.md"):
                 check(f"Local example link {'exists' if args.offline else 'resolves'}: {path}", (ROOT / "examples/web" / path).is_file() if args.offline else page.request.get(base + path).status == 200)
+            check("Interactive flows have no script errors", not interaction_errors, interaction_errors)
             page.close(); context.close(); browser.close()
         report = {"scope": "Chromium, local examples, listed states only. No screen-reader, touch-device, cross-browser, or full WCAG audit.",
                   "browser": version, "platform": platform.platform(), "sizes": SIZES,
                   "load_mode": "offline: trusted local HTML/CSS/JS/images inlined" if args.offline else "local HTTP",
+                  "chromium_sandbox": not args.no_sandbox,
                   "passed": all(item["passed"] for item in checks), "check_count": len(checks), "checks": checks}
         (args.output / "browser-report.json").write_text(json.dumps(report, indent=2) + "\n")
         return 0 if report["passed"] else 1
     finally:
-        server.shutdown(); server.server_close()
+        if server is not None:
+            server.shutdown(); server.server_close()
 
 
 if __name__ == "__main__":

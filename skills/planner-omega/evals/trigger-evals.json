@@ -1,0 +1,62 @@
+[
+  {
+    "query": "Plan a staged migration with dependencies, limited maintenance windows, rollback, and acceptance gates.",
+    "should_trigger": true
+  },
+  {
+    "query": "Turn this multi-step launch goal into a roadmap with owners and go/no-go checks.",
+    "should_trigger": true
+  },
+  {
+    "query": "Sequence these project tasks around the shared database and identify blocked work.",
+    "should_trigger": true
+  },
+  {
+    "query": "Here is my brain dump. Converge it into a decision without losing the unusual ideas.",
+    "should_trigger": true
+  },
+  {
+    "query": "I am still dictating ideas. Capture them now; do not critique them yet.",
+    "should_trigger": true
+  },
+  {
+    "query": "Stress-test these competing ideas, preserve their unique insights, then recommend the first test.",
+    "should_trigger": true
+  },
+  {
+    "query": "Convert this rough task into a copy-ready prompt specification with inputs, output, constraints, and edge cases.",
+    "should_trigger": true
+  },
+  {
+    "query": "Plan the dependency sequence for this multi-step upgrade, then start the authorized work now.",
+    "should_trigger": true
+  },
+  {
+    "query": "Build a helper that adds two numbers.",
+    "should_trigger": false
+  },
+  {
+    "query": "Research the return type of this one function in the supplied documentation.",
+    "should_trigger": false
+  },
+  {
+    "query": "Implement this exact one-line validation fix now.",
+    "should_trigger": false
+  },
+  {
+    "query": "What is a dependency graph?",
+    "should_trigger": false
+  },
+  {
+    "query": "Rewrite this paragraph in plain language.",
+    "should_trigger": false
+  },
+  {
+    "query": "Create a haiku about rain.",
+    "should_trigger": false
+  },
+  {
+    "query": "Execute the accepted task list without replanning it.",
+    "should_trigger": false
+  }
+]

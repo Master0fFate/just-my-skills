@@ -1,0 +1,2 @@
+# Skill-pack structure checks; no runtime dependency for the prose skills.
+PyYAML>=6.0.2,<7

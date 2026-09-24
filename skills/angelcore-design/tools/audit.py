@@ -21,28 +21,53 @@ def contrast(foreground: str, background: str) -> float:
     return (high + 0.05) / (low + 0.05)
 
 
-def audit(root: Path = ROOT) -> dict:
+def audit(root: Path = ROOT, require_reference: bool = False) -> dict:
     checks = []
     def check(name, passed, details=""):
         checks.append({"name": name, "passed": bool(passed), "details": details})
 
+    def result():
+        return {"scope": "Local file, token, contrast-pair, and static CSS checks only. Not full WCAG conformance or a visual score.",
+                "passed": all(item["passed"] for item in checks), "check_count": len(checks), "checks": checks,
+                "reference_present": (root / "references/target-ui.png").is_file()}
+
     required = ["SKILL.md", "README.md", "CHANGELOG.md", "references/reference-audit.md",
                 "references/visual-system.md", "references/components.md", "references/image-treatment.md",
                 "references/quality-check.md", "references/prompt-recipes.md", "references/sources.md",
-                "references/tokens.json", "references/target-ui.png", "assets/angelcore.css",
+                "references/tokens.json", "references/no-cages.md", "assets/angelcore.css",
                 "tools/ascii_dither.py", "tools/make_test_source.py", "examples/web/index.html",
                 "examples/web/archive.html", "examples/web/components.html", "examples/web/demo.js",
                 "examples/web/demo.css", "examples/terminal/demo.py", "requirements.txt",
-                "tests/browser_check.py"]
+                "requirements-dev.txt", "tests/browser_check.py", "tests/test_renderer.py",
+                "tests/test_terminal.py", "tests/test_tokens.py", "examples/web/assets/sample-light-map.png",
+                "examples/web/assets/sample-1bit.png", "examples/web/assets/sample-ambient.png",
+                "examples/web/assets/sample-ascii.txt"]
+    if require_reference:
+        required.append("references/target-ui.png")
     missing = [path for path in required if not (root / path).is_file()]
     check("All required package files exist", not missing, missing)
-    tokens = json.loads((root / "references/tokens.json").read_text())
-    colors = tokens["colors"]
-    css = (root / "assets/angelcore.css").read_text()
+    if missing:
+        return result()
+    try:
+        tokens = json.loads((root / "references/tokens.json").read_text(encoding="utf-8"))
+        colors = tokens["colors"]
+        c = tokens["contrast_checks"]
+        valid_colors = isinstance(colors, dict) and all(
+            isinstance(value, str) and re.fullmatch(r"#[0-9a-fA-F]{6}", value)
+            for value in colors.values()
+        )
+        valid_checks = (isinstance(c["text_tokens"], list) and bool(c["text_tokens"])
+                        and isinstance(c["surfaces"], list) and bool(c["surfaces"])
+                        and all(name in colors for name in [*c["text_tokens"], *c["surfaces"], c["boundary_token"]]))
+        if not valid_colors or not valid_checks or not 1 <= c["text_min"] <= 21 or not 1 <= c["boundary_min"] <= 21:
+            raise ValueError("Invalid colors or contrast criteria")
+    except (ValueError, KeyError, TypeError) as exc:
+        check("Token data is valid", False, str(exc))
+        return result()
+    css = (root / "assets/angelcore.css").read_text(encoding="utf-8")
     for name, value in colors.items():
         check(f"Token {name} is neutral", value[1:3] == value[3:5] == value[5:7], value)
         check(f"CSS matches token {name}", f"--ac-{name}: {value};" in css, value)
-    c = tokens["contrast_checks"]
     for text in c["text_tokens"]:
         for surface in c["surfaces"]:
             ratio = contrast(colors[text], colors[surface])
@@ -58,15 +83,15 @@ def audit(root: Path = ROOT) -> dict:
         for value in set(re.findall(r"#[0-9a-fA-F]{6}\b", source)):
             check(f"Neutral declared hex: {path} {value}", value[1:3].lower() == value[3:5].lower() == value[5:7].lower())
     check("No bundled font files", not any(path.suffix.lower() in (".ttf", ".otf", ".woff", ".woff2") for path in root.rglob("*")))
-    return {"scope": "Local file, token, contrast-pair, and static CSS checks only. Not full WCAG conformance or a visual score.",
-            "passed": all(item["passed"] for item in checks), "check_count": len(checks), "checks": checks}
+    return result()
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--require-reference", action="store_true", help="Require the optional private reference image.")
     args = parser.parse_args()
-    report = audit()
+    report = audit(require_reference=args.require_reference)
     text = json.dumps(report, indent=2) + "\n"
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)

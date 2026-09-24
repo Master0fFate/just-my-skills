@@ -31,8 +31,12 @@ A supplied subject is allowed. It is not a mascot for later projects.
 work as a website. A terminal must still work in character cells. A component
 must still fit its host product. Do not turn every request into a three-pane app.
 
-This file contains the core contract. The full bundle adds code, reference notes,
-and tests. When only this file is available, apply the core contract directly;
+Use this skill only for the requested monochrome visual system, not generic design
+polish. It supplies style and medium-specific contracts; do not also load a
+competing general design manual. Review-only requests remain read-only.
+
+This file contains the core contract. Load image/ASCII references only when that
+output is needed. The full bundle adds code, reference notes, and tests. When only this file is available, apply the core contract directly;
 do not claim that missing helper files were read or run.
 
 ## 2. Choose the right profile before coding
@@ -303,10 +307,11 @@ What must not be added: cages, 4-sided --ac-control borders, native white bevels
 
 Then complete this loop:
 
-1. Inspect the current reference. In the full bundle, open
+1. Inspect the current reference. If supplied in the bundle, open
    `references/target-ui.png` and read `references/reference-audit.md`.
-   A new user reference can override it. Never claim image inspection when it
-   was not available.
+   A new authorized user reference can override it. Public distributions may
+   omit the private screenshot; use the written system and disclose that limit
+   when no replacement is provided. Never claim unavailable image inspection.
 2. Build the image-free skeleton. Use the tokens and real content.
 3. Build the required component states and smallest layout.
 4. Add source-derived art only if its role is clear.
@@ -318,6 +323,9 @@ Then complete this loop:
 
 If rendering is unavailable, provide the implementation and mark visual review
 as not run. Do not invent screenshots, test results, or a fidelity score.
+Bundled `evidence/` files record an earlier run, not proof of the current change.
+Use a separate output location for new checks unless updating that evidence is
+explicitly in scope.
 
 ## 11. Release gate
 
@@ -351,15 +359,5 @@ Read as needed: `references/visual-system.md`, `references/no-cages.md`,
 `references/tokens.json`.
 Use `assets/angelcore.css` and `tools/ascii_dither.py` where they fit the task.
 
-```text
-Use angelcore-design in reference-monochrome mode. Build the requested object,
-not a generic dark dashboard or a copy of a three-pane terminal. Lock square
-corners, neutral inks, compact mono type, exact alignment, and thin separators.
-Keep functional text clear. Use real controls and complete states. Add faint,
-fixed, source-derived dither only when an image has a role. Do not add a mascot,
-noise overlay, rounded cards, glow, color accents, or 4-sided mid-gray cages
-around every control. In-page fields use a label plus a one-sided hairline.
-Buttons have no resting border. Kill native white bevels on desktop toolkits.
-Render and compare at normal size. Check an active state, a narrow state, and the no-image result.
-Report only tests that actually ran.
-```
+For reusable task wording, use [prompt recipes](references/prompt-recipes.md)
+instead of copying another full instruction block into every task.

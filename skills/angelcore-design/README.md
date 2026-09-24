@@ -57,7 +57,7 @@ The examples have no build step, external font, CDN, or runtime package dependen
 Serve the bundle root so all relative paths work:
 
 ```sh
-python -m http.server 8000
+python -m http.server 8000 --bind 127.0.0.1
 ```
 
 Then open `http://localhost:8000/examples/web/index.html` in a browser. The page
@@ -121,22 +121,26 @@ python tests/browser_check.py --offline
 ```
 
 The browser script uses system Chromium when available, otherwise the installed
-Playwright browser. It starts and stops a local server. Offline mode renders the same trusted local
-HTML, CSS, JavaScript, and images as inlined content. It does not test HTTP asset
-loading. This build used offline mode because local HTTP navigation was blocked
-by the browser environment. It uses `--no-sandbox` for
-this local test environment; do not reuse that launch option to browse untrusted
-sites. Browser tests can overwrite the evidence screenshots with your new run.
+Playwright browser. HTTP mode starts a loopback-only server; offline mode starts
+no server and inlines the same trusted local HTML, CSS, JavaScript, and images.
+Offline mode does not test HTTP asset loading. Chromium sandboxing is enabled
+by default. Use `--no-sandbox` only when an approved isolated local-test environment
+requires it, never to browse untrusted sites. Use `--output <temporary-directory>`
+to keep historical evidence separate; the default output can overwrite old captures.
 
 The checks are deliberately separate: local code tests, browser behavior and
 layout checks, and visual inspection. None alone proves user preference or full
-accessibility conformance. The actual results and remaining limits are in
-`evidence/test-report.md`.
+accessibility conformance. The historical results and limits are in
+`evidence/test-report.md`; they do not verify a new revision. Record fresh results
+for changed code rather than reusing earlier pass counts.
 
 ## Rights and reuse
 
 No font files are included. No external photo is included. The user-provided
 screenshot remains reference material; no public redistribution rights over its
 branding, project names, or underlying artwork are asserted. Remove that file
-before publishing the bundle unless you have the needed rights. The new example
-source image is a clearly labeled numerical test fixture.
+before publishing the bundle unless you have the needed rights. The default
+package audit permits this omission; use `--require-reference` for a private
+reference-complete bundle. Without that image, supply an authorized reference
+or apply the written system and disclose the visual-evidence limit. The new
+example source image is a clearly labeled numerical test fixture.

@@ -1,16 +1,21 @@
 # Capability map
 
-Sexyness owns these formerly separate general playbooks. Read the relevant counterpart rather than loading a retired skill.
+Use the maintained owner. Retired names are migration notes, not extra skills to
+load. Each playbook keeps a distinct deliverable and verification surface.
 
-| Former skill | Maintained destination |
-|---|---|
-| abstraction-layers | architecture-sexyness, layers-and-contracts reference |
-| constraint-driven-optimization | performance-sexyness, optimization-contract reference, campaign simplification mandate; UI resilience in design/smoothness |
-| fibonacci-design | design-sexyness, optional Fibonacci direction, scoped tokens, containment checks |
-| karpathy-guidelines | code-sexyness surgical execution and verification |
-| humanizer | copy-sexyness meaning preservation, voice matching, contextual pattern review; MIT notice retained |
-| impeccable | design/animate/smoothness/copy/accessibility guidance; optional browser toolkit retains executable capabilities |
+| Former skill | Maintained destination | Preserved capability |
+| --- | --- | --- |
+| accelerate | code-sexyness | Small end-to-end increments, uncertain-dependency checks, rapid build/test/learn, honest handoff |
+| animate-sexyness | smoothness-sexyness | Purposeful motion, timing ranges, FLIP/shared elements, interruptible transitions, runtime cleanup |
+| abstraction-layers | architecture-sexyness | Intent-to-detail layers, ownership and boundary contracts |
+| constraint-driven-optimization | performance-sexyness | Resource bounds, equivalent workloads, bounded state, adversarial checks |
+| fibonacci-design | design-sexyness | Optional ratio-based styling, scoped tokens, layout containment |
+| karpathy-guidelines | code-sexyness | Surgical changes, simple implementations, verification and scope control |
+| humanizer | copy-sexyness | Meaning preservation, voice matching, contextual editing; MIT notice retained |
 
-Iterative-refinement remains for explicitly requested iteration and general quality work outside these polish domains. Its useful acceptance/evidence/stopping loop is available in this bundle without loading a second skill. Planning, prompt specification, research, migrations, independent scored audits, and CLI/media execution retain their separate owners.
+The bundle has no external frontend toolkit dependency. Browser inspection uses
+the project's available tools. Native implementation uses current primary
+platform guidance rather than a second competing design manual.
 
-The toolkit retains upstream runtime names and `.impeccable` project data for compatibility. It is not a separate discoverable skill and is never installed or initialized merely for ordinary polish. Its command entry is `sexyness toolkit <command>`.
+The root routes; domain playbooks execute; quality-loop supplies concise evidence
+and stop rules. Do not add a separate general refinement skill to the same pass.

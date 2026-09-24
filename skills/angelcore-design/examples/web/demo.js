@@ -43,6 +43,7 @@ if (page === "workspace") {
   const notes = new Map(projects.map((name) => [name, []]));
   const workspace = $("workspace");
   function renderProjects() {
+    const restoreFocus = $("project-list").contains(document.activeElement);
     const query = $("project-search").value.trim().toLowerCase();
     $("project-list").replaceChildren();
     const filtered = projects.filter((name) => name.includes(query));
@@ -59,8 +60,10 @@ if (page === "workspace") {
       row.append(control); $("project-list").append(row);
     }
     $("project-empty").hidden = filtered.length > 0;
+    if (restoreFocus) $("project-list").querySelector('[aria-current="true"]')?.focus({ preventScroll: true });
   }
   function renderFiles() {
+    const restoreFocus = $("file-list").contains(document.activeElement);
     const query = $("file-search").value.trim().toLowerCase();
     $("file-list").replaceChildren();
     const filtered = Object.keys(files).filter((name) => name.includes(query));
@@ -77,6 +80,7 @@ if (page === "workspace") {
       row.append(control); $("file-list").append(row);
     }
     $("file-empty").hidden = filtered.length > 0;
+    if (restoreFocus) $("file-list").querySelector('[aria-current="true"]')?.focus({ preventScroll: true });
   }
   function renderNotes() {
     const items = notes.get(current);
