@@ -1,14 +1,15 @@
 ---
 name: angelcore-design
 description: >-
-  Build hard-edged, monochrome websites, UI components, desktop tools, CLI output,
-  and terminal interfaces. Use this skill for the user's Fate UI reference style:
+  Build clear, low-reading-load, hard-edged monochrome interfaces for websites,
+  UI components, desktop tools, and terminal output. Use this skill for the user's
+  Fate UI reference style:
   near-black fields, square corners, small mono type, thin separators, bracketed
   actions, and faint source-driven dither or ASCII imagery. Also use it when the
   user requests this specific ethereal or angelcore treatment. Do not substitute
   pastel angelcore, a generic dark dashboard, rounded cards, neon, or a fixed mascot.
 metadata:
-  version: "5.1.0"
+  version: "5.2.0"
   scope: "interface-first; cross-medium rules remain available"
   default-profile: "reference-monochrome"
   character-default: "printable ASCII for interface marks"
@@ -26,6 +27,15 @@ edge disappear into the background. Do not place a normal gray photo under noise
 **Style is not subject.** Keep the user's content. Do not infer an angel, wing,
 halo, cross, statue, moon, flower, cathedral, or brand name from the style label.
 A supplied subject is allowed. It is not a mascot for later projects.
+
+**TOP-THREE DESIGN RULE — CLARITY BEFORE COPY.** Minimize reading burden. Make
+the purpose, next action, and current state clear at a glance through layout,
+familiar controls, grouping, and feedback. Do not use explanatory prose for
+obvious mechanics. Keep necessary interface text short and factual. Retain
+visible labels, accessible names, units, state/error details, and consequences;
+never replace useful labels with ambiguous icons or remove them for visual
+purity.
+When reading is the task, keep the content users need to read.
 
 **Preserve the visual system, not the screenshot's layout.** A website must still
 work as a website. A terminal must still work in character cells. A component
@@ -159,7 +169,8 @@ A thin label can sit inside a larger invisible hit area.
 ## 6. Build the frame before adding an image
 
 Start with real content and an image-free layout. Set reading order, labels,
-control behavior, spacing, and type first. Then decide whether an image helps.
+control behavior, spacing, and type first. Make purpose, next action, and state
+obvious before adding words. Then decide whether an image helps.
 
 For a workspace, a navigation rail, open work region, and optional inspector
 can work. Treat the screenshot's approximate 14 / 64 / 22 percent split as an
@@ -268,6 +279,9 @@ The minimum contract still applies when only this file is available:
 
 - Actions use real buttons or links. Inputs have visible labels. Text in square
   brackets does not create a button by itself.
+- Keep interface copy sparse and factual. Use words to name controls, identify
+  values/units, distinguish state or error, and explain choices or consequences.
+  Do not narrate obvious mechanics; do not use ambiguous glyphs instead of labels.
 - Navigation has a visible current item. Tabs have actual panels and keyboard
   behavior, or use ordinary navigation instead of pretending to be ARIA tabs.
 - Selection, focus, disabled, loading, empty, success, and error states stay in
@@ -339,6 +353,8 @@ Do not ship while an applicable hard failure remains:
 - A source image covered by unrelated dots instead of being quantized.
 - Art reused as a required mascot or copied from the reference's subject.
 - Missing focus, clipped labels, broken controls, or a nonfunctional small layout.
+- Basic tasks that require an explanatory paragraph, redundant UI prose, or
+  ambiguous icon-only controls; do not “fix” this by removing necessary labels.
 - A claimed binary asset that contains intermediate pixel values.
 - A required helper file that is absent from the delivered package.
 - Claimed visual, browser, terminal, or accessibility tests that did not run.

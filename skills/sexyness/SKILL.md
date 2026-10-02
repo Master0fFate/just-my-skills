@@ -15,6 +15,16 @@ Improve the artifact, not the size of the process. Inspect the real surface,
 choose the smallest relevant playbook, make scoped changes, and verify them.
 A single-domain task needs one playbook, not the whole bundle.
 
+## Top-three interface rule: clarity before copy
+
+**TOP-THREE DESIGN RULE — CLARITY BEFORE COPY.** Minimize the user's reading
+burden. Make an interface's purpose, next action, and current state clear through
+layout, grouping, familiar affordances, and feedback before adding explanatory
+text. Keep necessary copy short and factual. This is not a ban on labels: retain
+visible control names, accessible names, units, status and error details, and
+material consequences. Do not sacrifice accessibility or understanding to meet
+a word-count target. When reading is the task, the content is the interface.
+
 ## Route once
 
 Resolve paths from this directory. Nested playbooks are loaded on demand; their

@@ -12,6 +12,11 @@ Use this sub-skill for product words and standalone prose. A critique request re
 ## Standards
 
 - Make copy specific to the user's task and domain.
+- For UI, minimize reading burden: use short, factual labels and state text.
+  Omit explanatory prose when layout, familiar controls, or feedback already make
+  the behavior clear.
+- Keep visible labels and accessible names. Do not replace meaningful words with
+  ambiguous icons or remove text needed for units, errors, choices, or consequences.
 - Prefer short, concrete labels over clever slogans.
 - Put the action in buttons and the consequence in supporting text.
 - Make errors explain what happened, why it matters, and what the user can do next.
@@ -28,8 +33,9 @@ Use this sub-skill for product words and standalone prose. A critique request re
 
 ## QA Gate
 
-- Labels and actions are understandable without extra explanation.
-- Error and empty states are actionable.
+- Basic tasks do not require an explanatory paragraph. Necessary labels and
+  actions remain understandable, visible, and accessible.
+- Error and empty states are actionable and factual without redundant narration.
 - Copy fits inside its containers at relevant viewport sizes.
 - Tone matches the product context.
 - No generic AI filler remains in the touched surface.
