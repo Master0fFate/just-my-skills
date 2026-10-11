@@ -1,7 +1,7 @@
 # No cages
 
 This is a hard contract. It exists because models keep boxing every field,
-button, chip, tab, and group in a mid-gray rectangle. On `#090909` that rectangle
+button, chip, tab, and group in a mid-gray rectangle. On `#050505` that rectangle
 reads as a white whiteboard. That look is forbidden.
 
 ## Forbidden
@@ -40,7 +40,7 @@ A resting 4-sided stroke is not an accessibility strategy.
 
 | Token | Allowed on edges | Forbidden |
 | --- | --- | --- |
-| `--ac-rule` `#2b2b2b` | Hairlines, underlines, one region split | Useful text |
+| `--ac-rule` `#292929` | Hairlines, underlines, one region split | Useful text |
 | `--ac-control` `#737373` | Checkbox/radio geometry, resize handles, other *small* necessary marks | Default 4-sided border on fields, buttons, cards, chips, tabs, group boxes |
 | `--ac-strong` | Focus outline, rare primary fill | Resting cages |
 | User hue accent, if explicitly required | Focus, primary action, progress, checked switch only | Boxing the whole form |

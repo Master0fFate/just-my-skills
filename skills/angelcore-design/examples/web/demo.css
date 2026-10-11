@@ -103,3 +103,27 @@ body.ac { margin: 0; }
   .archive-entry .entry-type { grid-column: 2; text-align: start; }
   .ac .section-top, .ac .page-footer { align-items: flex-start; flex-direction: column; }
 }
+.release-hero { display: flex; align-items: flex-end; min-block-size: min(86dvh, 820px); border-block-end: 1px solid var(--ac-rule); }
+.ac .release-hero > .release-art { inset-inline-start: 30%; inline-size: 70%; object-position: 55% 50%; }
+.release-copy { padding: 64px 0 40px; max-inline-size: 38rem; }
+.release-copy > * + * { margin-block-start: 20px; }
+.release-copy .ac-display { margin-block-start: 12px; }
+.release-credit { margin-block-start: 32px; }
+.release-side { position: absolute; inset-block-start: 40px; inset-inline-end: 8px; z-index: 1; color: var(--ac-muted); font-size: 0.75rem; }
+.orn-cross { inset-block-start: -10px; inset-inline-end: 14%; inline-size: 26px; block-size: 48px; }
+.orn-sigil { inset-block-start: 12%; inset-inline-start: 5%; inline-size: 72px; block-size: 72px; }
+.orn-sparkle-a { inset-block-start: 31%; inset-inline-start: 47%; inline-size: 18px; block-size: 24px; }
+.orn-sparkle-b { inset-block-start: 64%; inset-inline-end: 9%; inline-size: 11px; block-size: 15px; }
+.orn-filigree { inset-block-end: -8px; inset-inline-end: -48px; inline-size: 280px; block-size: 84px; }
+.release-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; }
+.release-form { display: grid; gap: 12px; align-content: start; }
+.release-form fieldset { display: grid; gap: 4px; }
+.release-form legend { margin-block-end: 8px; }
+@media (max-width: 900px) {
+  .release-hero { min-block-size: 80dvh; }
+  .ac .release-hero > .release-art { inset: 0 0 30% 0; inline-size: 100%; block-size: 70%; object-position: 50% 40%; }
+  .release-copy { padding-block: 40px 32px; }
+  .orn-sigil, .orn-filigree { display: none; }
+  .orn-sparkle-a { inset-block-start: 22%; inset-inline-start: 18%; }
+  .release-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}

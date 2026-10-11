@@ -1,17 +1,19 @@
-/* angelcore-design v5.1.0. Scoped primitives; no framework or font download. */
+/* angelcore-design v6.0.0. Scoped primitives; no framework or font download. */
 .ac {
-  --ac-bg: #090909;
-  --ac-surface: #111111;
-  --ac-selected: #191919;
-  --ac-rule: #2b2b2b;       /* hairlines / one-sided underlines */
-  --ac-control: #737373;    /* small marks only; never a 4-sided field cage */
+  --ac-bg: #050505;
+  --ac-surface: #0e0e0e;
+  --ac-selected: #171717;
+  --ac-rule: #292929;
+  --ac-control: #737373;
   --ac-muted: #909090;
   --ac-text: #b8b8b8;
   --ac-strong: #eeeeee;
-  --ac-art-ink: #252525;
+  --ac-white: #ffffff;
+  --ac-art-ink: #222222;
   --ac-radius: 0;
   --ac-step: 4px;
   --ac-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --ac-serif: "Cormorant Garamond", "EB Garamond", Garamond, "Hoefler Text", "Times New Roman", serif;
   color-scheme: dark;
   background: var(--ac-bg);
   color: var(--ac-text);
@@ -24,6 +26,8 @@
   box-shadow: none;
 }
 .ac :where(h1, h2, h3, p, ul, ol, pre, figure) { margin: 0; }
+.ac :where(fieldset) { border: 0; padding: 0; margin: 0; min-inline-size: 0; }
+.ac :where(legend) { padding: 0; }
 .ac :where(h1, h2, h3) { color: var(--ac-strong); font-size: 1rem; font-weight: 600; }
 .ac h1 { font-size: 1.125rem; }
 .ac :where(a) { color: inherit; text-underline-offset: 0.2em; }
@@ -134,12 +138,28 @@
 }
 .ac [hidden] { display: none !important; }
 .ac .ac-art { pointer-events: none; image-rendering: pixelated; }
+.ac .ac-art[data-light="soft"] { image-rendering: auto; }
+.ac .ac-display {
+  font: 300 clamp(1.75rem, 1rem + 3.2vw, 3.25rem)/1.15 var(--ac-serif);
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--ac-white);
+}
+.ac .ac-display[data-case="lower"] { text-transform: none; letter-spacing: 0.42em; }
+.ac .ac-voice { font-family: var(--ac-serif); letter-spacing: 0.22em; text-transform: uppercase; }
+.ac .ac-tracklist { list-style: none; padding: 0; font: 400 0.8125rem/2.1 var(--ac-serif); letter-spacing: 0.22em; text-transform: uppercase; color: var(--ac-text); }
+.ac .ac-tracklist li { display: flex; gap: 1rem; }
+.ac .ac-tracklist .n { color: var(--ac-muted); min-inline-size: 1.5rem; font-variant-numeric: tabular-nums; }
+.ac .ac-micro { font-size: 0.6875rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ac-muted); }
+.ac .ac-vertical { writing-mode: vertical-rl; }
+.ac .ac-ghost { position: relative; display: inline-block; }
+.ac .ac-ghost-echo { position: absolute; inset: 0; translate: 0.06em 0.09em; opacity: 0.3; pointer-events: none; user-select: none; }
 .ac .ac-skip { position: absolute; inset-block-start: -10rem; inset-inline-start: 1rem; z-index: 10; background: var(--ac-bg); }
 .ac .ac-skip:focus { inset-block-start: 0.5rem; }
 .ac[data-ac-palette="binary"] {
   --ac-bg: #000000; --ac-surface: #000000; --ac-selected: #000000;
   --ac-rule: #ffffff; --ac-control: #ffffff; --ac-muted: #ffffff;
-  --ac-text: #ffffff; --ac-strong: #ffffff; --ac-art-ink: #ffffff;
+  --ac-text: #ffffff; --ac-strong: #ffffff; --ac-white: #ffffff; --ac-art-ink: #ffffff;
 }
 @media (pointer: coarse) {
   .ac :where(button, .ac-action, summary, .ac-checkbox) { min-block-size: 2.75rem; }
@@ -149,8 +169,8 @@
   .ac *, .ac *::before, .ac *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
 @media (forced-colors: active) {
-  .ac { --ac-bg: Canvas; --ac-surface: Canvas; --ac-selected: Canvas; --ac-rule: CanvasText; --ac-control: ButtonText; --ac-muted: CanvasText; --ac-text: CanvasText; --ac-strong: CanvasText; }
-  .ac .ac-art { display: none !important; }
+  .ac { --ac-bg: Canvas; --ac-surface: Canvas; --ac-selected: Canvas; --ac-rule: CanvasText; --ac-control: ButtonText; --ac-muted: CanvasText; --ac-text: CanvasText; --ac-strong: CanvasText; --ac-white: CanvasText; }
+  .ac .ac-art, .ac .ac-ghost-echo { display: none !important; }
   .ac :where(button, .ac-action)[data-primary] { background: ButtonFace; color: ButtonText; }
   .ac .ac-list-button[aria-current="true"] { outline: 1px solid Highlight; }
 }

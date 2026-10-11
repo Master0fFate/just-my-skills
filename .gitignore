@@ -1,6 +1,8 @@
 # Local indexes and tool session state
 .parallax/
 .codegraph
+.codeviewer-mcp.sqlite*
+skills/angelcore-design/references/look/
 
 # Installed dependencies and Python caches
 node_modules/

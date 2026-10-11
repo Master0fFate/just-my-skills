@@ -113,8 +113,8 @@ def test_actual_fixture_files():
     assert binary.mode == "1"
     assert set(np.unique(np.asarray(binary.convert("L")))) == {0, 255}
     ambient = np.asarray(Image.open(ROOT / "examples/web/assets/sample-ambient.png"))
-    assert set(np.unique(ambient)) == {9, 37}
-    assert np.array_equal(ambient == 37, np.asarray(binary.convert("L")) == 255)
+    assert set(np.unique(ambient)) == {5, 34}
+    assert np.array_equal(ambient == 34, np.asarray(binary.convert("L")) == 255)
 
 
 @pytest.mark.parametrize("linked_target", ["output", "report"])

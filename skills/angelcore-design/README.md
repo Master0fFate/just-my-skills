@@ -1,8 +1,11 @@
-# angelcore-design / v5.1.0
+# angelcore-design / v6.0.0
 
-A reusable skill for the hard-edged monochrome UI in the supplied reference.
-The skill is interface-first. It still supports native websites, CLI output,
-real terminal interfaces, and explicitly requested non-UI work.
+A reusable skill for the user's angelcore look: a hard-edged near-black
+interface with whitewashed light. The frame is square, mono, thin-ruled, and
+uncaged. The art is blown to white, haloed, grained, scratched, and dissolved
+into the void, with thin ornaments and a tracked serif voice. Interface-first;
+it also covers websites, hero and cover pages, CLI output, real terminal
+interfaces, and explicitly requested non-UI work.
 
 ## Start here
 
@@ -30,19 +33,26 @@ the reference, helper code, state contracts, and repeatable tests.
 | Path | Use |
 | --- | --- |
 | `SKILL.md` | Core rules and required build loop. |
+| `references/look.md` | The designer's read of the four cover references: eight properties, measured signature, per-cover notes. |
+| `references/look/` | User-supplied cover references. Local only and git-ignored, because the covers are other people's artwork. Never product assets. |
 | `references/reference-audit.md` | What the supplied files support, gaps in v4, and limits. |
 | `references/target-ui.png` | User-supplied visual reference only. Never use it as a product background. |
 | `references/tokens.json` | Neutral palette, geometry, type, and spacing values. |
 | `references/visual-system.md` | Relationships that carry the style across layouts. |
 | `references/no-cages.md` | Hard ban on 4-sided mid-gray field/button cages and native white bevels. |
 | `references/components.md` | Component anatomy and state contracts. |
-| `references/image-treatment.md` | Binary, ambient, and ASCII workflows. |
+| `references/image-treatment.md` | Whitewash, binary, ambient, and ASCII workflows. |
 | `references/quality-check.md` | Hard failures, visual review, and test reporting. |
 | `references/sources.md` | Primary sources and source-use limits. |
-| `assets/angelcore.css` | Scoped, reusable CSS primitives. |
-| `tools/ascii_dither.py` | Deterministic source converter with validation. |
+| `assets/angelcore.css` | Scoped, reusable CSS primitives, including the serif voice classes. |
+| `assets/angelcore-art.css` | The light layer: stage, fade, grain, scanlines, halo, ornaments, cold tint. |
+| `assets/ornaments.svg` | Sparkle, cross, sigil, filigree, chain, and scratch symbols. |
+| `assets/grain.png` | Seeded transparent grain tile for the stage. |
+| `tools/whitewash.py` | Seeded light pipeline: crush, halation, grain, scratches, fade, band dither, tint, grain tile. |
+| `tools/ascii_dither.py` | Deterministic dither and ASCII converter with validation. |
 | `tools/audit.py` | Package, neutral-token, contrast-pair, and static CSS checks. |
-| `examples/web/` | Workspace, ordinary website, and working component examples. |
+| `examples/web/` | Workspace, ordinary website, component, and release-page examples. |
+| `examples/angelify/angelify.html` | A finished single-file showcase: product page and working TUI mock for a sample AI TUI called Angelify. Repository example only; the skill never loads it. |
 | `examples/terminal/demo.py` | Plain CLI snapshots and a real small curses TUI. |
 | `tests/` | Renderer, token, terminal, and targeted browser checks. |
 | `evidence/` | Actual test output, screenshots, and reference measurements. |
@@ -70,12 +80,16 @@ Website: native reading layout, filters, note disclosure, and a local email-form
 check. No subscription is created.
 Components: action feedback, disabled control, form error, select, checkbox,
 record selection, a native dialog, a table, and a working empty-state action.
+Release: a hero stage with the whitewashed fixture, fade, grain and scanline
+layers, five ornaments, a tracked serif title with a ghost echo, a voice list,
+a local tint and layer control, and a ruled track table.
 Loading and failure samples are explicitly labeled display examples, not active
 backend operations.
 
 All notes and settings are memory-only and reset when the page reloads. The
 synthetic folded-surface image is a renderer test fixture, not a photograph or a
-recommended default illustration. The website and component pages use no image.
+recommended default illustration. The website and component pages use no image. The release page uses the
+whitewashed fixture and the grain tile.
 
 ## Run the terminal example
 
@@ -100,9 +114,14 @@ terminal emulators were not tested in this build. See the evidence report.
 
 ```sh
 python -m pip install -r requirements.txt
+python tools/whitewash.py source.png hero.png --seed 3 --sparkles 5 --scan-period 3 --report hero.json
+python tools/whitewash.py source.png ambient.png --seed 3 --peak 0.3 --halo 0.4 --scratches 3 --grain 0.03
 python tools/ascii_dither.py source.png output.png --width 512 --scale 2
 python tools/ascii_dither.py source.png output.txt --mode ascii --width 80
 ```
+
+The whitewash report prints three signature numbers. Compare them to the
+targets in `references/look.md`.
 
 Read `references/image-treatment.md` before using ambient gray inks or custom
 glyph coverage. The tool's binary output is not the same as a complete 1-bit
@@ -144,3 +163,14 @@ package audit permits this omission; use `--require-reference` for a private
 reference-complete bundle. Without that image, supply an authorized reference
 or apply the written system and disclose the visual-evidence limit. The new
 example source image is a clearly labeled numerical test fixture.
+
+The four cover references in `references/look/` are not in the public
+repository. They are listed in `.gitignore` and stay on the machine that
+received them. `references/look.md` holds the written read, which is enough
+to apply the look without the images.
+
+`examples/angelify/angelify.html` embeds two images generated locally with
+Qwen Image 2.1 and processed with `tools/whitewash.py`. No artist or work was
+named in the prompts. The model is under the Qwen Research License; check it
+before commercial use. The page loads two Google Fonts from their CDN and
+bundles no font files.

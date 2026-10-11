@@ -1,17 +1,76 @@
 # Image treatment
 
-## Distinguish the three outputs
+Two tools. `whitewash.py` makes the look's light: clipped white, halo, grain,
+scratches, edge loss, band dither, optional cold tint. `ascii_dither.py` makes
+dim two-ink dither marks and ASCII art for terminals and strict binary. Pick
+the whitewash tool for hero and ambient raster art. Pick the dither tool for
+character cells and literal black/white.
+
+## Whitewash workflow
+
+```sh
+python tools/whitewash.py source.png hero.png --seed 3 --sparkles 5 --scan-period 3 --report hero.json
+python tools/whitewash.py source.png ambient.png --seed 3 --peak 0.3 --halo 0.4 --scratches 3 --dust 30 --grain 0.03
+python tools/whitewash.py source.png cold.png --seed 3 --tint cold --fade left
+python tools/whitewash.py assets/grain.png --tile 128 --seed 9
+```
+
+Order inside the tool: crop, Lanczos resize, crush (`--black 28 --white 110
+--gamma 1.0`), halation (`--halo 0.7 --halo-radius 36 --halo-knee 0.7`), edge
+fade (`--fade radial|left|right|top|bottom --fade-strength 0.9`), scratches,
+dust, sparkles, band dither (`--dither band|full|none --matrix 8`), grain
+(`--grain 0.07`), scanlines (`--scan-period 3 --scan-depth 0.2`), peak, tint.
+With `--dither full` the grain and scanlines go before quantization so the
+output stays binary. Band dither keeps tones outside the band and draws marks
+between the two band edges inside it, so a gradient that crosses the band
+edge does not leave a contour. The signature numbers are measured on the tone
+before dither.
+
+Every random element comes from `--seed`. The report records the seed, the
+source hash, every parameter, and three signature numbers: `void_share`,
+`white_share`, `mid_share`. Compare them to `look.md`. Fix crop first, then the
+white point, then halo, then grain. Lower `--white` for more clipped mass.
+Raise `--halo-radius` for a softer bleed. Keep scratches under twelve.
+
+`--peak 0.3` bakes an ambient asset. Do not dim with CSS opacity instead.
+`--tint cold` writes RGB from `#04070b` to `#dfe9f1`; the page then also uses
+`data-ac-tint="cold"` so chrome and art share one tone family.
+
+The grain tile is a transparent white speckle. Over black it reads as film
+grain; over clipped white it disappears, which is what the covers do.
+
+## Web placement of the light
+
+```html
+<section class="ac-stage">
+  <img class="ac-art" data-light="soft" src="hero.png" alt="">
+  <div class="ac-layer ac-fade" aria-hidden="true"></div>
+  <div class="ac-layer ac-scan" aria-hidden="true"></div>
+  <div class="ac-layer ac-grain" aria-hidden="true"></div>
+  <svg class="ac-orn" aria-hidden="true"><use href="assets/ornaments.svg#orn-sparkle"/></svg>
+  <div>copy, title, voice list</div>
+</section>
+```
+
+`.ac-stage` isolates the stack. Layers take no pointer input. The fade is
+ground-colored so the art dissolves into the page at any viewport. Forced-
+colors mode hides every layer and ornament. `data-light="soft"` lets a
+whitewash asset scale smoothly; binary dither assets keep pixelated scaling.
+
+## Distinguish the three dither outputs
 
 A grayscale source is a tone map. It is not the final two-ink result.
 A binary raster assigns one of two values to each pixel. An ASCII image assigns
 one of several glyphs to each cell. Both can create a tone impression through
 coverage, but they are not the same representation.
 
-This bundle has three supplied image artifacts:
+This bundle has three dither artifacts and two whitewash artifacts
+(`sample-whitewash.png`, `sample-whitewash-ambient.png`, with their JSON
+reports beside them):
 
 - `sample-light-map.png`: a labeled synthetic folded-surface source, not a photo.
 - `sample-1bit.png`: a mode-1 black/white output from that source.
-- `sample-ambient.png`: the same binary pattern, mapped to neutral values 9 and 37.
+- `sample-ambient.png`: the same binary pattern, mapped to neutral values 5 and 34.
 
 The last image is a two-ink ambient display. It is not literal black and white.
 The source and output are in `../examples/web/assets/`. The source generator is
@@ -60,11 +119,11 @@ import numpy as np
 
 source = np.asarray(Image.open("output.png").convert("L"))
 assert set(np.unique(source)).issubset({0, 255})
-ambient = np.where(source == 255, 37, 9).astype(np.uint8)
+ambient = np.where(source == 255, 34, 5).astype(np.uint8)
 Image.fromarray(ambient).save("ambient.png")
 ```
 
-This maps black to `#090909` and white marks to `#252525`. It gives the image a
+This maps black to `#050505` and white marks to `#222222`. It gives the image a
 lower visual priority without fading labels or introducing a smooth gray photo.
 The output has two neutral values. Do not call it a mode-1 black/white file.
 

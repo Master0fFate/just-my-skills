@@ -8,8 +8,11 @@ its ground. Do not make meaningful content follow the ambient-art limit.
 **Density:** functional regions are compact; the main work has room. Empty space
 and dense rows must coexist. Do not spread every item across a large card.
 **Boundary:** use one line to explain one separation. Do not frame everything.
-**Texture:** all image marks come from one source map and one fixed reproduction
-system. Do not add a second unrelated texture for "more style."
+**Texture:** all image marks come from one source map, one recorded seed, and
+one reproduction system. Grain, scratches, and dither live in the dark; clipped
+white stays clean. Do not add a second unrelated texture for "more style."
+**Light:** the image is a whitewashed apparition that loses its edges into the
+void. Chrome is flat and hard. The two never swap properties.
 
 The identity must remain visible with the image removed. If it does not, fix
 type, spacing, surface contrast, and control syntax before adding another image.
@@ -25,11 +28,12 @@ same values. The audit checks them together. Color roles:
 | surface | Local support, fields, rail details | Do not turn every section into a card. |
 | selected | A selected list row or local state | Do not use it as the only selection cue. |
 | rule | Nonessential separators | Never the only visible boundary needed to find a control. |
-| control | Small marks: checkbox geometry, resize handles | Default 4-sided field/button/card border. On `#090909` it is a white cage. |
+| control | Small marks: checkbox geometry, resize handles | Default 4-sided field/button/card border. On `#050505` it is a white cage. |
 | muted | Readable metadata and secondary labels | Do not lower opacity on useful text. |
 | text | Main text | Do not use image masks on it. |
 | strong | Current item, focus, important value | Avoid large unneeded white areas. |
-| art-ink | Ambient marks only | Never a readable label or state indicator. |
+| white | The one clipped white: display titles, sparkles, hero light | Not for interface text; `strong` is the text ceiling. |
+| art-ink | Ambient dither marks only | Never a readable label or state indicator. |
 
 A faint separator may be acceptable when spacing and headings already explain
 the regions. An in-page field with a visible label uses a one-sided `rule`
@@ -45,9 +49,15 @@ licensed family. Do not ship or assume access to a proprietary font. Font files
 are not included. Render at normal size before adjusting the scale.
 
 Use sentence case for readable labels. Small uppercase section labels may use
-slight tracking. Do not use wide tracking on body text. Use real italics or a
-short serif brand word only when the host identity calls for it. Do not use
-Unicode look-alike alphabets as fonts.
+slight tracking. Do not use wide tracking on body text. Do not use Unicode
+look-alike alphabets as fonts.
+
+Two voices. Mono is the instrument: every label, control, cell, and status.
+Serif is the voice: one display title (`.ac-display`, weight 300, tracking
+0.32em uppercase or 0.42em lowercase), one voice list (`.ac-tracklist`), one
+micro line (`.ac-micro`), and at most one vertical word (`.ac-vertical`) per
+view. One ghost echo per view, on the display title only. The serif never
+touches a button, input label, error, or table.
 
 A terminal font and a website font do not have to be identical. Their density,
 line rhythm, modest scale, and restrained hierarchy must agree.
@@ -63,6 +73,12 @@ from active dense work. Preserve a route to each hidden panel.
 Use lists, thin rules, and shared alignment instead of a grid of rounded cards.
 Do not create a fake shell prompt around marketing copy. An entry illustration
 is optional. Reading text stays comfortably larger than tool metadata.
+
+**Hero or cover:** one `.ac-stage` holds the art, the layers, and the
+ornaments. Art sits at one edge with a ground-colored `.ac-fade` behind the
+copy. The display title crosses into the light. A voice list and a micro line
+sit under it. Ornaments go in the void, at most five, one cropped. Below the
+stage the page returns to ruled sections, tables, and mono.
 
 **Component:** use only the pieces the component needs. A button does not need
 its own title bar. A pricing option can be a ruled row. A modal may be a square
@@ -89,6 +105,9 @@ before describing the result as an interactive TUI.
 | Permanent large background art | Idle-only art; remove it during dense active work |
 | Fake command links | Real links, buttons, input, and clearly labeled local demo behavior |
 | A 4-sided `#737373` box on every field | Label + one-sided `--ac-rule` hairline; 2px focus outline |
+| Gray photo with a dark overlay in a hero | Whitewashed asset: clipped white, halo, grain, edge loss baked in |
+| Glow on the primary button | Flat `--ac-strong` fill; glow belongs to a sparkle, not a control |
+| Sparkles in every corner | Three to five ornaments, different sizes, one cut by the edge |
 
 ## Responsive rules
 

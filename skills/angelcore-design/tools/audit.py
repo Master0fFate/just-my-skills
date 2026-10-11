@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
+ART_SELECTOR = r"\.ac-(?:stage|art|layer|grain|scan|fade|halo|ghost-echo|orn)\b"
 
 
 def luminance(value: str) -> float:
@@ -34,14 +35,17 @@ def audit(root: Path = ROOT, require_reference: bool = False) -> dict:
     required = ["SKILL.md", "README.md", "CHANGELOG.md", "references/reference-audit.md",
                 "references/visual-system.md", "references/components.md", "references/image-treatment.md",
                 "references/quality-check.md", "references/prompt-recipes.md", "references/sources.md",
-                "references/tokens.json", "references/no-cages.md", "assets/angelcore.css",
-                "tools/ascii_dither.py", "tools/make_test_source.py", "examples/web/index.html",
-                "examples/web/archive.html", "examples/web/components.html", "examples/web/demo.js",
-                "examples/web/demo.css", "examples/terminal/demo.py", "requirements.txt",
-                "requirements-dev.txt", "tests/browser_check.py", "tests/test_renderer.py",
-                "tests/test_terminal.py", "tests/test_tokens.py", "examples/web/assets/sample-light-map.png",
+                "references/tokens.json", "references/no-cages.md", "references/look.md",
+                "assets/angelcore.css", "assets/angelcore-art.css", "assets/ornaments.svg", "assets/grain.png",
+                "tools/ascii_dither.py", "tools/whitewash.py", "tools/make_test_source.py",
+                "examples/web/index.html", "examples/web/archive.html", "examples/web/components.html",
+                "examples/web/release.html", "examples/web/demo.js", "examples/web/demo.css",
+                "examples/terminal/demo.py", "requirements.txt", "requirements-dev.txt",
+                "tests/browser_check.py", "tests/test_renderer.py", "tests/test_terminal.py",
+                "tests/test_tokens.py", "examples/web/assets/sample-light-map.png",
                 "examples/web/assets/sample-1bit.png", "examples/web/assets/sample-ambient.png",
-                "examples/web/assets/sample-ascii.txt"]
+                "examples/web/assets/sample-ascii.txt", "examples/web/assets/sample-whitewash.png",
+                "examples/web/assets/sample-whitewash-ambient.png"]
     if require_reference:
         required.append("references/target-ui.png")
     missing = [path for path in required if not (root / path).is_file()]
@@ -82,6 +86,18 @@ def audit(root: Path = ROOT, require_reference: bool = False) -> dict:
         check(f"No decorative effects in CSS: {path}", not re.search(r"(?:linear|radial|conic)-gradient\(|(?:backdrop-)?filter\s*:\s*(?!none)", source), "Static CSS check only")
         for value in set(re.findall(r"#[0-9a-fA-F]{6}\b", source)):
             check(f"Neutral declared hex: {path} {value}", value[1:3].lower() == value[3:5].lower() == value[5:7].lower())
+    art = (root / "assets/angelcore-art.css").read_text(encoding="utf-8")
+    declarations = re.findall(r"border-radius\s*:\s*([^;}]+)", art)
+    check("Square radius declarations: assets/angelcore-art.css", all(x.strip() in ("0", "0px", "var(--ac-radius)") for x in declarations), declarations)
+    stray_effects, stray_hex = [], []
+    for selector, body in re.findall(r"([^{}]+)\{([^{}]*)\}", art):
+        selector = selector.strip()
+        if re.search(r"(?:linear|radial|conic)-gradient\(|(?:backdrop-)?filter\s*:\s*(?!none)", body) and not re.search(ART_SELECTOR, selector):
+            stray_effects.append(selector)
+        if any(v[1:3].lower() != v[3:5].lower() or v[3:5].lower() != v[5:7].lower() for v in re.findall(r"#[0-9a-fA-F]{6}\b", body)) and "data-ac-tint" not in selector:
+            stray_hex.append(selector)
+    check("Light-layer effects stay on art selectors: assets/angelcore-art.css", not stray_effects, stray_effects)
+    check("Non-neutral hex only inside tint rules: assets/angelcore-art.css", not stray_hex, stray_hex)
     check("No bundled font files", not any(path.suffix.lower() in (".ttf", ".otf", ".woff", ".woff2") for path in root.rglob("*")))
     return result()
 

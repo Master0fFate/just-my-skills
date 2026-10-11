@@ -23,6 +23,12 @@ bevels or white Light/Midlight frames; fake functionality, broken keyboard
 focus, unhandled small widths, unrequested mascots, or a claimed binary file
 with nonbinary pixel values.
 
+For the light layer, reject: a hero asset without clipped white or edge loss;
+grain, blur, or tracking on readable text; bloom or glow on a control; more
+than five ornaments, none cropped, or ornaments on controls; serif used for
+interface text; a second ghost echo; a tinted widget inside a neutral view;
+an unrecorded seed.
+
 A user's explicit requirement can override a style default. Record that override;
 do not conceal it as a perfect reference match. Native controls and forced-color
 access modes may use platform rendering. Check their behavior before changing it.
@@ -38,10 +44,12 @@ Use 0 for absent, half credit for inconsistent, and full credit for consistent.
 | Palette and hierarchy | 15 | Neutral tokens, clear text, dim ambient art, controlled highlights. |
 | Type and density | 15 | Compact tool rhythm; readable website copy; native terminal scale. |
 | Layout and boundaries | 15 | Shared alignment, thin useful rules, no 4-sided cages on every control. |
-| Image treatment | 15 | Relevant source, correct crop, fixed marks, correct display role; no image is full credit when appropriate. |
+| Image treatment | 10 | Relevant source, correct crop, correct role; no image is full credit when appropriate. |
+| Light | 10 | Clipped white, halo, grain in the dark, edge loss, band dither in the transition only, signature near the covers. |
+| Ornament and voice | 5 | Three to five thin ornaments, one cropped, none on controls; one serif title, one voice list, mono everywhere else. |
 | Components and states | 10 | Consistent selection, focus, error, empty, and loading states. |
-| Medium and narrow layout | 10 | No fake medium; useful small-screen or small-cell fallback. |
-| Evidence and honesty | 5 | Real sources, editable output, accurate test limits. |
+| Medium and narrow layout | 5 | No fake medium; useful small-screen or small-cell fallback. |
+| Evidence and honesty | 5 | Real sources, recorded seeds, editable output, accurate test limits. |
 
 Aim for 90/100 with no hard failure before requesting visual approval. A high
 self-score is not evidence of user preference. Do not report a numeric score as

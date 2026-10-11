@@ -1,0 +1,35 @@
+/* angelcore-design v6.0.0 light layer. Load after angelcore.css. Effects here apply to art, layers, ornaments, and display echoes only, never to controls or interface text. */
+.ac .ac-stage { position: relative; isolation: isolate; overflow: hidden; background: var(--ac-bg); }
+.ac .ac-stage > .ac-art { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; max-inline-size: none; object-fit: cover; }
+.ac .ac-stage > :not(.ac-art):not(.ac-layer):not(.ac-orn) { position: relative; z-index: 1; }
+.ac .ac-layer { position: absolute; inset: 0; pointer-events: none; }
+.ac .ac-grain { background: url("grain.png") 0 0 / 128px 128px repeat; }
+.ac .ac-scan { background: repeating-linear-gradient(0deg, rgb(0 0 0 / 0.25) 0 1px, transparent 1px 3px); }
+.ac .ac-fade { background: linear-gradient(90deg, var(--ac-bg) 0%, transparent 45%), linear-gradient(0deg, var(--ac-bg) 0%, transparent 40%); }
+.ac .ac-fade[data-edge="all"] { background: radial-gradient(ellipse at 60% 45%, transparent 35%, var(--ac-bg) 90%); }
+.ac .ac-fade[data-edge="bottom"] { background: linear-gradient(0deg, var(--ac-bg) 20%, transparent 65%); }
+@media (max-width: 900px) {
+  .ac .ac-fade[data-edge="stack"] { background: linear-gradient(0deg, var(--ac-bg) 28%, transparent 62%); }
+}
+.ac .ac-halo { filter: blur(28px); opacity: 0.55; mix-blend-mode: screen; }
+.ac .ac-ghost-echo { filter: blur(0.6px); }
+.ac .ac-orn { position: absolute; pointer-events: none; color: var(--ac-white); overflow: visible; }
+.ac .ac-orn[data-ink="dim"] { color: var(--ac-muted); }
+.ac .ac-orn[data-ink="faint"] { color: var(--ac-control); }
+.ac .ac-orn[data-glow] { filter: drop-shadow(0 0 3px rgb(255 255 255 / 0.7)); }
+.ac[data-ac-tint="cold"], .ac [data-ac-tint="cold"] {
+  --ac-bg: #04070b;
+  --ac-surface: #0c1014;
+  --ac-selected: #151a1f;
+  --ac-rule: #262c32;
+  --ac-muted: #8c949c;
+  --ac-text: #b4bcc4;
+  --ac-strong: #e6edf3;
+  --ac-white: #f2f7fb;
+  --ac-art-ink: #1f252b;
+  background: var(--ac-bg);
+  color: var(--ac-text);
+}
+@media (forced-colors: active) {
+  .ac .ac-layer, .ac .ac-orn, .ac .ac-ghost-echo, .ac .ac-halo { display: none !important; }
+}

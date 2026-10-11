@@ -1,0 +1,46 @@
+{
+  "source": "examples\\web\\assets\\sample-light-map.png",
+  "source_sha256": "73eaaf203f8de5fd28cb0030ce24d2f80dc9fb1cbdd202d0ac24206311a5cee3",
+  "crop": null,
+  "output": "examples\\web\\assets\\sample-whitewash.png",
+  "mode": "whitewash",
+  "grid": [
+    768,
+    768
+  ],
+  "seed": 3,
+  "levels": {
+    "black": 28,
+    "white": 110,
+    "gamma": 1.0
+  },
+  "halation": {
+    "strength": 0.7,
+    "radius": 36,
+    "knee": 0.7
+  },
+  "fade": {
+    "mode": "radial",
+    "strength": 0.9
+  },
+  "scratches": 10,
+  "dust": 120,
+  "scratch_strength": 0.6,
+  "sparkles": 5,
+  "sparkle_size": 22,
+  "grain": 0.07,
+  "scanlines": {
+    "period": 3,
+    "depth": 0.2
+  },
+  "peak": 1.0,
+  "dither": "band",
+  "matrix": 8,
+  "tint": "neutral",
+  "png_mode": "L",
+  "signature": {
+    "void_share": 0.8035142686631944,
+    "white_share": 0.020819769965277776,
+    "mid_share": 0.083251953125
+  }
+}

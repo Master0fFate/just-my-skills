@@ -8,7 +8,13 @@ user's taste or the exact origin of the screenshot.
 - `SKILL(20260912-005308).md`: angelcore-design v4.0.0, 403 source lines.
 - `target-ui.png`: the user's supplied 2048 x 835 reference screenshot.
 
-The screenshot is included for this user's visual calibration. No license to
+- `look/01-butterflies.png`, `look/02-captivation.png`, `look/03-jane.webp`,
+  `look/04-poison-tearz.webp`: four cover images the user supplied on
+  2026-10-11 as references for the current meaning of angelcore. Their read is
+  in `look.md`. They are other people's artwork, so they are git-ignored and
+  never published with the repository.
+
+The screenshot and the covers are included for this user's visual calibration. No license to
 redistribute its branding, project names, or underlying artwork is asserted.
 Do not use it as a production asset. No font files are included.
 
@@ -49,6 +55,12 @@ Do not use it as a production asset. No font files are included.
   and disables a second dither during export.
 
 ## New design decisions
+
+The whitewash pipeline, its default levels, the band dither, the grain tile,
+the ornament set, the serif voice rules, the cold tint values, and the
+signature targets are new choices made from the four covers. They are not
+extracted from any cover's source files, and they do not claim to reproduce
+any artist's process.
 
 The exact token values, layout ranges, image-ink value, density scale, component
 rules, default Bayer matrix, and review rubric are new choices made for this

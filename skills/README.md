@@ -9,7 +9,7 @@ planning, audit, and polish loops on every task.
 | Skill | Use it for | Not its job |
 | --- | --- | --- |
 | [adaptive-orchestrator](adaptive-orchestrator/SKILL.md) | Coordinate useful independent workers, integrate evidence, verify results | Add a team to simple work or replace the task owner |
-| [angelcore-design](angelcore-design/SKILL.md) | The specific hard-edged monochrome style, terminal rules, source-driven dither | Generic dark UI or a mandatory mascot/layout |
+| [angelcore-design](angelcore-design/SKILL.md) | Hard-edged monochrome UI with whitewashed light, ornaments, serif voice, dither, and terminal rules | Pastel angelcore, generic dark UI, or a mandatory mascot/layout |
 | [calibrate-how-we-work](calibrate-how-we-work/SKILL.md) | Explicit interview and approved durable collaboration profile | Ordinary task questions or unsolicited profiling |
 | [explain](explain/SKILL.md) | Beginner explanations and useful visual HTML artifacts | Forced insults, mandatory files, or media-generation substitutes |
 | [planner-omega](planner-omega/SKILL.md) | Executable plans, brainstorm convergence, prompt specifications | Endless clarification or implementation without permission |

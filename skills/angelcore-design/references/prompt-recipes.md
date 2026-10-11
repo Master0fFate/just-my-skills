@@ -48,13 +48,26 @@ reduce ambiguity; it cannot guarantee a model's output quality.
 > narrow case. Do not claim interactivity unless input, resize, and clean exit
 > are implemented. Remove art before useful information.
 
+## A hero, cover, or release page
+
+> Use angelcore-design in reference-monochrome mode with the whitewash light.
+> Build the page as a normal website: navigation, sections, a real heading.
+> Put one `.ac-stage` at the top with the supplied source whitewashed by
+> `tools/whitewash.py` (record the seed and the signature numbers), a
+> ground-colored fade behind the copy, one tracked serif display title that
+> crosses into the light, a short voice list, a micro line, and three to five
+> thin ornaments with one cropped by the edge. Keep every control below the
+> stage in mono with square corners and no cages. Neutral tint unless I say
+> cold. Test 1440, 768, and 390 widths and the page with the stage removed.
+
 ## A source image
 
-> Keep this exact source subject. Crop for the output size. Build a grayscale
-> map, adjust shadows and highlights, then apply fixed ordered dithering once.
-> Do not put dots over an unchanged photo. Use literal black/white output for
-> strict-binary mode, or two dim neutral inks for ambient reference mode.
-> Show the output at its final size and record the source and conversion values.
+> Keep this exact source subject. Crop for the output size. For hero or
+> ambient art, run `tools/whitewash.py`: crush to clipped white, halo, edge
+> fade, seeded grain and scratches, band dither. For terminal or strict binary,
+> run `tools/ascii_dither.py` once with a fixed matrix. Do not put dots or noise
+> over an unchanged photo. Show the output at its final size and record the
+> seed, source hash, and signature numbers.
 
 ## Continue an existing build
 

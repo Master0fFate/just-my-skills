@@ -31,10 +31,10 @@ if (page === "workspace") {
   const projects = ["field-notes", "mono-kit", "archive-site", "audio-index", "local-tools", "image-study", "release-notes", "project-with-a-long-descriptive-name"];
   const files = {
     "index.html": '<main class="ac">\n  <h1>Field notes</h1>\n  <button type="button">[open]</button>\n</main>',
-    "styles.css": '.ac {\n  --ac-bg: #090909;\n  --ac-text: #b8b8b8;\n  border-radius: 0;\n}',
+    "styles.css": '.ac {\n  --ac-bg: #050505;\n  --ac-text: #b8b8b8;\n  border-radius: 0;\n}',
     "app.js": '// Sample source only.\nconst state = { view: "notes" };\n\nfunction selectView(view) {\n  state.view = view;\n}',
     "notes.md": '# Working notes\n\nKeep the frame quiet.\nKeep the task clear.\nRemove art during dense work.',
-    "tokens.json": '{\n  "background": "#090909",\n  "text": "#b8b8b8",\n  "cornerRadius": 0\n}',
+    "tokens.json": '{\n  "background": "#050505",\n  "text": "#b8b8b8",\n  "cornerRadius": 0\n}',
     ".gitignore": 'node_modules/\n.cache/\ndist/'
   };
   let current = projects[0];
@@ -215,5 +215,18 @@ if (page === "components") {
   $("add-record").addEventListener("click", () => {
     $("added-record").hidden = false; $("added-record").textContent = "[ok] One record added to this local example.";
     $("add-record").disabled = true;
+  });
+}
+
+if (page === "release") {
+  const status = $("tint-status");
+  $("tint-form").addEventListener("change", (event) => {
+    if (event.target.name === "tint") {
+      document.body.dataset.acTint = event.target.value;
+      status.textContent = `[ok] ${event.target.value} tint applied to this page only.`;
+    } else if (event.target.id === "layers-on") {
+      for (const layer of document.querySelectorAll(".ac-grain, .ac-scan")) layer.hidden = !event.target.checked;
+      status.textContent = event.target.checked ? "[ok] Grain and scanlines shown." : "[ok] Grain and scanlines hidden. The layout did not move.";
+    }
   });
 }

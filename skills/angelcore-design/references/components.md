@@ -72,6 +72,19 @@ a floating pill. Preserve multiline input. For chat, Enter-to-send must not
 break IME composition or remove a way to insert a newline. Do not create a fake
 AI reply; a local preview must say it is local and does not call a model.
 
+## Stage, display title, and ornaments
+
+A hero stage is a section, not a control. It holds one art image, ground-
+colored and texture layers, up to five ornaments, and a copy block with one
+display title, an optional voice list, and a micro line. The title may carry
+one ghost echo. The art, layers, and ornaments are `aria-hidden`. The copy is
+normal HTML with a real heading. Nothing interactive sits inside the stage
+except ordinary links in the copy. Remove the stage and the page below must
+still work.
+
+Fieldsets have no border. A legend is a kicker. Radio and checkbox rows use the
+same `ac-checkbox` row as elsewhere.
+
 ## Dialog and command menu
 
 A dialog may have one full square `--ac-rule` outline because it left the page

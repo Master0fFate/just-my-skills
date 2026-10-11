@@ -1,5 +1,26 @@
 # Change record
 
+## 6.0.0 / 2026-10-11
+
+Rebuilt the look around four user-supplied covers. The ground is now `#050505`
+and the other neutral tokens moved with it. Added `--ac-white` and a serif
+voice: display title, voice list, micro line, vertical word, one ghost echo.
+Added `tools/whitewash.py`, a seeded light pipeline with crush, halation, edge
+fade, scratches, dust, sparkles, band dither, grain, scanlines, peak, and cold
+tint, plus a grain tile mode and a JSON report with signature numbers. Added
+`assets/angelcore-art.css` for the stage, layers, ornaments, and cold tint,
+`assets/ornaments.svg`, `assets/grain.png`, two whitewash fixtures, and a
+release-page example. Fieldsets lost their border. Wrote `references/look.md`
+and updated the other references, the rubric, the recipes, and the audit.
+The dim-dither workspace art, the ASCII tool, and the no-cage contract are
+unchanged in spirit; their values follow the darker ground.
+
+Band dither no longer snaps tones above the band to solid white. Inside the
+band it switches between the band edges, so gradients that cross the edge do
+not leave a contour. Found on real photos while building the Angelify
+example, which now ships in `examples/angelify/`. The cover references are
+git-ignored.
+
 ## 5.1.0 / 2026-09-13
 
 Added a hard no-cage contract. `--ac-control` is no longer a default 4-sided
