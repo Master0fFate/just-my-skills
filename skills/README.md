@@ -1,6 +1,6 @@
 # Skill pack
 
-Eight primary skills. Eight on-demand Sexyness playbooks. One owner per job.
+Ten primary skills. Eight on-demand Sexyness playbooks. One owner per job.
 Use the smallest route that produces the requested result; do not stack general
 planning, audit, and polish loops on every task.
 
@@ -11,11 +11,13 @@ planning, audit, and polish loops on every task.
 | [adaptive-orchestrator](adaptive-orchestrator/SKILL.md) | Coordinate useful independent workers, integrate evidence, verify results | Add a team to simple work or replace the task owner |
 | [angelcore-design](angelcore-design/SKILL.md) | Hard-edged monochrome UI with whitewashed light, ornaments, serif voice, dither, and terminal rules | Pastel angelcore, generic dark UI, or a mandatory mascot/layout |
 | [calibrate-how-we-work](calibrate-how-we-work/SKILL.md) | Explicit interview and approved durable collaboration profile | Ordinary task questions or unsolicited profiling |
+| [deep-work](deep-work/SKILL.md) | Explicitly requested high-effort work: three candidate attempts, three challenge reviews, repair, and a fresh acceptance check | A default for ordinary requests or a stand-in for real verification |
 | [explain](explain/SKILL.md) | Beginner explanations and useful visual HTML artifacts | Forced insults, mandatory files, or media-generation substitutes |
 | [planner-omega](planner-omega/SKILL.md) | Executable plans, brainstorm convergence, prompt specifications | Endless clarification or implementation without permission |
 | [retrofit](retrofit/SKILL.md) | A defined old-to-new migration with compatibility and data preservation | General cleanup or purely visual polish |
 | [sexyness](sexyness/SKILL.md) | Scoped code, design, interaction, copy, architecture, and measured performance work | Broad readiness audits or a second general planning system |
 | [shipshape](shipshape/SKILL.md) | Broad audit/fix/recheck, scored assessment, refinement, process simplification | Silent edits in an audit or unsupported readiness claims |
+| [uncluttered-design](uncluttered-design/SKILL.md) | One job per frame for any visual: pages, app screens, dashboards, slides, posters, charts, diagrams | Stripping content the viewer needs or replacing a named style such as angelcore-design |
 
 ## Sexyness playbooks
 
