@@ -6,7 +6,9 @@ user's taste or the exact origin of the screenshot.
 ## User-provided sources
 
 - `SKILL(20260912-005308).md`: angelcore-design v4.0.0, 403 source lines.
-- `target-ui.png`: the user's supplied 2048 x 835 reference screenshot.
+- `target-ui.png`: a 2048 x 835 capture of Fate UI's Angelcore skin after the
+  v6 rebuild, taken 2026-10-12. It replaced the user's first reference
+  screenshot, which stays in git history.
 
 - `look/01-butterflies.png`, `look/02-captivation.png`, `look/03-jane.webp`,
   `look/04-poison-tearz.webp`: four cover images the user supplied on

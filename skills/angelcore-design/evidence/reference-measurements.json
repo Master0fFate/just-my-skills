@@ -6,63 +6,63 @@
   "top_colors": [
     {
       "rgb": [
-        9,
-        10,
-        11
+        5,
+        5,
+        5
       ],
-      "count": 1537064,
-      "fraction": 0.8988257859281437
+      "count": 1661060,
+      "fraction": 0.9713346744011976
     },
     {
       "rgb": [
-        15,
-        17,
-        19
+        41,
+        41,
+        41
       ],
-      "count": 79411,
-      "fraction": 0.04643700879491018
+      "count": 7226,
+      "fraction": 0.004225533308383234
     },
     {
       "rgb": [
-        33,
-        34,
-        34
+        14,
+        14,
+        14
       ],
-      "count": 19794,
-      "fraction": 0.011574897080838323
+      "count": 6026,
+      "fraction": 0.003523811751497006
     },
     {
       "rgb": [
-        10,
-        11,
-        12
+        238,
+        238,
+        238
       ],
-      "count": 3921,
-      "fraction": 0.0022928751871257487
+      "count": 1032,
+      "fraction": 0.0006034805389221557
     },
     {
       "rgb": [
-        11,
-        12,
-        13
+        5,
+        5,
+        147
       ],
-      "count": 2064,
-      "fraction": 0.0012069610778443114
+      "count": 578,
+      "fraction": 0.0003379958832335329
     },
     {
       "rgb": [
-        16,
-        16,
-        16
+        178,
+        108,
+        5
       ],
-      "count": 2023,
-      "fraction": 0.0011829855913173652
+      "count": 551,
+      "fraction": 0.0003222071482035928
     }
   ],
-  "channel_mean_lte_24_fraction": 0.9679453592814371,
+  "channel_mean_lte_24_fraction": 0.9774694751122754,
   "observed_vertical_boundaries_x": [
-    291,
-    1607
+    266,
+    1712
   ],
   "scope": "Pixel measurements of one screenshot. Not CSS or a full UI audit."
 }

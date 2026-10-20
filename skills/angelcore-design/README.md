@@ -36,7 +36,7 @@ the reference, helper code, state contracts, and repeatable tests.
 | `references/look.md` | The designer's read of the four cover references: eight properties, measured signature, per-cover notes. |
 | `references/look/` | User-supplied cover references. Local only and git-ignored, because the covers are other people's artwork. Never product assets. |
 | `references/reference-audit.md` | What the supplied files support, gaps in v4, and limits. |
-| `references/target-ui.png` | User-supplied visual reference only. Never use it as a product background. |
+| `references/target-ui.png` | Capture of the Fate UI Angelcore skin. Visual reference only. Never use it as a product background. |
 | `references/tokens.json` | Neutral palette, geometry, type, and spacing values. |
 | `references/visual-system.md` | Relationships that carry the style across layouts. |
 | `references/no-cages.md` | Hard ban on 4-sided mid-gray field/button cages and native white bevels. |

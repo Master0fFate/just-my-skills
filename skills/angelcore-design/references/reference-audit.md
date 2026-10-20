@@ -2,46 +2,49 @@
 
 ## Basis and limits
 
-Reviewed: the user's complete 403-line `angelcore-design` v4.0.0 file and the
-supplied 2048 by 835 PNG screenshot. The original CSS, source photo, font files,
-renderer, and the later poor result were not supplied. This is a static image
-review, not a review of the original app's code or behavior.
+The current `target-ui.png` is a 2048 by 835 capture of Fate UI's Angelcore
+skin, taken on 2026-10-12 after the skin was rebuilt on the v6 tokens. It
+replaced the user's first reference screenshot, which stays in git history.
+The capture uses the real renderer, a fake Pi runtime, and a demo project. The
+conversation, session, and file names are fixture content.
 
-The upload contains the main skill and screenshot. The five helper paths named
-at lines 384-388 were not supplied. This does not prove that they were absent
-from the user's original installation. Their actual contents could not be checked.
+The first review covered the user's 403-line `angelcore-design` v4.0.0 file and
+that first screenshot. Its CSS, source photo, font files, and renderer were not
+supplied. The sections from "Where v4 is good" on record that review.
 
 ## What the reference shows
 
-- A near-black continuous field, with almost no visual depth.
-- Square interface regions and thin vertical and horizontal separators.
-- A dense navigation rail, a much wider open work region, and a file inspector.
-- Small, mostly monospaced interface type. Bracketed actions and path-like labels.
-- Dim, regular image marks whose density follows a source-shaped figure.
-- A low composer area with simple top and bottom rules, not a floating pill.
-- White or pale labels above much dimmer image marks. Small gray levels support
-  hierarchy. The screenshot is not an exactly two-color raster.
+- One true-black field with no depth: no shadows, glass, or gradients.
+- Square regions. One hairline between rail, work region, and inspector.
+- A dense navigation rail, a wide open work region, and a file inspector.
+- Small mono interface type, bracketed actions, path-like labels, and `>` on
+  the current tab, section, and file row.
+- No cages. The task row and the composer use top and bottom rules only. Search
+  fields use one bottom rule. Buttons and chips have no resting border.
+- No ambient art. An active workspace uses image role `none`, so the frame alone
+  carries the look. Art appears only when the user supplies a permitted source.
+- Pale labels on the ground and a few gray levels for hierarchy. The capture is
+  not a two-color raster.
 
-No identity, original image source, exact font, shader, or animation can be
-established from these pixels. The marks look compatible with ordered dithering,
-but the screenshot alone does not identify the original algorithm.
+Text antialiasing adds colored subpixel fringes. They are font rendering, not
+hue tokens. Do not turn antialiasing off to remove them.
 
-## Measurements of the supplied PNG
+## Measurements of the current PNG
 
 Measurements were taken from the file, not from reconstructed CSS.
 
 | Measure | Result | Use |
 | --- | --- | --- |
 | Image size | 2048 x 835 pixels | Inspect at this size as well as at common viewports. |
-| Most common RGB value | (9, 10, 11), about 89.9% of pixels | Very dark ground dominates. |
-| Next common RGB value | (15, 17, 19), about 4.6% | Surface differences are small. |
-| Pixels with channel mean <= 24 | About 96.8% | Brightness is highly restrained in this capture. |
-| Main vertical boundaries | Near x = 291 and x = 1607 | Approximate 14 / 64 / 22 region split. |
-| Small blue/brown pixel differences | Present | A capture need not be exactly neutral; new tokens intentionally are. |
+| Most common RGB value | (5, 5, 5), about 97.1% of pixels | The `bg` token dominates. |
+| Next common RGB value | (41, 41, 41), about 0.4% | The `rule` hairline. Surfaces barely step: (14, 14, 14) is about 0.35%. |
+| Pixels with channel mean <= 24 | About 97.7% | Brightness is highly restrained in this capture. |
+| Main vertical boundaries | x = 266 and x = 1712 | About a 13 / 71 / 16 region split. |
+| Blue and brown pixels | About 0.07% | Subpixel text fringes only; every token is neutral. |
 
-Do not make 96.8% darkness a release rule. More content, larger text, active work,
-and accessible controls change pixel distribution. Do not copy tiny captured text
-sizes. The screenshot's device scale and source font sizes are unknown.
+Do not make 97.7% darkness a release rule. More content, larger text, active work,
+and accessible controls change pixel distribution. The capture is at device
+scale 1. Do not copy its small text sizes at the cost of reading.
 
 The raw measurement output is in `../evidence/reference-measurements.json`.
 
