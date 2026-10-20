@@ -28,6 +28,9 @@ Fewer lines, files, or branches do not by themselves prove better performance.
 
 - Delete unnecessary work and duplicate operations first.
 - Fix algorithms, data structures, query shape, I/O, and allocation pressure.
+- Shrink the n in O(n) as much as possible. Filter, paginate, index, or
+  short-circuit so each pass touches only the items it needs, and prefer one
+  pass over several even when the bound stays linear.
 - Use batching, indexes, lazy work, streaming, or bounded concurrency only when
   they address the measured constraint.
 - Cache only with a key, invalidation policy, capacity limit, and failure behavior.
