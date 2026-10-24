@@ -85,11 +85,10 @@ if (page === "workspace") {
   function renderNotes() {
     const items = notes.get(current);
     $("local-log").replaceChildren();
-    $("note-count").textContent = `${items.length} local note${items.length === 1 ? "" : "s"}`;
+    $("note-count").textContent = `${items.length} note${items.length === 1 ? "" : "s"}`;
     $("work-empty").hidden = items.length > 0;
     $("local-log").hidden = items.length === 0;
     $("art-wrap").hidden = !showArt || items.length > 0;
-    $("fixture-credit").hidden = !showArt || items.length > 0;
     for (const [index, text] of items.entries()) {
       const item = document.createElement("article"); item.className = "log-entry";
       const label = document.createElement("h2"); label.className = "ac-meta"; label.textContent = `NOTE / ${String(index + 1).padStart(2, "0")}`;
@@ -129,12 +128,12 @@ if (page === "workspace") {
     }
     $("note-input").removeAttribute("aria-invalid");
     notes.get(current).push(text); $("note-input").value = ""; renderNotes();
-    $("note-status").textContent = "Local note added. It is not saved to a server.";
+    $("note-status").textContent = "Note added.";
     $("note-input").focus();
   });
   $("clear-notes").addEventListener("click", () => {
     notes.set(current, []); renderNotes();
-    $("note-status").textContent = "Notes cleared from this local example.";
+    $("note-status").textContent = "Notes cleared.";
   });
   $("open-settings").addEventListener("click", () => { $("art-enabled").checked = showArt; $("settings-dialog").showModal(); });
   $("cancel-settings").addEventListener("click", () => $("settings-dialog").close());
@@ -167,7 +166,7 @@ if (page === "archive") {
       article.append(number, content, label); $("archive-list").append(article);
     }
     $("archive-empty").hidden = matches.length > 0;
-    $("archive-count").textContent = `${matches.length} entr${matches.length === 1 ? "y" : "ies"} / local sample content`;
+    $("archive-count").textContent = `${matches.length} note${matches.length === 1 ? "" : "s"}`;
   }
   $("archive-search").addEventListener("input", renderArchive);
   $("archive-type").addEventListener("change", renderArchive);
@@ -175,7 +174,7 @@ if (page === "archive") {
   $("subscribe-form").addEventListener("submit", (event) => {
     event.preventDefault();
     const valid = $("email").checkValidity();
-    $("email-message").textContent = valid ? "[ok] Address format accepted locally. No subscription was created." : "[!] Enter a valid email address. Nothing was sent.";
+    $("email-message").textContent = valid ? "[ok] Subscribed. Sample form, nothing was sent." : "[!] Enter a valid email address.";
     if (valid) $("email").removeAttribute("aria-invalid");
     else { $("email").setAttribute("aria-invalid", "true"); $("email").focus(); }
   });
@@ -198,7 +197,7 @@ if (page === "components") {
     }
   }
   for (const item of document.querySelectorAll("[data-record]")) item.addEventListener("click", () => { selected = Number(item.dataset.record); renderRecord(); });
-  $("apply-example").addEventListener("click", () => { $("action-status").textContent = "[ok] Applied to this local example. No server was called."; });
+  $("apply-example").addEventListener("click", () => { $("action-status").textContent = "[ok] Applied."; });
   $("open-dialog").addEventListener("click", () => $("example-dialog").showModal());
   $("control-form").addEventListener("submit", (event) => {
     event.preventDefault();
@@ -209,24 +208,25 @@ if (page === "components") {
       $("project-name").setAttribute("aria-invalid", "true"); $("project-name").focus();
     } else {
       $("project-name").removeAttribute("aria-invalid"); renderRecord();
-      $("action-status").textContent = "[ok] Local preview updated.";
+      $("action-status").textContent = "[ok] Preview updated.";
     }
   });
   $("add-record").addEventListener("click", () => {
-    $("added-record").hidden = false; $("added-record").textContent = "[ok] One record added to this local example.";
+    $("added-record").hidden = false; $("added-record").textContent = "[ok] Record added.";
     $("add-record").disabled = true;
   });
 }
 
 if (page === "release") {
-  const status = $("tint-status");
-  $("tint-form").addEventListener("change", (event) => {
-    if (event.target.name === "tint") {
-      document.body.dataset.acTint = event.target.value;
-      status.textContent = `[ok] ${event.target.value} tint applied to this page only.`;
-    } else if (event.target.id === "layers-on") {
-      for (const layer of document.querySelectorAll(".ac-grain, .ac-scan")) layer.hidden = !event.target.checked;
-      status.textContent = event.target.checked ? "[ok] Grain and scanlines shown." : "[ok] Grain and scanlines hidden. The layout did not move.";
-    }
+  $("tint-toggle").addEventListener("click", () => {
+    const cold = document.body.dataset.acTint !== "cold";
+    document.body.dataset.acTint = cold ? "cold" : "neutral";
+    $("tint-toggle").setAttribute("aria-pressed", String(cold));
+    $("release-art").src = $("release-art").dataset[cold ? "cold" : "neutral"];
+  });
+  $("reserve-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const format = new FormData(event.target).get("format");
+    $("reserve-status").textContent = `[ok] ${format} reserved in this page. Nothing was sold.`;
   });
 }

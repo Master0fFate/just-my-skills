@@ -1,5 +1,15 @@
 # Change record
 
+## 6.2.0 / 2026-10-24
+
+Added a one-job-per-frame section taken from uncluttered design: one primary
+action per frame, each fact once, labels instead of sentences, honesty markers
+once per view, and the atmosphere kit treated as a budget. Rewrote the web
+examples to match. The workspace idle art and the release cover now come from
+locally generated images instead of the synthetic renderer fixture, the
+release page is a real release with formats and one action, and the
+explainer copy is gone from every page.
+
 ## 6.1.0 / 2026-10-24
 
 Aligned the skill with the Angel Core 2026 write-up. Light and dark are now

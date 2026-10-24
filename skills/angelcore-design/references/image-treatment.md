@@ -75,6 +75,11 @@ A binary raster assigns one of two values to each pixel. An ASCII image assigns
 one of several glyphs to each cell. Both can create a tone impression through
 coverage, but they are not the same representation.
 
+The web examples use `idle-profile.png`, a two-ink dither of a generated
+profile, and `release-halo-neutral.webp` and `release-halo-cold.webp`, a carved
+whitewash with a 0.12 residue in the eyes. The renderer fixtures below are
+separate and exist for the tests.
+
 This bundle has three dither artifacts and two whitewash artifacts
 (`sample-whitewash.png`, `sample-whitewash-ambient.png`, with their JSON
 reports beside them):

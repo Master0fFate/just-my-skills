@@ -1,4 +1,4 @@
-# angelcore-design / v6.1.0
+# angelcore-design / v6.2.0
 
 A reusable skill for the user's angelcore look: a hard-edged near-black
 interface with whitewashed light. The frame is square, mono, thin-ruled, and
@@ -75,21 +75,20 @@ links to the website and component examples. Serving the folder is preferred to
 opening files directly. Nothing in these demos sends data to a service.
 
 Workspace: project and file filters, selection, sample-file preview, local notes,
-secondary-panel controls, settings, and an idle-only image.
-Website: native reading layout, filters, note disclosure, and a local email-format
-check. No subscription is created.
+secondary-panel controls, settings, and an idle-only two-ink dither of a profile.
+Website: native reading layout, filters, note disclosure, and an email form that
+sends nothing.
 Components: action feedback, disabled control, form error, select, checkbox,
 record selection, a native dialog, a table, and a working empty-state action.
-Release: a hero stage with the whitewashed fixture, fade, grain and scanline
-layers, five ornaments, a tracked serif title with a ghost echo, a voice list,
-a local tint and layer control, and a ruled track table.
-Loading and failure samples are explicitly labeled display examples, not active
-backend operations.
+Release: a cover stage with a carved, whitewashed portrait and a washed residue
+in the eyes, a tracked serif title with a ghost echo, the tracklist as the voice
+list, three ornaments, a cold tint toggle, and a format picker with one primary
+action. Every page follows the one-job-per-frame rules in `SKILL.md`.
 
 All notes and settings are memory-only and reset when the page reloads. The
-synthetic folded-surface image is a renderer test fixture, not a photograph or a
-recommended default illustration. The website and component pages use no image. The release page uses the
-whitewashed fixture and the grain tile.
+website and component pages use no image. The workspace and release art comes
+from images generated locally with Qwen Image 2.1. The synthetic folded-surface
+image and its derived samples are renderer test fixtures only.
 
 ## Run the terminal example
 
@@ -170,7 +169,8 @@ received them. `references/look.md` holds the written read, which is enough
 to apply the look without the images.
 
 `examples/angelify/angelify.html` embeds two images generated locally with
-Qwen Image 2.1 and processed with `tools/whitewash.py`. No artist or work was
+Qwen Image 2.1 and processed with `tools/whitewash.py`. The web examples'
+`idle-profile.png` and `release-halo-*.webp` come from the same local model. No artist or work was
 named in the prompts. The model is under the Qwen Research License; check it
 before commercial use. The page loads two Google Fonts from their CDN and
 bundles no font files.

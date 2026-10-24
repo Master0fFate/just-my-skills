@@ -2,59 +2,50 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Still light / release example</title>
+  <title>Still Light / release example</title>
   <link rel="stylesheet" href="../../assets/angelcore.css"><link rel="stylesheet" href="../../assets/angelcore-art.css"><link rel="stylesheet" href="demo.css">
 </head>
 <body class="ac" data-demo="release">
-<a class="ac-action ac-skip" href="#tracks">Skip to tracks</a>
+<a class="ac-action ac-skip" href="#formats">Skip to formats</a>
 <div class="page-shell">
-  <header class="page-top ac-row ac-between"><div class="brand"><span class="brand-mark" aria-hidden="true">f</span><span class="brand-name">release / 003</span></div><nav aria-label="Examples"><a class="ac-action" href="index.html">Workspace</a><a class="ac-action" href="archive.html">Website</a><a class="ac-action" href="components.html">Controls</a><a class="ac-action" aria-current="page" href="release.html">&gt; Release</a></nav></header>
+  <header class="page-top ac-row ac-between"><div class="brand"><span class="brand-mark" aria-hidden="true">f</span><span class="brand-name">release / 003</span></div><nav aria-label="Examples"><a class="ac-action" href="index.html">Workspace</a><a class="ac-action" href="archive.html">Website</a><a class="ac-action" href="components.html">Controls</a><a class="ac-action" aria-current="page" href="release.html">&gt; Release</a><button type="button" id="tint-toggle" aria-pressed="false">[cold]</button></nav></header>
   <main>
     <section class="release-hero ac-stage" aria-labelledby="release-title">
-      <img class="ac-art release-art" data-light="soft" src="assets/sample-whitewash.png" width="768" height="768" alt="">
-      <div class="ac-layer ac-fade" data-edge="stack" aria-hidden="true"></div>
-      <div class="ac-layer ac-scan" aria-hidden="true"></div>
+      <img class="ac-art release-art" data-light="soft" id="release-art" src="assets/release-halo-neutral.webp" data-neutral="assets/release-halo-neutral.webp" data-cold="assets/release-halo-cold.webp" width="1024" height="1024" alt="">
+      <div class="ac-layer ac-fade release-fade-wide" aria-hidden="true"></div>
+      <div class="ac-layer ac-fade release-fade-narrow" data-edge="bottom" aria-hidden="true"></div>
       <div class="ac-layer ac-grain" aria-hidden="true"></div>
       <svg class="ac-orn orn-cross" aria-hidden="true"><use href="../../assets/ornaments.svg#orn-cross"/></svg>
       <svg class="ac-orn orn-sigil" data-ink="faint" aria-hidden="true"><use href="../../assets/ornaments.svg#orn-sigil"/></svg>
       <svg class="ac-orn orn-sparkle-a" data-glow aria-hidden="true"><use href="../../assets/ornaments.svg#orn-sparkle"/></svg>
-      <svg class="ac-orn orn-sparkle-b" aria-hidden="true"><use href="../../assets/ornaments.svg#orn-sparkle"/></svg>
-      <svg class="ac-orn orn-filigree" data-ink="faint" aria-hidden="true"><use href="../../assets/ornaments.svg#orn-filigree"/></svg>
-      <p class="ac-vertical ac-voice release-side" aria-hidden="true">still light</p>
       <div class="release-copy">
-        <p class="ac-micro">Release / 003 · local sample</p>
-        <h1 class="ac-display ac-ghost" id="release-title">Still light<span class="ac-ghost-echo" aria-hidden="true">Still light</span></h1>
+        <p class="ac-micro">LP · 6 tracks · 24 Oct 2026</p>
+        <h1 class="ac-display ac-ghost" id="release-title">Still Light<span class="ac-ghost-echo" aria-hidden="true">Still Light</span></h1>
         <ol class="ac-tracklist" aria-label="Tracks">
-          <li><span class="n">01</span>Halation</li>
-          <li><span class="n">02</span>Scratched film</li>
-          <li><span class="n">03</span>Cold tint</li>
-          <li><span class="n">04</span>Edge loss</li>
+          <li><span class="n">01</span>Broken halo</li>
+          <li><span class="n">02</span>White noise psalm</li>
+          <li><span class="n">03</span>Under the void</li>
+          <li><span class="n">04</span>Feather weight</li>
+          <li><span class="n">05</span>Saint of static</li>
+          <li><span class="n">06</span>Afterglow</li>
         </ol>
-        <p class="ac-micro release-credit">Fate UI · 2026 · synthetic fixture, not a photograph</p>
+        <a class="ac-action release-jump" href="#formats">[reserve a copy]</a>
       </div>
     </section>
-    <section class="page-section" aria-labelledby="notes-title">
-      <div class="section-top ac-row ac-between"><h2 id="notes-title">Notes</h2><p class="ac-meta">website transfer / light layer</p></div>
-      <div class="release-grid">
-        <div class="reading"><p>The frame stays hard. The light stays soft. The image is blown to white, haloed, grained, and dissolved into the ground before it reaches the page. The controls below it get none of that.</p><p class="ac-muted">Grain, scanlines, and the edge fade are separate layers on the stage. Remove them and the layout does not move.</p></div>
-        <form id="tint-form" class="release-form">
-          <fieldset class="ac-field"><legend class="ac-kicker">Tint</legend><label class="ac-checkbox"><input type="radio" name="tint" value="neutral" checked>Neutral</label><label class="ac-checkbox"><input type="radio" name="tint" value="cold">Cold</label></fieldset>
-          <label class="ac-checkbox"><input type="checkbox" id="layers-on" checked>Show grain and scanlines</label>
-          <p class="ac-help" id="tint-status" role="status">Local preview only. Nothing is saved.</p>
-        </form>
-      </div>
-    </section>
-    <section class="page-section" id="tracks" aria-labelledby="tracks-title">
-      <div class="section-top ac-row ac-between"><h2 id="tracks-title">Tracks</h2><p class="ac-meta">4 tracks / 18:42 / sample data</p></div>
-      <div class="ac-table-wrap" tabindex="0" aria-label="Track table"><table><thead><tr><th scope="col">No</th><th scope="col">Track</th><th scope="col">Note</th><th scope="col" class="numeric">Length</th></tr></thead><tbody>
-        <tr><td>01</td><td>Halation</td><td>Clipped white, blurred, screened back</td><td class="numeric">4:12</td></tr>
-        <tr><td>02</td><td>Scratched film</td><td>Ten seeded lines, one pass</td><td class="numeric">5:03</td></tr>
-        <tr><td>03</td><td>Cold tint</td><td>Blue in the void, cyan in the white</td><td class="numeric">3:58</td></tr>
-        <tr><td>04</td><td>Edge loss</td><td>Radial fade baked before dither</td><td class="numeric">5:29</td></tr>
-      </tbody></table></div>
+    <section class="page-section" id="formats" aria-labelledby="formats-title">
+      <div class="section-top ac-row ac-between"><h2 id="formats-title">Formats</h2><p class="ac-meta">ships 24 Oct</p></div>
+      <form id="reserve-form" class="formats" novalidate>
+        <fieldset>
+          <legend class="ac-sr-only">Format</legend>
+          <label class="format"><input type="radio" name="format" value="Vinyl" checked><span>Vinyl 12"</span><span class="ac-muted">180 g, black</span><span class="price">€32</span></label>
+          <label class="format"><input type="radio" name="format" value="CD"><span>CD</span><span class="ac-muted">gatefold</span><span class="price">€16</span></label>
+          <label class="format"><input type="radio" name="format" value="Digital"><span>Digital</span><span class="ac-muted">FLAC and MP3</span><span class="price">€9</span></label>
+        </fieldset>
+        <div class="ac-row ac-between ac-wrap reserve-row"><p class="ac-help" id="reserve-status" role="status">Sample release. Nothing is sold.</p><button type="submit" data-primary>Reserve</button></div>
+      </form>
     </section>
   </main>
-  <footer class="page-footer ac-row ac-between ac-wrap"><span class="ac-micro">All sample content · no audio · no account</span><a class="ac-action" href="../../references/look.md">[read the look]</a></footer>
+  <footer class="page-footer ac-row ac-between ac-wrap"><span class="ac-micro">release / 003 · names invented</span><a class="ac-action" href="../../references/look.md">[the look]</a></footer>
 </div>
 <script src="demo.js" defer></script>
 </body></html>

@@ -13,7 +13,7 @@ description: >-
   source-driven dither. Not pastel or cherub angelcore, not a generic dark
   dashboard, not neon, not rounded cards, not a fixed mascot.
 metadata:
-  version: "6.1.0"
+  version: "6.2.0"
   scope: "interface-first; covers, hero art, and cross-medium rules included"
   default-profile: "reference-monochrome"
   default-light: "whitewash for hero and ambient art; dither for terminal and strict binary"
@@ -302,6 +302,32 @@ A modal may have one square outline because it left the page.
 Keep empty space where it gives the main work room. Do not use an empty hero
 to hide a lack of usable content.
 
+### One job per frame
+
+Borrowed from uncluttered design and kept inside the look. A frame is a hero,
+a section, or one screen. Each one lands one point or gets one action taken.
+
+- Decide the job and its primary element before markup. A hero is the title,
+  one plain line that says what this is, and one primary action. The art
+  carries the mood, so the words do not have to.
+- One filled primary action per frame. Every other action is a bracketed link.
+- Each fact once. A tracklist in the hero is not repeated as a table below it,
+  and the brand name is not repeated in the footer.
+- Labels, not sentences. No helper text under a field, no subtitle under a
+  screen title, no paragraph that explains the layout or the effects. If it
+  needs explaining, fix the thing.
+- Honesty stays, once per view. One `[local]` or `sample` marker where the
+  person acts, not a disclaimer beside every control.
+- The atmosphere kit is a budget, not a checklist. The micro line, voice list,
+  vertical word, ghost echo, and each ornament earn their place or go. Drop
+  whichever repeats the title.
+- An empty state is one line and its action.
+- Do not strip it bare. A stranger still needs to know what this is, what each
+  control does, and what state it is in.
+
+After the render, run a delete pass: count jobs, primary actions, brand marks,
+and repeats in each frame. Cut what neither does the job nor orients the viewer.
+
 ## 10. ASCII and terminal rules
 
 Interface marks use printable ASCII: `> selected`, `[ok]`, `[!]`, `[ ]`,
@@ -327,7 +353,7 @@ Read `references/components.md`. Minimum:
 - Selection, focus, disabled, loading, empty, success, and error stay in the
   same visual system. No color to repair unclear state.
 - Search, toggles, menus, and submit actions do what they say. Label local-only
-  behavior and sample data. Never imply a backend, save, upload, or AI reply
+  behavior and sample data once per view, where the person acts. Never imply a backend, save, upload, or AI reply
   that did not occur.
 - Errors sit beside the field with `[!]` and useful text. Keep entered data.
 - Web: semantic HTML, logical order, visible focus, keyboard access. Decorative
@@ -395,6 +421,9 @@ Do not ship while an applicable hard failure remains:
 - Serif used for interface text, or a second ghost echo, or a tinted widget
   inside a neutral view.
 - Art reused as a required mascot or copied from a reference subject.
+- Explanatory prose in the interface, a disclaimer repeated beside each
+  control, a fact said twice in one frame, or two filled primary actions in
+  one frame.
 - Missing focus, clipped labels, broken controls, or a nonfunctional small
   layout.
 - A claimed binary asset with intermediate values. A missing helper file.

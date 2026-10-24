@@ -45,7 +45,8 @@ def audit(root: Path = ROOT, require_reference: bool = False) -> dict:
                 "tests/test_tokens.py", "examples/web/assets/sample-light-map.png",
                 "examples/web/assets/sample-1bit.png", "examples/web/assets/sample-ambient.png",
                 "examples/web/assets/sample-ascii.txt", "examples/web/assets/sample-whitewash.png",
-                "examples/web/assets/sample-whitewash-ambient.png"]
+                "examples/web/assets/sample-whitewash-ambient.png", "examples/web/assets/idle-profile.png",
+                "examples/web/assets/release-halo-neutral.webp", "examples/web/assets/release-halo-cold.webp"]
     if require_reference:
         required.append("references/target-ui.png")
     missing = [path for path in required if not (root / path).is_file()]
