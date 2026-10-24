@@ -5,10 +5,10 @@
 Aligned the skill with the Angel Core 2026 write-up. Light and dark are now
 described as opposing forces. Added two properties to the look: carving, a
 hard key light that leaves one side white and the other in the void, and
-relic, one selective hue that survives in the art. `whitewash.py` gained
-`--key` and `--relic`, and its report adds `relic_share`. Relic presets
-(`crimson`, `venom`, `gold`) and a relic ornament ink live in the light layer;
-chrome stays neutral. Iconography is now allowed in hero, cover, and brand art
+duotone, two inks with color off by default. `whitewash.py` gained `--key` and
+`--residue`, which leaves at most a washed trace of one source hue, and its
+report adds `residue_share`. There are no color tokens; chrome and ornaments
+stay two-ink. Iconography is now allowed in hero, cover, and brand art
 when no subject is supplied, one motif per piece, and a broken halo joined the
 ornaments. Removed two comments that broke the house no-comment rule.
 

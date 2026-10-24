@@ -27,7 +27,7 @@ For the light layer, reject: a hero asset without clipped white or edge loss;
 grain, blur, or tracking on readable text; bloom or glow on a control; more
 than five ornaments, none cropped, or ornaments on controls; serif used for
 interface text; a second ghost echo; a tinted widget inside a neutral view;
-an unrecorded seed; more than one relic hue or relic color on chrome; angel
+an unrecorded seed; any vivid color, or any color outside raster art; angel
 iconography added to functional UI; evenly lit art with no carving.
 
 A user's explicit requirement can override a style default. Record that override;
@@ -46,7 +46,7 @@ Use 0 for absent, half credit for inconsistent, and full credit for consistent.
 | Type and density | 15 | Compact tool rhythm; readable website copy; native terminal scale. |
 | Layout and boundaries | 15 | Shared alignment, thin useful rules, no 4-sided cages on every control. |
 | Image treatment | 10 | Relevant source, correct crop, correct role; no image is full credit when appropriate. |
-| Light | 10 | Clipped white, halo, grain in the dark, edge loss, carving from one side, band dither in the transition only, signature near the covers, at most one small relic. |
+| Light | 10 | Clipped white, halo, grain in the dark, edge loss, carving from one side, band dither in the transition only, signature near the covers, duotone with at most a washed trace. |
 | Ornament and voice | 5 | Three to five thin ornaments, one cropped, none on controls; one serif title, one voice list, mono everywhere else. |
 | Components and states | 10 | Consistent selection, focus, error, empty, and loading states. |
 | Medium and narrow layout | 5 | No fake medium; useful small-screen or small-cell fallback. |

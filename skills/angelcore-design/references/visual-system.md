@@ -34,7 +34,6 @@ same values. The audit checks them together. Color roles:
 | strong | Current item, focus, important value | Avoid large unneeded white areas. |
 | white | The one clipped white: display titles, sparkles, hero light | Not for interface text; `strong` is the text ceiling. |
 | art-ink | Ambient dither marks only | Never a readable label or state indicator. |
-| relic | One selective hue in the art and at most one ornament, set by `data-ac-relic` | Text, controls, focus, state, rules, surfaces, or a second hue. |
 
 A faint separator may be acceptable when spacing and headings already explain
 the regions. An in-page field with a visible label uses a one-sided `rule`

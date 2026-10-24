@@ -19,7 +19,8 @@ TINTS = {
 }
 FADES = ("none", "radial", "left", "right", "top", "bottom")
 KEYS = ("none", "left", "right", "top", "bottom")
-RELIC_MIN_SATURATION = 0.25
+RESIDUE_SATURATION = (0.18, 0.45)
+RESIDUE_MAX = 0.25
 DITHERS = ("none", "band", "full")
 BAND = (0.12, 0.88)
 
@@ -153,20 +154,20 @@ def tint(value: np.ndarray, name: str) -> Image.Image:
     return Image.fromarray(np.round(rgb).astype(np.uint8), mode="RGB")
 
 
-def relic_mask(rgb: Image.Image, hue: float, width: float) -> tuple[np.ndarray, np.ndarray]:
+def residue_mask(rgb: Image.Image, hue: float, width: float) -> tuple[np.ndarray, np.ndarray]:
     hsv = np.asarray(rgb.convert("HSV"), dtype=np.float64) / 255
     distance = np.abs((hsv[..., 0] * 360 - hue + 180) % 360 - 180)
     near = np.clip(1 - distance / width, 0, 1)
-    vivid = np.clip((hsv[..., 1] - RELIC_MIN_SATURATION) / (1 - RELIC_MIN_SATURATION), 0, 1)
-    return blur(near * vivid, 1.2), hsv
+    low, full = RESIDUE_SATURATION
+    colored = np.clip((hsv[..., 1] - low) / (full - low), 0, 1)
+    return blur(near * colored, 1.2), hsv[..., 0]
 
 
-def relic(base: Image.Image, value: np.ndarray, mask: np.ndarray, hsv: np.ndarray) -> Image.Image:
-    lit = np.maximum(value, hsv[..., 2])
-    accent = np.asarray(Image.fromarray(np.round(np.stack([hsv[..., 0], hsv[..., 1], lit], axis=-1) * 255).astype(np.uint8),
-                                        mode="HSV").convert("RGB"), dtype=np.float64)
-    rgb = np.asarray(base.convert("RGB"), dtype=np.float64)
-    return Image.fromarray(np.round(rgb + (accent - rgb) * mask[..., None]).astype(np.uint8), mode="RGB")
+def residue(base: Image.Image, mask: np.ndarray, hue: np.ndarray, strength: float) -> Image.Image:
+    rgb = np.asarray(base.convert("RGB"), dtype=np.float64) / 255
+    washed = np.stack([hue, strength * mask, rgb.max(axis=-1)], axis=-1)
+    tinted = np.asarray(Image.fromarray(np.round(washed * 255).astype(np.uint8), mode="HSV").convert("RGB"), dtype=np.float64) / 255
+    return Image.fromarray(np.round((rgb + (tinted - rgb) * mask[..., None]) * 255).astype(np.uint8), mode="RGB")
 
 
 def whitewash(gray: np.ndarray, rng: np.random.Generator, args: argparse.Namespace) -> tuple[np.ndarray, np.ndarray]:
@@ -201,7 +202,7 @@ def signature(value: np.ndarray, mask: np.ndarray | None) -> dict:
     gray = value * 255
     return {"void_share": float((gray <= 24).mean()), "white_share": float((gray >= 230).mean()),
             "mid_share": float(((gray > 60) & (gray < 180)).mean()),
-            "relic_share": float((mask > 0.5).mean()) if mask is not None else 0.0}
+            "residue_share": float((mask > 0.5).mean()) if mask is not None else 0.0}
 
 
 def main(argv: Sequence[str] | None = None) -> int:
@@ -219,8 +220,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--gamma", type=float, default=1.0)
     parser.add_argument("--key", choices=KEYS, default="none", help="Side the light comes from; the far side falls into the void.")
     parser.add_argument("--key-strength", type=float, default=0.6)
-    parser.add_argument("--relic", type=float, help="Hue in degrees that keeps its color, for example 0 crimson, 130 green, 45 gold.")
-    parser.add_argument("--relic-width", type=float, default=22, help="Hue window in degrees around --relic.")
+    parser.add_argument("--residue", type=float, help="Hue in degrees that keeps a washed trace of its color, for example 135 for green eyes.")
+    parser.add_argument("--residue-width", type=float, default=22, help="Hue window in degrees around --residue.")
+    parser.add_argument("--residue-strength", type=float, default=0.12, help="Saturation of the trace, at most 0.25.")
     parser.add_argument("--halo", type=float, default=0.7, help="Halation strength, 0 disables.")
     parser.add_argument("--halo-radius", type=float, default=36)
     parser.add_argument("--halo-knee", type=float, default=0.7)
@@ -259,10 +261,11 @@ def main(argv: Sequence[str] | None = None) -> int:
                 raise ValueError("Source and output must be different files.")
             if not 0 < args.peak <= 1:
                 raise ValueError("Peak must be in (0, 1].")
-            if args.relic is not None and not (0 <= args.relic < 360 and 0 < args.relic_width <= 90):
-                raise ValueError("Relic hue must be in [0, 360) and its width in (0, 90].")
-            if args.relic is not None and args.dither == "full":
-                raise ValueError("A relic color cannot survive full binary dither.")
+            if args.residue is not None and not (0 <= args.residue < 360 and 0 < args.residue_width <= 90
+                                                 and 0 < args.residue_strength <= RESIDUE_MAX):
+                raise ValueError(f"Residue hue must be in [0, 360), width in (0, 90], strength in (0, {RESIDUE_MAX}].")
+            if args.residue is not None and args.dither == "full":
+                raise ValueError("A color residue cannot survive full binary dither.")
             source = load_source(args.source, args.crop)
             size = output_size(source.size, args.width, args.height)
             if size[0] * size[1] > MAX_PIXELS:
@@ -271,15 +274,16 @@ def main(argv: Sequence[str] | None = None) -> int:
             value, tone = whitewash(gray, rng, args)
             image = tint(value, args.tint)
             mask = None
-            if args.relic is not None:
+            if args.residue is not None:
                 color = load_source(args.source, args.crop, "RGB").resize(size, Image.Resampling.LANCZOS)
-                mask, hsv = relic_mask(color, args.relic, args.relic_width)
-                image = relic(image, value, mask, hsv)
+                mask, hue = residue_mask(color, args.residue, args.residue_width)
+                image = residue(image, mask, hue, args.residue_strength)
             digest = hashlib.sha256(args.source.read_bytes()).hexdigest()
             record = {"source": str(args.source), "source_sha256": digest, "crop": list(args.crop) if args.crop else None,
                       "output": str(args.output), "mode": "whitewash", "grid": list(size), "seed": args.seed,
                       "key": {"side": args.key, "strength": args.key_strength},
-                      "relic": {"hue": args.relic, "width": args.relic_width} if args.relic is not None else None,
+                      "residue": ({"hue": args.residue, "width": args.residue_width, "strength": args.residue_strength}
+                                  if args.residue is not None else None),
                       "levels": {"black": args.black, "white": args.white, "gamma": args.gamma},
                       "halation": {"strength": args.halo, "radius": args.halo_radius, "knee": args.halo_knee},
                       "fade": {"mode": args.fade, "strength": args.fade_strength},

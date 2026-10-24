@@ -5,7 +5,7 @@ description: >-
   hard-edged near-black interface with whitewashed light. Extreme chiaroscuro
   pushes subjects into clipped white and shadows into a true-black void, with
   halation, a carving key light, seeded film grain and scratches, band
-  dithering, at most one selective relic color in the art, sparse sparkle,
+  dithering, a strict duotone with at most a washed trace of color, sparse sparkle,
   cross, sigil, broken halo, and filigree ornaments, and thin tracked serif
   titles over small mono interface type. Use for websites, UI components, desktop
   tools, covers and hero art, and terminal output. Also use it for the user's
@@ -50,7 +50,7 @@ behind them. The short form:
 | Voice | Serif, thin, wide-tracked titles and a tiny tracked list. Mono for everything that works. |
 | Composition | Subject at an edge, title crosses the light, every edge is lost to the void. Cold tint is opt-in. |
 | Carving | A hard key light from one side. One side of a face or form clips white, the other falls into the void. |
-| Relic | At most one selective hue survives in the art, small and intense: green eyes, a crimson mark, a gold rim. Never in chrome. |
+| Duotone | Two inks rule: void and light. No vivid color anywhere. At most a washed trace of the source hue in the art. |
 
 **Style is not subject.** Keep the user's content. In functional UI, never add
 angels, wings, halos, or crosses because of the style name. In a hero, cover,
@@ -78,7 +78,7 @@ that missing helper files were read or run.
 
 | Profile | Use | Rule |
 | --- | --- | --- |
-| reference-monochrome | Default web, GUI, styled terminal | Near-black ground, neutral text levels, whitewash or dim dither art, no hue in chrome. Art may keep one relic hue. |
+| reference-monochrome | Default web, GUI, styled terminal | Near-black ground, neutral text levels, whitewash or dim dither art, strict duotone. Art may keep a washed color trace. |
 | strict-binary | User asks for literal black/white | Pixels are only 0 or 255. Two design inks. Antialiased text is not 1-bit. |
 | medium-native | Explicit print, cover, identity, or other non-UI task | Keep the light and contrast grammar. Choose type and structure for that medium. |
 
@@ -96,11 +96,13 @@ Tint: `neutral` by default. `cold` only when requested or when the brief is a
 cover or hero where the reference calls for it. Tint applies to the whole view
 through `data-ac-tint="cold"`, never to one widget.
 
-Relic: none by default. When the source carries one meaningful color, keep it
-with `--relic HUE` and name it on the stage with `data-ac-relic` (`crimson`,
-`venom`, or `gold`). One relic hue per view. It lives in the art and in at
-most one ornament (`data-ink="relic"`). It never colors text, controls, focus,
-state, rules, or surfaces. The chrome stays neutral even when the art bleeds.
+Duotone is the rule. Every view is two inks, void and light, with the cold tint
+as the only shift of both. Color is off by default. When a source carries one
+color worth a whisper, such as eyes, keep a washed trace with `--residue HUE`.
+The trace stays at or under 12 percent saturation by default and never above
+25 percent, keeps the duotone brightness, and reads as a cold shade of gray.
+One hue per view, in raster art only. Never a vivid color, never a CSS color,
+never on text, controls, ornaments, focus, state, rules, or surfaces.
 
 ## 3. Priority order
 
@@ -176,8 +178,8 @@ New implementation defaults, not extracted CSS. Use them as one system.
 light. Interface text uses `--ac-strong`. `--ac-art-ink` is for dim dither
 marks only. `--ac-rule` is a hairline, never text. `--ac-control` is for small
 marks, never a border. Cold tint values are in `references/tokens.json` and in
-`assets/angelcore-art.css` under `[data-ac-tint="cold"]`. Relic presets sit
-beside them under `[data-ac-relic]` and set `--ac-relic`.
+`assets/angelcore-art.css` under `[data-ac-tint="cold"]`. There are no color
+tokens. A residue lives only inside a raster asset.
 
 Spacing steps: 4, 8, 12, 16, 24, 32 px. Rules 1px. Focus 2px with offset.
 Dense UI: 13px main, 12px metadata, 16 to 20px section titles, 28 to 32px rows.
@@ -228,22 +230,22 @@ Whitewash order, one seed, one JSON report:
    keeps 8-bit.
 9. Grain in the dark, optional scanline comb, then `--peak` for ambient.
 10. Tint: `neutral` (mode L) or `cold` (RGB from `#04070b` to `#dfe9f1`).
-11. Relic: `--relic HUE --relic-width 22` keeps the saturated source pixels
-    near that hue and lifts them to their own brightness. Everything else
-    stays monochrome. Full binary dither refuses a relic.
+11. Residue: `--residue HUE --residue-strength 0.12` leaves a washed trace of
+    that hue on the source pixels that carry it. Brightness stays duotone, so
+    the trace is a shade, not a highlight. Full binary dither refuses it.
 
 ```sh
 python tools/whitewash.py source.png hero.png --seed 3 --sparkles 5 --scan-period 3 --report hero.json
 python tools/whitewash.py source.png ambient.png --seed 3 --peak 0.3 --halo 0.4 --scratches 3 --grain 0.03
-python tools/whitewash.py portrait.png hero.png --seed 3 --key left --relic 140 --report hero.json
+python tools/whitewash.py portrait.png hero.png --seed 3 --key left --residue 135 --report hero.json
 python tools/whitewash.py assets/grain.png --tile 128 --seed 9
 ```
 
 The report prints `void_share`, `white_share`, and `mid_share`. A hero asset
 should land near the covers: void at least 40 percent, white 3 to 12 percent,
 midtone under 20 percent. A large blown subject such as a wing may push white
-higher; keep the void and the midtone limits. `relic_share` stays at or under
-5 percent. Ambient assets use `--peak 0.3` and have no white.
+higher; keep the void and the midtone limits. `residue_share` stays at or
+under 5 percent. Ambient assets use `--peak 0.3` and have no white.
 
 Dither pipeline for terminals and strict binary stays as before: tone map,
 fixed Bayer matrix, quantize once, map to two inks. Ambient dither marks use
@@ -272,8 +274,7 @@ aria-hidden="true"><use href="assets/ornaments.svg#orn-sparkle"/></svg>`.
 - At least one is cropped by the stage edge.
 - Place them in the void or across the halo, asymmetrically. Never centered.
 - Ink: `--ac-white` for one or two, `data-ink="dim"` or `faint` for the rest.
-  `data-glow` adds a 3px halo to a sparkle only. `data-ink="relic"` is allowed
-  on one ornament, only when the art on the same stage carries that relic.
+  `data-glow` adds a 3px halo to a sparkle only. Ornaments never take color.
 - Never under a control, over interface text, inside a focus path, or on a
   dense work view. Forced-colors mode removes them.
 - Ornaments are still. No twinkle.
@@ -341,7 +342,7 @@ Record a short working brief in task notes, not as a preamble to the user:
 
 ```text
 Purpose and medium:
-Profile / image role / light / tint / key side / relic hue:
+Profile / image role / light / tint / key side / residue hue or none:
 Content and source (origin, permission, crop):
 Motif (none, or one from the vocabulary):
 Geometry, type, density:
@@ -375,8 +376,9 @@ Do not ship while an applicable hard failure remains:
 
 - Rounded chrome, any hue on chrome, gradients, glow, blur, or shadow on
   controls or panels.
-- More than one relic hue, a relic over 5 percent of the art, or relic color
-  on text, controls, focus, state, rules, or surfaces.
+- Any vivid color anywhere. A residue above 25 percent saturation, more than
+  one residue hue, a residue over 5 percent of the art, or any color on text,
+  controls, ornaments, focus, state, rules, or surfaces.
 - Angel iconography added to functional UI, or more than one motif in a piece.
 - Flat, evenly lit art with no carving: both sides of the subject the same
   gray.

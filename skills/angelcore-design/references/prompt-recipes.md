@@ -57,8 +57,8 @@ reduce ambiguity; it cannot guarantee a model's output quality.
 > ground-colored fade behind the copy, one tracked serif display title that
 > crosses into the light, a short voice list, a micro line, and three to five
 > thin ornaments with one cropped by the edge. Carve the subject with a key
-> light from one side. Keep one relic hue only if the source has one that
-> matters. Keep every control below the stage in mono with square corners and
+> light from one side. Keep it duotone. Leave a washed color trace only if the
+> source has one that matters. Keep every control below the stage in mono with square corners and
 > no cages. Neutral tint unless I say cold. Test 1440, 768, and 390 widths and
 > the page with the stage removed.
 
