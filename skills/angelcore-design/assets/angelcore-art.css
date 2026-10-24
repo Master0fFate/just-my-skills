@@ -1,4 +1,3 @@
-/* angelcore-design v6.0.0 light layer. Load after angelcore.css. Effects here apply to art, layers, ornaments, and display echoes only, never to controls or interface text. */
 .ac .ac-stage { position: relative; isolation: isolate; overflow: hidden; background: var(--ac-bg); }
 .ac .ac-stage > .ac-art { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; max-inline-size: none; object-fit: cover; }
 .ac .ac-stage > :not(.ac-art):not(.ac-layer):not(.ac-orn) { position: relative; z-index: 1; }
@@ -17,6 +16,10 @@
 .ac .ac-orn[data-ink="dim"] { color: var(--ac-muted); }
 .ac .ac-orn[data-ink="faint"] { color: var(--ac-control); }
 .ac .ac-orn[data-glow] { filter: drop-shadow(0 0 3px rgb(255 255 255 / 0.7)); }
+.ac .ac-orn[data-ink="relic"] { color: var(--ac-relic, var(--ac-white)); }
+.ac[data-ac-relic="crimson"], .ac [data-ac-relic="crimson"] { --ac-relic: #c8102e; }
+.ac[data-ac-relic="venom"], .ac [data-ac-relic="venom"] { --ac-relic: #39d98a; }
+.ac[data-ac-relic="gold"], .ac [data-ac-relic="gold"] { --ac-relic: #c9a24a; }
 .ac[data-ac-tint="cold"], .ac [data-ac-tint="cold"] {
   --ac-bg: #04070b;
   --ac-surface: #0c1014;

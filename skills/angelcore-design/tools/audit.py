@@ -94,10 +94,10 @@ def audit(root: Path = ROOT, require_reference: bool = False) -> dict:
         selector = selector.strip()
         if re.search(r"(?:linear|radial|conic)-gradient\(|(?:backdrop-)?filter\s*:\s*(?!none)", body) and not re.search(ART_SELECTOR, selector):
             stray_effects.append(selector)
-        if any(v[1:3].lower() != v[3:5].lower() or v[3:5].lower() != v[5:7].lower() for v in re.findall(r"#[0-9a-fA-F]{6}\b", body)) and "data-ac-tint" not in selector:
+        if any(v[1:3].lower() != v[3:5].lower() or v[3:5].lower() != v[5:7].lower() for v in re.findall(r"#[0-9a-fA-F]{6}\b", body)) and not re.search(r"data-ac-(?:tint|relic)", selector):
             stray_hex.append(selector)
     check("Light-layer effects stay on art selectors: assets/angelcore-art.css", not stray_effects, stray_effects)
-    check("Non-neutral hex only inside tint rules: assets/angelcore-art.css", not stray_hex, stray_hex)
+    check("Non-neutral hex only inside tint and relic rules: assets/angelcore-art.css", not stray_hex, stray_hex)
     check("No bundled font files", not any(path.suffix.lower() in (".ttf", ".otf", ".woff", ".woff2") for path in root.rglob("*")))
     return result()
 

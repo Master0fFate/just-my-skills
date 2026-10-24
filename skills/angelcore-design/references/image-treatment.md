@@ -12,6 +12,7 @@ character cells and literal black/white.
 python tools/whitewash.py source.png hero.png --seed 3 --sparkles 5 --scan-period 3 --report hero.json
 python tools/whitewash.py source.png ambient.png --seed 3 --peak 0.3 --halo 0.4 --scratches 3 --dust 30 --grain 0.03
 python tools/whitewash.py source.png cold.png --seed 3 --tint cold --fade left
+python tools/whitewash.py portrait.png carved.png --seed 3 --key left --key-strength 0.7 --relic 140
 python tools/whitewash.py assets/grain.png --tile 128 --seed 9
 ```
 
@@ -25,6 +26,14 @@ output stays binary. Band dither keeps tones outside the band and draws marks
 between the two band edges inside it, so a gradient that crosses the band
 edge does not leave a contour. The signature numbers are measured on the tone
 before dither.
+
+`--key` ramps the grayscale source from one side before the crush. The lit
+side clips to white, the far side falls under the black point. Strength 0.6 is
+a start; 0.8 gives the half-white, half-void face. `--relic` keeps one hue from
+the source: pixels within `--relic-width` degrees of it and above 25 percent
+saturation keep their color at their own brightness, blended in with a soft
+mask. The output is RGB. Full binary dither rejects a relic because it cannot
+hold one. The report adds `relic_share`; keep it at or under 0.05.
 
 Every random element comes from `--seed`. The report records the seed, the
 source hash, every parameter, and three signature numbers: `void_share`,

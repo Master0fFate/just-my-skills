@@ -1,11 +1,4 @@
 #!/usr/bin/env python3
-"""Whitewash a source into the angelcore light.
-
-Crush the tones so the subject clips to white and the rest falls into the void.
-Add halation, a seeded film grain, a few scratches and dust, an edge fade,
-optional scanlines, sparkles, band or full ordered dither, and an optional cold
-tint. Every random element comes from one recorded seed, so a run repeats.
-"""
 from __future__ import annotations
 
 import argparse
@@ -25,8 +18,19 @@ TINTS = {
     "cold": ((4, 7, 11), (223, 233, 241)),
 }
 FADES = ("none", "radial", "left", "right", "top", "bottom")
+KEYS = ("none", "left", "right", "top", "bottom")
+RELIC_MIN_SATURATION = 0.25
 DITHERS = ("none", "band", "full")
 BAND = (0.12, 0.88)
+
+
+def key_light(gray: np.ndarray, side: str, strength: float) -> np.ndarray:
+    if side == "none" or strength <= 0:
+        return gray
+    rows, cols = gray.shape
+    across = np.linspace(-1, 1, cols)[None, :] if side in ("left", "right") else np.linspace(-1, 1, rows)[:, None]
+    toward = -across if side in ("left", "top") else across
+    return np.clip(gray * (1 + strength * toward), 0, 255)
 
 
 def crush(gray: np.ndarray, black: float, white: float, gamma: float) -> np.ndarray:
@@ -149,8 +153,24 @@ def tint(value: np.ndarray, name: str) -> Image.Image:
     return Image.fromarray(np.round(rgb).astype(np.uint8), mode="RGB")
 
 
+def relic_mask(rgb: Image.Image, hue: float, width: float) -> tuple[np.ndarray, np.ndarray]:
+    hsv = np.asarray(rgb.convert("HSV"), dtype=np.float64) / 255
+    distance = np.abs((hsv[..., 0] * 360 - hue + 180) % 360 - 180)
+    near = np.clip(1 - distance / width, 0, 1)
+    vivid = np.clip((hsv[..., 1] - RELIC_MIN_SATURATION) / (1 - RELIC_MIN_SATURATION), 0, 1)
+    return blur(near * vivid, 1.2), hsv
+
+
+def relic(base: Image.Image, value: np.ndarray, mask: np.ndarray, hsv: np.ndarray) -> Image.Image:
+    lit = np.maximum(value, hsv[..., 2])
+    accent = np.asarray(Image.fromarray(np.round(np.stack([hsv[..., 0], hsv[..., 1], lit], axis=-1) * 255).astype(np.uint8),
+                                        mode="HSV").convert("RGB"), dtype=np.float64)
+    rgb = np.asarray(base.convert("RGB"), dtype=np.float64)
+    return Image.fromarray(np.round(rgb + (accent - rgb) * mask[..., None]).astype(np.uint8), mode="RGB")
+
+
 def whitewash(gray: np.ndarray, rng: np.random.Generator, args: argparse.Namespace) -> tuple[np.ndarray, np.ndarray]:
-    value = crush(gray, args.black, args.white, args.gamma)
+    value = crush(key_light(gray, args.key, args.key_strength), args.black, args.white, args.gamma)
     value = halation(value, args.halo_knee, args.halo_radius, args.halo)
     value *= fade_map(value.shape, args.fade, args.fade_strength)
     value = scratches(value, rng, args.scratches, args.scratch_strength)
@@ -177,14 +197,15 @@ def grain_tile(size: int, rng: np.random.Generator, alpha: float) -> Image.Image
     return Image.fromarray(rgba, mode="RGBA")
 
 
-def signature(value: np.ndarray) -> dict:
+def signature(value: np.ndarray, mask: np.ndarray | None) -> dict:
     gray = value * 255
     return {"void_share": float((gray <= 24).mean()), "white_share": float((gray >= 230).mean()),
-            "mid_share": float(((gray > 60) & (gray < 180)).mean())}
+            "mid_share": float(((gray > 60) & (gray < 180)).mean()),
+            "relic_share": float((mask > 0.5).mean()) if mask is not None else 0.0}
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Whitewash a source into the angelcore light.")
     parser.add_argument("source", type=Path, nargs="?")
     parser.add_argument("output", type=Path)
     parser.add_argument("--tile", type=int, help="Write a seeded transparent grain tile of this size instead of converting a source.")
@@ -196,6 +217,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--black", type=float, default=28, help="Source value that becomes the void.")
     parser.add_argument("--white", type=float, default=110, help="Source value that clips to white.")
     parser.add_argument("--gamma", type=float, default=1.0)
+    parser.add_argument("--key", choices=KEYS, default="none", help="Side the light comes from; the far side falls into the void.")
+    parser.add_argument("--key-strength", type=float, default=0.6)
+    parser.add_argument("--relic", type=float, help="Hue in degrees that keeps its color, for example 0 crimson, 130 green, 45 gold.")
+    parser.add_argument("--relic-width", type=float, default=22, help="Hue window in degrees around --relic.")
     parser.add_argument("--halo", type=float, default=0.7, help="Halation strength, 0 disables.")
     parser.add_argument("--halo-radius", type=float, default=36)
     parser.add_argument("--halo-knee", type=float, default=0.7)
@@ -234,6 +259,10 @@ def main(argv: Sequence[str] | None = None) -> int:
                 raise ValueError("Source and output must be different files.")
             if not 0 < args.peak <= 1:
                 raise ValueError("Peak must be in (0, 1].")
+            if args.relic is not None and not (0 <= args.relic < 360 and 0 < args.relic_width <= 90):
+                raise ValueError("Relic hue must be in [0, 360) and its width in (0, 90].")
+            if args.relic is not None and args.dither == "full":
+                raise ValueError("A relic color cannot survive full binary dither.")
             source = load_source(args.source, args.crop)
             size = output_size(source.size, args.width, args.height)
             if size[0] * size[1] > MAX_PIXELS:
@@ -241,9 +270,16 @@ def main(argv: Sequence[str] | None = None) -> int:
             gray = np.asarray(source.resize(size, Image.Resampling.LANCZOS), dtype=np.float64)
             value, tone = whitewash(gray, rng, args)
             image = tint(value, args.tint)
+            mask = None
+            if args.relic is not None:
+                color = load_source(args.source, args.crop, "RGB").resize(size, Image.Resampling.LANCZOS)
+                mask, hsv = relic_mask(color, args.relic, args.relic_width)
+                image = relic(image, value, mask, hsv)
             digest = hashlib.sha256(args.source.read_bytes()).hexdigest()
             record = {"source": str(args.source), "source_sha256": digest, "crop": list(args.crop) if args.crop else None,
                       "output": str(args.output), "mode": "whitewash", "grid": list(size), "seed": args.seed,
+                      "key": {"side": args.key, "strength": args.key_strength},
+                      "relic": {"hue": args.relic, "width": args.relic_width} if args.relic is not None else None,
                       "levels": {"black": args.black, "white": args.white, "gamma": args.gamma},
                       "halation": {"strength": args.halo, "radius": args.halo_radius, "knee": args.halo_knee},
                       "fade": {"mode": args.fade, "strength": args.fade_strength},
@@ -251,7 +287,7 @@ def main(argv: Sequence[str] | None = None) -> int:
                       "sparkles": args.sparkles, "sparkle_size": args.sparkle_size, "grain": args.grain,
                       "scanlines": {"period": args.scan_period, "depth": args.scan_depth},
                       "peak": args.peak, "dither": args.dither, "matrix": args.matrix, "tint": args.tint,
-                      "png_mode": image.mode, "signature": signature(tone)}
+                      "png_mode": image.mode, "signature": signature(tone, mask)}
         args.output.parent.mkdir(parents=True, exist_ok=True)
         image.save(args.output, format="PNG", optimize=True)
         if args.report:

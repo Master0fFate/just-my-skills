@@ -2,6 +2,8 @@
 .parallax/
 .codegraph
 .codeviewer-mcp.sqlite*
+.latentcontext/
+.playwright-mcp/
 skills/angelcore-design/references/look/
 
 # Installed dependencies and Python caches

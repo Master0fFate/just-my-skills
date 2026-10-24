@@ -25,6 +25,13 @@
       <path d="M132 24C128 14 120 12 116 18C112 24 120 30 126 26"/>
     </g>
   </symbol>
+  <symbol id="orn-halo-broken" viewBox="0 0 64 24">
+    <g fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">
+      <path d="M7 12.5C7 7.5 18.5 3.5 32 3.5C40 3.5 47 4.8 51.5 7"/>
+      <path d="M56.5 10C57.3 10.8 57.7 11.6 57.7 12.5C57.7 17.4 46.2 21.2 32 21.2C26 21.2 20.6 20.5 16.4 19.3"/>
+      <path d="M11.2 17.4C9.4 16.3 8.2 15.1 7.6 13.9"/>
+    </g>
+  </symbol>
   <symbol id="orn-chain" viewBox="0 0 4 160">
     <path fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="1 5" vector-effect="non-scaling-stroke" d="M2 0V160"/>
   </symbol>

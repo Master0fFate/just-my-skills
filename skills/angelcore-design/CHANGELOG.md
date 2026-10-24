@@ -1,5 +1,17 @@
 # Change record
 
+## 6.1.0 / 2026-10-24
+
+Aligned the skill with the Angel Core 2026 write-up. Light and dark are now
+described as opposing forces. Added two properties to the look: carving, a
+hard key light that leaves one side white and the other in the void, and
+relic, one selective hue that survives in the art. `whitewash.py` gained
+`--key` and `--relic`, and its report adds `relic_share`. Relic presets
+(`crimson`, `venom`, `gold`) and a relic ornament ink live in the light layer;
+chrome stays neutral. Iconography is now allowed in hero, cover, and brand art
+when no subject is supplied, one motif per piece, and a broken halo joined the
+ornaments. Removed two comments that broke the house no-comment rule.
+
 ## 6.0.0 / 2026-10-11
 
 Rebuilt the look around four user-supplied covers. The ground is now `#050505`

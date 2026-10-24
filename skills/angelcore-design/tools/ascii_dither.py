@@ -33,7 +33,7 @@ def bayer(size: int = 4) -> np.ndarray:
     return (matrix + 0.5) / (size * size)
 
 
-def load_source(path: Path, crop: tuple[int, int, int, int] | None = None) -> Image.Image:
+def load_source(path: Path, crop: tuple[int, int, int, int] | None = None, mode: str = "L") -> Image.Image:
     """Load the first image frame; orient it; flatten alpha onto black."""
     with Image.open(path) as image:
         if image.width * image.height > MAX_PIXELS:
@@ -46,7 +46,7 @@ def load_source(path: Path, crop: tuple[int, int, int, int] | None = None) -> Im
                 raise ValueError("Crop must be a positive rectangle inside the oriented source.")
             image = image.crop(crop)
         base = Image.new("RGBA", image.size, (0, 0, 0, 255))
-        return Image.alpha_composite(base, image).convert("L")
+        return Image.alpha_composite(base, image).convert(mode)
 
 
 def output_size(source: tuple[int, int], width: int, height: int | None = None,

@@ -1,4 +1,4 @@
-# angelcore-design / v6.0.0
+# angelcore-design / v6.1.0
 
 A reusable skill for the user's angelcore look: a hard-edged near-black
 interface with whitewashed light. The frame is square, mono, thin-ruled, and
@@ -33,7 +33,7 @@ the reference, helper code, state contracts, and repeatable tests.
 | Path | Use |
 | --- | --- |
 | `SKILL.md` | Core rules and required build loop. |
-| `references/look.md` | The designer's read of the four cover references: eight properties, measured signature, per-cover notes. |
+| `references/look.md` | The designer's read of the four cover references: ten properties, iconography, measured signature, per-cover notes. |
 | `references/look/` | User-supplied cover references. Local only and git-ignored, because the covers are other people's artwork. Never product assets. |
 | `references/reference-audit.md` | What the supplied files support, gaps in v4, and limits. |
 | `references/target-ui.png` | Capture of the Fate UI Angelcore skin. Visual reference only. Never use it as a product background. |

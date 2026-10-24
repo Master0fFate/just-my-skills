@@ -1,6 +1,14 @@
 # The look
 
-This is the designer's read of the four covers in `look/`. That folder is
+This is the designer's read of Angel Core 2026, also called dark angelcore:
+a high-contrast, gothic, surreal turn on classic angelcore. Classic angelcore is
+soft cream, blush pastel, gold, and diffuse glow. This version keeps the
+celestial intent and inverts the light. Highlights are pushed past their
+natural limit, shadows go absolute, and midtones are compressed out. It reads
+as black and white, but it is not a flat grayscale conversion: the white still
+glows, the black still has grain, and one small color may survive.
+
+The read below comes from the four covers in `look/`. That folder is
 local only and git-ignored; a public clone has this text and not the images.
 The covers are the user's
 visual references for the current meaning of angelcore: a white apparition in a
@@ -13,7 +21,7 @@ material. Never use them as product assets, and never copy their subjects.
 image is a blown-out white apparition that dissolves into the same black. The
 two never trade properties: no bloom on a button, no cage on a photo.
 
-## The eight properties
+## The ten properties
 
 | # | Property | What the covers do | Rule for new work |
 | --- | --- | --- | --- |
@@ -23,8 +31,17 @@ two never trade properties: no bloom on a button, no cage on a photo.
 | 4 | Texture in the dark | Film grain, dust, long thin vertical scratches, a faint horizontal scanline comb. The grain lives in the shadows. Clipped white stays clean. | Seeded grain, 3 to 12 scratches, dust. Record the seed. Never a uniform noise wallpaper over a normal photo. |
 | 5 | Dither as a transition | Halftone dots appear in the halo band between white and black, not across the whole frame. | Default `--dither band`: ordered marks only inside the transition band, switching between the band edges so gradients stay smooth. Outside the band the tone is kept. `full` is for strict binary and terminal assets. |
 | 6 | Ornament | Thin white line art: four-point sparkles of different sizes, a gothic cross, cybersigil thorns, filigree scrolls, chains of dots. Sparse, asymmetric, and at least one piece is cut off by the edge. | At most five ornaments per view. One cropped by the edge. One-pixel strokes. Never under a control, over interface text, or in a focus path. |
-| 7 | Voice | Titles are thin serif, wide-tracked, small against the canvas, uppercase or all-lowercase. A tiny tracked tracklist under the title. A micro "all rights reserved" line at the foot. One title carries a ghost echo, a second copy offset and faint. A single word may run vertically. | Serif is the voice, mono is the instrument. One display title and one voice list per view. Interface text, labels, and controls stay mono. |
+| 7 | Voice | Titles are thin serif, wide-tracked, small against the canvas, uppercase or all-lowercase. A tiny tracked tracklist under the title. A micro "all rights reserved" line at the foot. One title carries a ghost echo, a second copy offset and faint. A single word may run vertically. | Serif is the voice, mono is the instrument. One display title and one voice list per view. Interface text, labels, and controls stay mono. Display copy is short, cold, and declarative. No exclamation marks, no cute. |
 | 8 | Composition | Black mass on one side, subject on the other, cropped at the edge, never centered. The title crosses into the image. Everything loses its edge into the void. Two covers carry a cold cast: blue in the void, cyan in the white. | Put the subject at an edge. Let the copy overlap the light with a ground-colored fade behind it. Tint is opt-in, `cold` only, applied to the whole view. |
+| 9 | Carving | Light sculpts the form. The Captivation face is blown on one side and gone on the other. Forms are cut by light, not modeled by it. | Use a hard key light from one side, `--key` in the tool when the source is flat. A face half white, half void is the target, not even exposure. |
+| 10 | Relic | The covers stay monochrome, but the paradigm allows one small color that punches through: green eyes, a crimson mark, a faint gold rim. | At most one hue per view, under 5 percent of the art, kept with `--relic`. Art and one ornament only. Chrome never takes it. |
+
+## Iconography
+
+The celestial vocabulary stays, under strain: wings, often torn; halos,
+often broken; falling feathers; gothic arches; thorns and cybersigils;
+chains. Fallen rather than pure. Use it only where the art has a role and no
+subject was supplied, one motif per piece. Functional UI never grows wings.
 
 ## Per-cover notes
 
@@ -69,6 +86,9 @@ percent, midtone share under 20 percent. Ambient assets use the same shape with
 ## What this look is not
 
 - Not pastel, lace, cherubs, or soft clouds. That is the old meaning.
+- Not a flat grayscale filter. Midtones are gone, white glows, black has grain.
+- Not evenly lit. If both sides of a face are the same gray, carve it.
+- Not a palette. One relic, or none.
 - Not a dark dashboard with a glow. The chrome has no glow.
 - Not a photo with a dot overlay. The dots come from the tone map.
 - Not a sticker sheet. Five ornaments is the ceiling, not the target.
