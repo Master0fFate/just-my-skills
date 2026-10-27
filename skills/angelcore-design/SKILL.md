@@ -13,7 +13,7 @@ description: >-
   source-driven dither. Not pastel or cherub angelcore, not a generic dark
   dashboard, not neon, not rounded cards, not a fixed mascot.
 metadata:
-  version: "6.2.0"
+  version: "6.3.0"
   scope: "interface-first; covers, hero art, and cross-medium rules included"
   default-profile: "reference-monochrome"
   default-light: "whitewash for hero and ambient art; dither for terminal and strict binary"
@@ -58,6 +58,12 @@ or brand piece with no supplied subject, one motif from the look's vocabulary
 is allowed: wings, a broken halo, falling feathers, a gothic arch, thorns, or
 chains. One motif per piece, chosen for this brief. It is not a mascot for
 later projects. A supplied subject always wins.
+
+**Generated figures are alt-goth.** When generated art shows a girl, she is
+alt-goth or emo: jet-black hair with a heavy side-swept fringe over one eye,
+heavy smudged black eyeliner, dark lips, piercings, and a choker or cross
+jewelry. Never a soft, clean, or generic model. Write this into every image
+prompt. A supplied subject still wins.
 
 **Clarity before copy.** Make purpose, next action, and current state clear at
 a glance through layout, familiar controls, grouping, and feedback. Keep

@@ -1,4 +1,4 @@
-# angelcore-design / v6.2.0
+# angelcore-design / v6.3.0
 
 A reusable skill for the user's angelcore look: a hard-edged near-black
 interface with whitewashed light. The frame is square, mono, thin-ruled, and

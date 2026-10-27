@@ -1,5 +1,11 @@
 # Change record
 
+## 6.3.0 / 2026-10-27
+
+A girl in generated art is now alt-goth or emo: black side-swept fringe, heavy
+smudged eyeliner, dark lips, piercings, and a choker or cross jewelry. A
+supplied subject still wins.
+
 ## 6.2.0 / 2026-10-24
 
 Added a one-job-per-frame section taken from uncluttered design: one primary
