@@ -1,6 +1,6 @@
 # Skill pack
 
-Ten primary skills. Eight on-demand Sexyness playbooks. One owner per job.
+Eleven primary skills. Eight on-demand Sexyness playbooks. One owner per job.
 Use the smallest route that produces the requested result; do not stack general
 planning, audit, and polish loops on every task.
 
@@ -13,6 +13,7 @@ planning, audit, and polish loops on every task.
 | [calibrate-how-we-work](calibrate-how-we-work/SKILL.md) | Explicit interview and approved durable collaboration profile | Ordinary task questions or unsolicited profiling |
 | [deep-work](deep-work/SKILL.md) | Explicitly requested high-effort work: three candidate attempts, three challenge reviews, repair, and a fresh acceptance check | A default for ordinary requests or a stand-in for real verification |
 | [explain](explain/SKILL.md) | Beginner explanations and useful visual HTML artifacts | Forced insults, mandatory files, or media-generation substitutes |
+| [music-video](music-video/SKILL.md) | Beat-synced music videos for a song: a story and color script, lyrics as motion graphics inside cinematic scenes, Remotion + Three.js + GSAP, platform exports for X, TikTok, Reels and Shorts; probes the machine and offers optional upgrades (beat analysis, Whisper word timing, imagegen-cc plates) | Plain subtitle videos, editing existing footage, or lyrics the user didn't provide |
 | [planner-omega](planner-omega/SKILL.md) | Executable plans, brainstorm convergence, prompt specifications | Endless clarification or implementation without permission |
 | [retrofit](retrofit/SKILL.md) | A defined old-to-new migration with compatibility and data preservation | General cleanup or purely visual polish |
 | [sexyness](sexyness/SKILL.md) | Scoped code, design, interaction, copy, architecture, and measured performance work | Broad readiness audits or a second general planning system |
