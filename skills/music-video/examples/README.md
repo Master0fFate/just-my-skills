@@ -1,4 +1,4 @@
-# Reference build: "Been Alone Until You" — prlxx
+# Reference build: "Been Alone Until You" \\
 
 The video this skill was distilled from: 1080×1920, 60 fps, 3:43, 22 scenes, 126 BPM. Use it to see what the bar looks like in code and to borrow proven patterns.
 
